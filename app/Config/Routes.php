@@ -31,6 +31,31 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+//lucho
+
+
+
+
+//niko
+
+
+
+
+
+//victor
+
+
+
+
+
+//angela
+$routes->get('/login', 'loginController::index');
+
+
+
+
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
@@ -44,6 +69,9 @@ $routes->get('/', 'Home::index');
  * You will have access to the $routes object within that file without
  * needing to reload it.
  */
+
+
+
 if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
