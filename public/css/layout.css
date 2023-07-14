@@ -89,9 +89,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
   
   
 
-  .bg-blue {
-    background-color: #CADCFF;
-  }
+
 
   #menu li.nav-item span {
     color: #324F87;
@@ -104,12 +102,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
     align-items: center;
   }
   
-  .icono-sidebar {
-    margin-right: 5px;
+  
+  .nav-link span {
     display: inline-block;
     vertical-align: middle;
-  }  
-  .nav-link span {
+  }
+  .icono-sidebar {
+    margin-right: 5px;
     display: inline-block;
     vertical-align: middle;
   }
@@ -117,30 +116,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
     width: 40px;
     
   }	
-
-  .sidebar {
-    display: block;
-}
-
-@media (max-width: 767.98px) {
-    .sidebar {
-        display: none;
-    }
-}
-
-.sidebar.activo {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .sidebar.activo {
-    display: block;
-  }
-}
-
-
-
-  
 /*Opciones tipo windows 8*/
 .menu-option {
   display: flex;
@@ -165,8 +140,61 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
   margin-bottom: 10px;
 }
 
-  
+ /*--------------------------------------------------------------
+# Sidebar
+--------------------------------------------------------------*/
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  z-index: 996;
+  transition: all 0.5s;
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+  background-color: #CADCFF;
+}
 
-  
+@media (max-width: 1199px) {
+  .sidebar {
+    left: -300px;
+  }
+}
 
- 
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: #fff;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #aab7cf;
+}
+
+@media (min-width: 1200px) {
+
+  #main,
+  #footer {
+    margin-left: 300px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .toggle-sidebar .sidebar {
+    left: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .toggle-sidebar #main,
+  .toggle-sidebar #footer {
+    margin-left: 0;
+  }
+
+  .toggle-sidebar .sidebar {
+    left: -300px;
+  }
+}
