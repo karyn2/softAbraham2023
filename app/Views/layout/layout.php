@@ -147,9 +147,8 @@
     <!-- End Sidebar-->
 
     <!-- ======= Main ======= -->
-    <main id="main" class="main">
-
-
+    <main id="main"  >        
+        <?php echo $this->renderSection('content'); ?>
     </main><!-- End #main -->
 
 
