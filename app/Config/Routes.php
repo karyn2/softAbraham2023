@@ -29,7 +29,7 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'loginController::index');
 
 //lucho
 
@@ -50,7 +50,10 @@ $routes->get('/', 'Home::index');
 
 //angela
 $routes->get('/login', 'loginController::index');
-
+$routes->post('/loggin', 'loginController::login');
+$routes->get('/inicio', 'loginController::prueba');
+$routes->get('/logout', 'loginController::salir');
+$routes->get('/home', 'home::index');
 
 
 

@@ -10,27 +10,40 @@ class Usuarios extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id' => [
+            'id_usuario' => [
                 'type'           => 'INT',
                 'constraint'     => 5,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'blog_title' => [
+            'documento' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '100',
+                'constraint' => '15',
             ],
-            'blog_description' => [
-                'type' => 'TEXT',
-                'null' => true,
+            'nombre' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
             ],
+            'correo' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'contrasenia' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'rol' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '200',
+            ],
+            
         ]);
-        $this->forge->addKey('blog_id', true);
-        $this->forge->createTable('blog');
+        $this->forge->addKey('id_usuario', true);
+        $this->forge->createTable('usuarios');
     }
 
     public function down()
     {
-        $this->forge->dropTable('blog');
+        $this->forge->dropTable('usuarios');
     }
 }
