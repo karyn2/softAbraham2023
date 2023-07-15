@@ -67,6 +67,6 @@
       </div>
       
     </div>
-  </div>
+</div>
 
 <?php echo $this->endSection() ?>
