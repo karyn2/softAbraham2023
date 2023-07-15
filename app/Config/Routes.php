@@ -51,6 +51,7 @@ $routes->get('/', 'loginController::index');
 //angela
 $routes->get('/login', 'loginController::index');
 $routes->post('/loggin', 'loginController::login');
+$routes->get('/register', 'registerController::index');
 $routes->get('/inicio', 'home::index');
 $routes->get('/logout', 'loginController::salir');
 //ruta de prueba

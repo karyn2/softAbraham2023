@@ -66,7 +66,8 @@ class Filters extends BaseConfig
             "before" =>[
                 //todas la rutas que se debe validar a las que no puede entrar si no es administrador
             "/inicio",
-            "/home"
+            "/home",
+            "/register"
             ]
             
         ]

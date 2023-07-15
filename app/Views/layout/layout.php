@@ -108,13 +108,13 @@
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item ">
-                        <a href="{{ route('home') }}" class="nav-link align-middle px-0">
+                        <a href="<?php echo base_url('/inicio')?>" class="nav-link align-middle px-0">
                             <img src="..\public\img\Inicio.png" alt="Inicio" class="icono-sidebar"><span
                                 class="ms-1 d-none d-sm-inline ">Inicio</span>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a href="{{ route('register') }}" class="nav-link align-middle px-0">
+                        <a href="<?php echo base_url('/register')?>" class="nav-link align-middle px-0">
                             <img src="..\public\img\usuario.png" alt="usuario" class="icono-sidebar"><span
                                 class="ms-1 d-none d-sm-inline "> Usuarios</span>
                         </a>
