@@ -6,6 +6,6 @@ class Home extends BaseController
 {
     public function index()
     {
-        return view('layout/layout');
+        return view('menuWindows8\menuWindows');
     }
 }
