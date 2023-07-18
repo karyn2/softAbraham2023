@@ -47,7 +47,7 @@
     
     <div class="row">
       <div class="col-md-4">
-        <a href="#" class="menu-option" style="background-color: #419BED;">
+        <a href="<?php echo base_url()?>menuDS" class="menu-option" style="background-color: #419BED;">
         <img src="..\public\img\agrDocEst.png" alt="matricula" class="icono-sidebar">
           <div>Agregar<br>Docentes y Estudiantes</div>
         </a>

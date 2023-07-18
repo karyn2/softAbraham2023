@@ -198,13 +198,3 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
     left: -300px;
   }
 }
-
-.blueCardHeader {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #2B4E87;
-  color: white;
-}
-
-

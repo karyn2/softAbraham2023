@@ -1,6 +1,6 @@
-<?php echo $this->extend('layout\layout') ?>
+<?php echo $this->extend('layout\layout'); ?>
 
-<?php echo $this->section('content') ?>
+<?php echo $this->section('content'); ?>
 
 <div class="card mt-4">
       <div class="card-header blueCardHeader">
@@ -11,7 +11,7 @@
   <div class="row">
     
   <div class="col-md-6">
-      <a href="#" class="menu-option" style="background-color: #419BED;">
+      <a href="<?php echo base_url()?>newDocent" class="menu-option" style="background-color: #419BED;">
       <img src="..\public\img\newDocente.png" alt="Nuevo Docente" class="icono-sidebar">
         <div>Nuevo Docente</div>
       </a>
@@ -46,4 +46,4 @@
       </div>
 </div>
 
-<?php echo $this->endSection() ?>
+<?php echo $this->endSection(); ?>
