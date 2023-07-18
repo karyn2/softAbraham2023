@@ -43,7 +43,7 @@ $routes->get('/', 'loginController::index');
 
 
 //victor
-
+$routes->get('/menuDS', 'menuDS::index');
 
 
 
