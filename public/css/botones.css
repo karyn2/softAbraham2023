@@ -1,0 +1,27 @@
+.botonRegistrar{
+    background-color: #39CB58;
+    transition: background-color 0.3s;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+}
+.botonRegistrar:hover {
+    background-color: #0D9739; /* Color de fondo al hacer hover */
+  }
+
+.botonLimpiar{
+    background-color: #30BCEC;
+    transition: background-color 0.3s;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+}
+.botonLimpiar:hover {
+    background-color: #2995BA; /* Color de fondo al hacer hover */
+  }
+
+#pencil-icon {
+    color: white; 
+  }

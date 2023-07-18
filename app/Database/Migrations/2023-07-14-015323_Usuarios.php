@@ -36,6 +36,9 @@ class Usuarios extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '200',
             ],
+            'estado' => [
+                'type'       => 'BOOLEAN',
+            ],
             
         ]);
         $this->forge->addKey('id_usuario', true);

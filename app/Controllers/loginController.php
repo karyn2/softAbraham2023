@@ -40,8 +40,6 @@ class loginController extends BaseController
             return redirect()->to(base_url('/inicio'));
 
         }else{
-            $dato['error'] = 'Correo o contraseña incorrectos';
-            //return redirect()->to(base_url('/')) ->with('mensaje','0');
             return redirect()->to(base_url('/'))->with('mensaje', 'Correo o contraseña incorrectos');
         }
 

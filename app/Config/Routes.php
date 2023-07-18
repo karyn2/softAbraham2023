@@ -49,16 +49,24 @@ $routes->get('/', 'loginController::index');
 
 
 //angela
-$routes->get('/login', 'loginController::index');
+//loginController
 $routes->post('/loggin', 'loginController::login');
-$routes->get('/register', 'registerController::index');
-$routes->get('/inicio', 'home::index');
 $routes->get('/logout', 'loginController::salir');
+//homecontroller
+$routes->get('/inicio', 'home::index');
+//registerControler
+$routes->get('/usuarios', 'registerController::index');
+$routes->get('/register', 'registerController::register');
+$routes->post('/registrar', 'registerController::registrar');
+
+
 //ruta de prueba
-$routes->get('/home', 'home::index');
 
-
-
+if (session('rol') == 'docente') {
+    $routes->get('/prueba', 'loginController::prueba');
+} else{
+    $routes->post('/loggin', 'loginController::login');
+}
 
 
 /*

@@ -26,6 +26,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <!-- Template Main CSS File -->
     <link href="..\public\css\layout.css" rel="stylesheet">
+    <link href="..\public\css\tables.css" rel="stylesheet">
+    <link href="..\public\css\botones.css" rel="stylesheet">
+
+    <!--iconos--> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.min.css">
 </head>
 
 <body>
@@ -114,7 +120,7 @@
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a href="<?php echo base_url('/register')?>" class="nav-link align-middle px-0">
+                        <a href="<?php echo base_url('/usuarios')?>" class="nav-link align-middle px-0">
                             <img src="..\public\img\usuario.png" alt="usuario" class="icono-sidebar"><span
                                 class="ms-1 d-none d-sm-inline "> Usuarios</span>
                         </a>
@@ -158,6 +164,11 @@
         </script>
     <!-- Template Main JS File -->
     <script src="..\public\js\layout.js"></script>
+
+
+    <!--sweetAlert-->
+    <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+
 </body>
 
 </html>

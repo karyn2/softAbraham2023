@@ -21,7 +21,8 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'sessionAdministrador'=>\App\Filters\sessionAdministrador::class
+        'sessionAdministrador'=>\App\Filters\sessionAdministrador::class,
+      
     ];
 
     /**
@@ -66,11 +67,9 @@ class Filters extends BaseConfig
             "before" =>[
                 //todas la rutas que se debe validar a las que no puede entrar si no es administrador
             "/inicio",
-            "/home",
-            "/register"
+            "/usuarios",
+            "/register"] 
             ]
-            
-        ]
            
     ];
 }

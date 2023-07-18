@@ -13,12 +13,14 @@ class Usuario extends Seeder
         $correo="Karynaceron@gmail.com";
         $contrasenia = password_hash("1234", PASSWORD_DEFAULT);
         $rol="administrador";
+        $estado=true;
         $data = [
             'documento' => $documento,
             'nombre' => $nombre,
             'correo' => $correo,
             'contrasenia' => $contrasenia,
             'rol'    => $rol,
+            'estado' => $estado
         ];
 
         
