@@ -43,8 +43,8 @@ $routes->get('/', 'loginController::index');
 
 
 //victor
-$routes->get('/menuDS', 'CreateDS::index');
-$routes->get('/newDocent', 'CreateDS::newDocent');
+//$routes->get('/menuDS', 'CreateDS::index');
+//$routes->get('/newDocent', 'CreateDS::newDocent');
 
 
 
@@ -66,6 +66,15 @@ $routes->post('/registrar', 'registerController::registrar');
 if (session('rol') == 'docente') {
     $routes->get('/prueba', 'loginController::prueba');
 } else{
+    $routes->post('/loggin', 'loginController::login');
+}
+
+if (session('rol') == 'administrador') {
+    $routes->get('/prueba', 'loginController::prueba');
+    $routes->get('/menuDS', 'CreateDS::index');
+    $routes->get('/newDocent', 'CreateDS::newDocent');
+} else{
+    
     $routes->post('/loggin', 'loginController::login');
 }
 
