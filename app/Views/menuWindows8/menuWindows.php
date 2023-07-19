@@ -32,7 +32,7 @@
         </a>
       </div>
       <div class="col-md-4">
-        <a href="#" class="menu-option" style="background-color: #419BED;">
+        <a href="<?php echo base_url()?>nuevosCursos" class="menu-option" style="background-color: #419BED;">
         <img src="..\public\img\confCurso.png" alt="matricula" class="icono-sidebar">
           <div>Configurar Cursos</div>
         </a>

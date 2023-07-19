@@ -37,7 +37,10 @@ $routes->get('/', 'loginController::index');
 
 
 //niko
-
+//menuCursos
+$routes->get('/nuevosCursos', 'newCursos::nuevosCursos');
+$routes->get('/CursosPrimaria', 'newCursos::cursoPrimaria');
+$routes->get('/CursosBachillerato', 'newCursos::cursoBachillerato');
 
 
 
