@@ -73,6 +73,7 @@ if (session('rol') == 'administrador') {
     $routes->get('/prueba', 'loginController::prueba');
     $routes->get('/menuDS', 'CreateDS::index');
     $routes->get('/newDocent', 'CreateDS::newDocent');
+    $routes->get('/listDocent', 'CreateDS::listDocent');
 } else{
     
     $routes->post('/loggin', 'loginController::login');

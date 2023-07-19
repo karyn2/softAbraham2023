@@ -35,7 +35,8 @@
         <input type="email" id="correo" name="correo" class="form-control" autocomplete="off">
         <label id="correoError" class="error-label mt-2" style="color:red"></label>
       </div>
-      <div class="col-md-6 mt-4">
+      <div class="col-md-3">
+      <label for="rol" class="control-label">Rol de Usuario:</label>
         <select class="form-select" id="rol" name="rol">
           <option selected disabled value="">Rol de Usuario</option>
           <option value="administrador">Administrador</option>
@@ -43,6 +44,11 @@
           <option value="acudiente">Acudiente</option>
           <option value="estudiante">Estudiante</option>
         </select>
+      </div>
+      <div class="col-md-3">
+      <label for="correo" class="control-label">Estado:</label>
+        <input type="text" id="estado" name="estado" class="form-control" autocomplete="off">
+      </label>
       </div>
     </div>
 
@@ -70,7 +76,29 @@
 
     <br>
 
-    <h2>Títulos</h2>
+  <h2>Contactos de Emergencias</h2>
+
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <label for="correo" class="control-label">Nombre Completo:</label>
+        <input type="email" id="correo" name="correo" class="form-control" autocomplete="off">
+        <label id="correoError" class="error-label mt-2" style="color:red"></label>
+      </div>
+      <div class="col-md-3">
+      <label for="parentesco" class="control-label">Parentesco:</label>
+        <input type="text" id="parentesco" name="parentesco" class="form-control" autocomplete="off">
+      </label>
+      </div>
+      <div class="col-md-3">
+      <label for="numero_telefono_emergencia" class="control-label">Número de Telefono:</label>
+        <input type="text" id="numero_telefono_emergencia" name="numero_telefono_emergencia" class="form-control" autocomplete="off">
+      </label>
+      </div>
+    </div>
+
+    <br>
+
+    <h2>Títulos Académicos</h2>
 
     <div id="titulos">
       <div class="titulo">
@@ -112,33 +140,13 @@
       </div>
     </div>
     <button type="button" class="btn btn-primary" onclick="agregarExperienciaDocente()">Agregar Experiencia Docente</button>
-      <br>
-    <h2>Contactos de Emergencia</h2>
-    <div id="contactos">
-      <div class="contactos">
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="nombre_emergencia" class="form-label">Nombre Completo:</label>
-            <input type="text" class="form-control" name="nombre_emergencia" required>
-          </div>
-          <div class="col-md-6 mb-3">
-          <label for="numero_telefono_emergencia" class="form-label">Número de Teléfono:</label>
-          <input type="text" class="form-control" id="numero_telefono_emergencia" name="numero_telefono_emergencia" required>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="relacion_emergencia" class="form-label">Relación:</label>
-            <input type="text" class="form-control" name="relacion_emergencia" required>
-          </div>          
-        </div>
-      </div>
-    </div>
 
-    <br>   
+
+    <br>   <br>
 
     <button type="submit" class="btn btn-primary">Registrar</button>
+
+    <br> <br>
   </form>
 </div>
 
