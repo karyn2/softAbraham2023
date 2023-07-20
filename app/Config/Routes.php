@@ -37,13 +37,17 @@ $routes->get('/', 'loginController::index');
 
 
 //niko
-
+//menuCursos
+$routes->get('/nuevosCursos', 'newCursos::nuevosCursos');
+$routes->get('/CursosPrimaria', 'newCursos::cursoPrimaria');
+$routes->get('/CursosBachillerato', 'newCursos::cursoBachillerato');
 
 
 
 
 //victor
-$routes->get('/menuDS', 'menuDS::index');
+//$routes->get('/menuDS', 'CreateDS::index');
+//$routes->get('/newDocent', 'CreateDS::newDocent');
 
 
 
@@ -64,6 +68,16 @@ $routes->post('/registrar', 'registerController::registrar');
 
 if (session('rol') == 'docente') {
     $routes->get('/prueba', 'loginController::prueba');
+}
+
+if (session('rol') == 'administrador') {
+    $routes->get('/prueba', 'loginController::prueba');
+    $routes->get('/menuDS', 'CreateDS::index');
+    $routes->get('/newDocent', 'CreateDS::newDocent');
+    $routes->get('/listDocent', 'CreateDS::listDocent');
+} else{
+    
+    $routes->post('/loggin', 'loginController::login');
 }
 
 
