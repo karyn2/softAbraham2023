@@ -64,8 +64,6 @@ $routes->post('/registrar', 'registerController::registrar');
 
 if (session('rol') == 'docente') {
     $routes->get('/prueba', 'loginController::prueba');
-} else{
-    $routes->post('/loggin', 'loginController::login');
 }
 
 
