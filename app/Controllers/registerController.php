@@ -3,12 +3,16 @@
 namespace App\Controllers;
 use App\Models\usuarios;
 
+//verifica si esta ingresando al metodo
+//var_dump("Método editUser invocado"); 
+// echo "<script>console.log('El método activarUsuario está siendo accedido.');</script>";
+
 class registerController extends BaseController
 {
     public function index()
     {
        $usuario = new usuarios();
-       $data = $usuario->where('estado', true)->findAll();
+       $data = $usuario->findAll();
        $data =['data' => $data];
         return view('auth\userList', $data);
     }
@@ -53,4 +57,98 @@ class registerController extends BaseController
             return redirect()->to(base_url('/usuarios'))->with('mensajeError', 'Ha ocurrido un error, usuario no creado');
         }
     }
+
+
+    //EDITAR USUARIO
+    public function editUser(){
+     
+          // Verificar si se recibió el documento del usuario en la solicitud POST
+          if (isset($_POST['documento'])) {
+            $documento = $_POST['documento'];
+
+            $userData = $this->getUserDataFromDatabase($documento);
+
+            // Devolver los datos del usuario en formato JSON
+            echo json_encode($userData);
+            exit;
+           }
+        // Si no se recibió el documento o ocurrió un error, devolver un mensaje de error
+        echo json_encode(['error' => 'Error al obtener los datos del usuario']);
+        exit;
+    }
+
+    // Método para obtener los datos del un usuario a partir del numero de documento
+    private function getUserDataFromDatabase($documento)
+    {
+        $usuario = new usuarios();
+        $existeUsuario = $usuario->where('documento', $documento)->first();
+        return $existeUsuario; 
+    }
+
+    public function editUserSave(){
+        $usuario = new usuarios();
+        $documento = $this->request->getPost('documento');
+        $nuevoNombre = $this->request->getPost('nombre');
+        //$nuevoCorreo = $this->request->getPost('correo');
+        $nuevoRol= $this->request->getPost('rol');
+        $estado= $this->request->getPost('estado');
+        $esActivo = ($estado == 1) ? true : false;
+        
+    
+        // Realizar la actualización utilizando el modelo
+        $data = array(
+            'nombre' => $nuevoNombre,
+            //'correo' => $nuevoCorreo,
+            'rol' => $nuevoRol,
+            'estado'=> $esActivo
+
+        );
+
+        $isCorrect = $usuario->actualizarUsuario($documento, $data);
+        if($isCorrect){
+            return redirect()->to(base_url('/usuarios'))->with('mensaje', 'Usuario actualizado con éxito');
+        } 
+        else{
+            return redirect()->to(base_url('/usuarios'))->with('mensaje', 'Ha ocurrido un error en la actualización');
+        }
+       
+    }
+
+    public function activeUser(){
+
+        // Verificar si se recibió el documento del usuario en la solicitud POST
+        if (isset($_POST['documento'])) {
+            $documento = $_POST['documento'];
+
+            $usuario = new usuarios();      
+    
+            // Realizar la actualización utilizando el modelo
+            $data = array(
+                'estado'=> true
+
+            );
+
+            $isCorrect = $usuario->actualizarUsuario($documento, $data);
+            if($isCorrect){
+                echo json_encode(['exito' => 'Usuario activado']);
+                exit;
+            } 
+            else{
+                echo json_encode(['error' => 'Error al obtener los datos del usuario']);
+                exit;
+            }
+
+            // Devolver los datos del usuario en formato JSON
+            //echo json_encode($userData);
+            //exit;
+        }
+        // Si no se recibió el documento o ocurrió un error, devolver un mensaje de error
+        echo json_encode(['error' => 'Error al obtener los datos del usuario']);
+        exit;
+       
+        
+    }
+
+
+    
 }

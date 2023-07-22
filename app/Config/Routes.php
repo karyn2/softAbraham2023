@@ -62,6 +62,13 @@ $routes->get('/inicio', 'home::index');
 $routes->get('/usuarios', 'registerController::index');
 $routes->get('/register', 'registerController::register');
 $routes->post('/registrar', 'registerController::registrar');
+$routes->post('/editUser', 'registerController::editUser');
+$routes->post('/editUserSave', 'registerController::editUserSave');
+$routes->Post('/activeUser', 'registerController::activeUser');
+
+$routes->get('/menuDS', 'CreateDS::index');
+$routes->get('/newDocent', 'CreateDS::newDocent');
+$routes->get('/listDocent', 'CreateDS::listDocent');
 
 
 //ruta de prueba
@@ -70,15 +77,15 @@ if (session('rol') == 'docente') {
     $routes->get('/prueba', 'loginController::prueba');
 }
 
-if (session('rol') == 'administrador') {
-    $routes->get('/prueba', 'loginController::prueba');
-    $routes->get('/menuDS', 'CreateDS::index');
-    $routes->get('/newDocent', 'CreateDS::newDocent');
-    $routes->get('/listDocent', 'CreateDS::listDocent');
-} else{
+// if (session('rol') == 'administrador') {
+//     $routes->get('/prueba', 'loginController::prueba');
+//     $routes->get('/menuDS', 'CreateDS::index');
+//     $routes->get('/newDocent', 'CreateDS::newDocent');
+//     $routes->get('/listDocent', 'CreateDS::listDocent');
+// } else{
     
-    $routes->post('/loggin', 'loginController::login');
-}
+//     $routes->post('/loggin', 'loginController::login');
+// }
 
 
 /*

@@ -42,6 +42,7 @@
                                         <th scope="col">Nombre</th>
                                         <th scope="col">usuario</th>
                                         <th scope="col">Rol</th>
+                                        <th scope="col">Estado</th>
                                         <th scope="col">Opciones</th>
                                     </tr>
                                 </thead>
@@ -60,12 +61,34 @@
                                         <th class="normal">
                                             <?php echo $i['rol'] ?>
                                         </th>
-                                        <th>
-                                            <a href="#" type="button" class="btn btn-info btn-sm" title="Editar" > <i class="fas fa-pencil-alt" id="pencil-icon" aria-hidden="true"></i></a>
-                                            <a href="#" type="button" class="btn btn-warning btn-sm" title="Ver"><i class="fas fa-eye" id="pencil-icon" aria-hidden="true"></i></a>
-                                            <a href="#" type="button" class="btn btn-danger btn-sm" title="Inactivar"><i class="fas fa-ban" id="pencil-icon" aria-hidden="true"></i></a>
+                                        <th class="normal">
+                                        <?php echo $i['estado'] ? 'Activo' : 'Inactivo'; ?>
                                         </th>
-                                
+                                        <th>
+                                        <?php
+                                            if ($i['estado'] == 1) {
+                                                ?>
+                                                <a href="#" type="button" class="btn btn-info btn-sm edit-btn" title="Editar" data-documento="<?php echo $i['documento']; ?>">
+                                                    <i id="pencil-icon" class="fas fa-pencil-alt" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="#" type="button" class="btn btn-warning btn-sm view-btn" title="Ver" data-documento="<?php echo $i['documento']; ?>">
+                                                    <i class="fas fa-eye" id="pencil-icon" aria-hidden="true"></i></a>
+                                                <a href="#" type="button" class="btn btn-danger btn-sm " title="Inactivar"><i class="fas fa-ban" id="pencil-icon" aria-hidden="true"></i></a>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <a href="#" type="button" class="btn btn-secondary btn-sm edit-btn disabled"  title="Editar" data-documento="<?php echo $i['documento']; ?>">
+                                                    <i id="pencil-icon" class="fas fa-pencil-alt" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="#" type="button" class="btn btn-secondary btn-sm disabled" title="Ver" ><i class="fas fa-eye" id="pencil-icon" aria-hidden="true"></i></a>
+                                                <a href="#" type="button" class="btn btn-success btn-sm" title="Activar" onclick="Confirmacion(<?php echo $i['documento']; ?>)" >
+                                                    <i class="fas fa-toggle-on" id="pencil-icon" aria-hidden="true"></i></a>
+                                                <?php
+                                            }
+                                            ?>
+
+
+                                        </th>                            
                                     </tr>
                                 <?php endforeach ?>
                                 </tbody>
@@ -78,10 +101,100 @@
     </div>
 
 
+<!-- Modal EDITAR -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header headerModal text-center">
+                <h4 class="modal-title " id="editModalLabel">Editar Usuario</h4>
+                <button type="button" class="btn-close"  data-bs-dismiss="modal"></button>
+            </div>
+            <form action="<?php echo base_url()?>editUserSave" method="POST" id="formEditar">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                        <label for="documento">Documento:</label>
+                        </div>
+                        <div class="col-md-9">
+                        <input type="text" class="form-control" id="documento" name="documento" readonly >
+                        </div>            
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-3">
+                        <label for="nombre">Nombre:</label>
+                        </div>
+                        <div class="col-md-9">
+                        <input type="text" class="form-control" id="nombre" name="nombre" >
+                        </div>            
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-3">
+                        <label for="correo">Correo:</label>
+                        </div>
+                        <div class="col-md-9">
+                        <input type="text" class="form-control" id="correo" name="correo" readonly >
+                        </div>            
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-3">
+                            <label for="rol">Rol:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="form-select" id="rol" name="rol" >
+                                <option value="administrador">Administrador</option>
+                                <option value="docente">Docente</option>
+                                <option value="acudiente">Acudiente</option>                       
+                                <option value="estudiante">Estudiante</option>                                         
+                            </select>
+                        </div>            
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-3">
+                        <label for="estado">Estado:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="form-select" id="estado" name="estado" >
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>                                        
+                            </select>
+                        </div>            
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> Cerrar</button>
+                    <button   class="botonRegistrar" onclick=EditarUsuario()
+                     type="button"  >
+                        <i class="fas fa-save"></i>&nbsp; Guardar cambios &nbsp;
+                     </button>
+                </div>
+            </form>
+           
+        </div>
+    </div>
+</div>
+
+<!-- Modal VER -->
+<div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header headerModal">
+                <h4 class="modal-title " id="editModalLabel">Información Usuario</h4>
+                <button type="button" class="btn-close"  data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                 <div id="userData"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--Datatables-->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script src="../public/js/editUser.js"></script>
 
 <script>
     $(document).ready(function() {
@@ -95,5 +208,118 @@
     
     });
 </script>
+<script>
+    $(document).ready(function () {
+        // Manejar el clic en el botón "Editar"
+        $('.edit-btn').click(function () {            
+            var documento = $(this).data('documento');
+            
+            // Enviar una solicitud AJAX al controlador
+            $.ajax({
+                url: '<?php echo base_url('editUser'); ?>',
+                type: 'POST',
+                data: {
+                    documento: documento
+                },
+                success: function (response) {
+                  var userData = JSON.parse(response);
+                  var doc = document.getElementById('documento');
+                  var name = document.getElementById('nombre');
+                  var email = document.getElementById('correo');
+                  var rol = document.getElementById('rol');
+                  var estado = document.getElementById('estado');
+                  doc.value = userData.documento;
+                  name.value = userData.nombre;
+                  email.value = userData.correo;
+                  rol.value = userData.rol;
+                  if(userData.estado==1){
+                    estado.value ='1'
+                  }
+                  else
+                  estado.value ='0'
+
+                    // Mostrar el modal
+                    $('#editModal').modal('show');
+                },
+                error: function (xhr, status, error) {
+                    alert('error')
+                    console.log(error); 
+                }
+            });
+        });
+
+        // Manejar el clic en el botón "VER"
+        $('.view-btn').click(function () {            
+            var documento = $(this).data('documento');
+            
+            // Enviar una solicitud AJAX al controlador
+            $.ajax({
+                url: '<?php echo base_url('editUser'); ?>',
+                type: 'POST',
+                data: {
+                    documento: documento
+                },
+                success: function (response) {
+                  var userData = JSON.parse(response);
+                  var modalBody = '';
+                    modalBody += '<p> <b>Documento</b>: ' + userData.documento + '</p>';
+                    modalBody += '<p><b>Nombre</b>: ' + userData.nombre + '</p>';
+                    modalBody += '<p><b>Correo</b>: ' + userData.correo + '</p>';
+                    modalBody += '<p><b>Rol</b>: ' + userData.rol + '</p>';
+                    modalBody += '<p><b>Estado</b>: ' + (userData.estado ? 'Activo' : 'Inactivo') + '</p>';
+
+                    $('#userData').html(modalBody);
+
+                    // Mostrar el modal
+                    $('#viewModal').modal('show');
+                },
+                error: function (xhr, status, error) {
+                    alert('error')
+                    console.log(error); 
+                }
+            });
+        });
+
+        
+    });
+
+    function Confirmacion(documento) {
+        // Mostrar SweetAlert2 para confirmación
+        Swal.fire({
+            title: '¿Confirma la activación del usuario?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Aceptar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {      
+            if (result.isConfirmed) {
+                enviarIdUsuario(documento);
+            }
+        });
+    }
+
+    function enviarIdUsuario(documento) {
+        // Utilizar AJAX para enviar el ID del usuario al controlador
+        $.ajax({
+            url: '<?php echo base_url('activeUser'); ?>',
+            type: 'POST',
+            data: {
+                documento: documento
+            },
+            success: function (response) {
+                Swal.fire('Usuario activado con éxito', '', 'success');
+                setTimeout(recargarPagina, 1000);
+            },
+            error: function (xhr, status, error) {
+
+                Swal.fire('Error al activar el usuario', 'Por favor, inténtalo de nuevo más tarde.', 'error');
+            }
+        });
+        }
+
+</script>
+
 
 <?php echo $this->endSection() ?>

@@ -65,10 +65,17 @@ class Filters extends BaseConfig
     public array $filters = [
         "sessionAdministrador" => [
             "before" =>[
-                //todas la rutas que se debe validar a las que no puede entrar si no es administrador
+            //todas la rutas que se debe validar a las que no puede entrar si no es administrador
             "/inicio",
             "/usuarios",
-            "/register"] 
+            "/register",
+            "/newDocent",
+            "/listDocent",
+            "/menuDS",
+            "/CursosBachillerato",
+            "/CursosPrimaria",
+            "/nuevosCursos"
+            ] 
             ]
            
     ];

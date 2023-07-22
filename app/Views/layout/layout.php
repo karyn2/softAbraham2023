@@ -28,10 +28,12 @@
     <link href="..\public\css\layout.css" rel="stylesheet">
     <link href="..\public\css\tables.css" rel="stylesheet">
     <link href="..\public\css\botones.css" rel="stylesheet">
+    <link href="..\public\css\principal.css" rel="stylesheet">
 
     <!--iconos--> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.min.css">
+
 </head>
 
 <body>
@@ -168,6 +170,7 @@
 
     <!--sweetAlert-->
     <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    
 
 </body>
 
