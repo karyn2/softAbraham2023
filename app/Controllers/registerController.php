@@ -115,40 +115,35 @@ class registerController extends BaseController
     }
 
     public function activeUser(){
-
         // Verificar si se recibió el documento del usuario en la solicitud POST
-        if (isset($_POST['documento'])) {
+        if (isset($_POST['documento']) && isset($_POST['estado'])) {
             $documento = $_POST['documento'];
+            $estado = $_POST['estado'];
+            $esActivo = ($estado == 0) ? true : false;
 
             $usuario = new usuarios();      
     
             // Realizar la actualización utilizando el modelo
             $data = array(
-                'estado'=> true
-
+                'estado'=> $esActivo
             );
-
+            
             $isCorrect = $usuario->actualizarUsuario($documento, $data);
             if($isCorrect){
-                echo json_encode(['exito' => 'Usuario activado']);
+                if($estado==1)
+                 echo json_encode(['exito' => 'Usuario activado']);
+                else
+                 echo json_encode(['exito' => 'Usuario desactivado']);
                 exit;
             } 
             else{
                 echo json_encode(['error' => 'Error al obtener los datos del usuario']);
                 exit;
             }
-
-            // Devolver los datos del usuario en formato JSON
-            //echo json_encode($userData);
-            //exit;
         }
         // Si no se recibió el documento o ocurrió un error, devolver un mensaje de error
         echo json_encode(['error' => 'Error al obtener los datos del usuario']);
-        exit;
-       
-        
-    }
+        exit;    
+    }  
 
-
-    
 }

@@ -73,7 +73,9 @@
                                                 </a>
                                                 <a href="#" type="button" class="btn btn-warning btn-sm view-btn" title="Ver" data-documento="<?php echo $i['documento']; ?>">
                                                     <i class="fas fa-eye" id="pencil-icon" aria-hidden="true"></i></a>
-                                                <a href="#" type="button" class="btn btn-danger btn-sm " title="Inactivar"><i class="fas fa-ban" id="pencil-icon" aria-hidden="true"></i></a>
+                                                <a href="#" type="button" class="btn btn-danger btn-sm " title="Inactivar"
+                                                onclick="Confirmacion('<?php echo $i['documento']; ?>', '<?php echo $i['estado']; ?>')" 
+                                                ><i class="fas fa-ban" id="pencil-icon" aria-hidden="true"></i></a>
                                                 <?php
                                             } else {
                                                 ?>
@@ -81,7 +83,8 @@
                                                     <i id="pencil-icon" class="fas fa-pencil-alt" aria-hidden="true"></i>
                                                 </a>
                                                 <a href="#" type="button" class="btn btn-secondary btn-sm disabled" title="Ver" ><i class="fas fa-eye" id="pencil-icon" aria-hidden="true"></i></a>
-                                                <a href="#" type="button" class="btn btn-success btn-sm" title="Activar" onclick="Confirmacion(<?php echo $i['documento']; ?>)" >
+                                                <a href="#" type="button" class="btn btn-success btn-sm" title="Activar"
+                                                onclick="Confirmacion('<?php echo $i['documento']; ?>', '<?php echo $i['estado']; ?>')" >
                                                     <i class="fas fa-toggle-on" id="pencil-icon" aria-hidden="true"></i></a>
                                                 <?php
                                             }
@@ -208,118 +211,8 @@
     
     });
 </script>
-<script>
-    $(document).ready(function () {
-        // Manejar el clic en el botón "Editar"
-        $('.edit-btn').click(function () {            
-            var documento = $(this).data('documento');
-            
-            // Enviar una solicitud AJAX al controlador
-            $.ajax({
-                url: '<?php echo base_url('editUser'); ?>',
-                type: 'POST',
-                data: {
-                    documento: documento
-                },
-                success: function (response) {
-                  var userData = JSON.parse(response);
-                  var doc = document.getElementById('documento');
-                  var name = document.getElementById('nombre');
-                  var email = document.getElementById('correo');
-                  var rol = document.getElementById('rol');
-                  var estado = document.getElementById('estado');
-                  doc.value = userData.documento;
-                  name.value = userData.nombre;
-                  email.value = userData.correo;
-                  rol.value = userData.rol;
-                  if(userData.estado==1){
-                    estado.value ='1'
-                  }
-                  else
-                  estado.value ='0'
 
-                    // Mostrar el modal
-                    $('#editModal').modal('show');
-                },
-                error: function (xhr, status, error) {
-                    alert('error')
-                    console.log(error); 
-                }
-            });
-        });
-
-        // Manejar el clic en el botón "VER"
-        $('.view-btn').click(function () {            
-            var documento = $(this).data('documento');
-            
-            // Enviar una solicitud AJAX al controlador
-            $.ajax({
-                url: '<?php echo base_url('editUser'); ?>',
-                type: 'POST',
-                data: {
-                    documento: documento
-                },
-                success: function (response) {
-                  var userData = JSON.parse(response);
-                  var modalBody = '';
-                    modalBody += '<p> <b>Documento</b>: ' + userData.documento + '</p>';
-                    modalBody += '<p><b>Nombre</b>: ' + userData.nombre + '</p>';
-                    modalBody += '<p><b>Correo</b>: ' + userData.correo + '</p>';
-                    modalBody += '<p><b>Rol</b>: ' + userData.rol + '</p>';
-                    modalBody += '<p><b>Estado</b>: ' + (userData.estado ? 'Activo' : 'Inactivo') + '</p>';
-
-                    $('#userData').html(modalBody);
-
-                    // Mostrar el modal
-                    $('#viewModal').modal('show');
-                },
-                error: function (xhr, status, error) {
-                    alert('error')
-                    console.log(error); 
-                }
-            });
-        });
-
-        
-    });
-
-    function Confirmacion(documento) {
-        // Mostrar SweetAlert2 para confirmación
-        Swal.fire({
-            title: '¿Confirma la activación del usuario?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Aceptar',
-            cancelButtonText: 'Cancelar'
-        }).then((result) => {      
-            if (result.isConfirmed) {
-                enviarIdUsuario(documento);
-            }
-        });
-    }
-
-    function enviarIdUsuario(documento) {
-        // Utilizar AJAX para enviar el ID del usuario al controlador
-        $.ajax({
-            url: '<?php echo base_url('activeUser'); ?>',
-            type: 'POST',
-            data: {
-                documento: documento
-            },
-            success: function (response) {
-                Swal.fire('Usuario activado con éxito', '', 'success');
-                setTimeout(recargarPagina, 1000);
-            },
-            error: function (xhr, status, error) {
-
-                Swal.fire('Error al activar el usuario', 'Por favor, inténtalo de nuevo más tarde.', 'error');
-            }
-        });
-        }
-
-</script>
+<script id="base-url" data-url="<?php echo base_url(); ?>"></script>
 
 
 <?php echo $this->endSection() ?>

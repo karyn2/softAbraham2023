@@ -31,14 +31,19 @@ class loginController extends BaseController
             $data = [
                 "correo" => $datosUsuario[0]['correo'],
                 "nombre" => $datosUsuario[0]['nombre'],
-                "rol" => $datosUsuario[0]['rol']
+                "rol" => $datosUsuario[0]['rol'],
+                "estado"=> $datosUsuario[0]['estado']
             ];
 
             $session = session();
             $session->set($data);
 
-            return redirect()->to(base_url('/inicio'));
-
+            if(session('estado')==true){
+                return redirect()->to(base_url('/inicio'));
+            }
+            else{
+                return redirect()->to(base_url('/'))->with('mensaje', 'Usuario inactivo');
+            }         
         }else{
             return redirect()->to(base_url('/'))->with('mensaje', 'Correo o contraseña incorrectos');
         }
