@@ -15,3 +15,21 @@ text-align: center;
     background-color: #f1f1f1; /* Color de fondo gris */
     color:black; /* Color del texto gris */
 }
+
+
+.bordeRedondo{
+    border-radius: 10px;
+    margin: 20px auto;
+    padding: 20px 40px;
+    box-shadow: 20px 20px 80px rgb(141, 165, 175); 
+}
+
+.imgInicio{
+    width: 80px;
+    height: 80px;
+}
+
+.letraBotonIn{
+    font-size: 20px;
+    font-weight: 500;
+}

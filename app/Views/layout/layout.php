@@ -37,84 +37,14 @@
 </head>
 
 <body>
-
-   <!-- Navbar--> 
-   <div id="app">
-            <nav class="navbar navbar-expand-md navbar-light">
-            <div class=" container-fluid">
-             <!--   <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>-->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav d-flex justify-content-center align-items-center">
-                        <a class="navbar-botonmenu" href="#">
-                        <i class="bi bi-list toggle-sidebar-btn"></i>
-                        </a>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#"><b>Institucion Educativa Siglo XXI</b></a>
-                        </li>
-                    </ul>
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        <!-- @guest -->
-                            <!-- @if (Route::has('login')) -->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">
-                                        <!-- {{ __('Login') }} -->
-                                    </a>
-                                </li>
-                            <!-- @endif -->
-
-                            <!-- @if (Route::has('register')) -->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">
-                                        
-                                    <!-- {{ __('Register') }} -->
-
-                                    </a>
-                                </li>
-                            <!-- @endif
-                        @else -->
-                            <li class="nav-item dropdown ">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <?php echo session('nombre')?>
-                                </a>
-
-                                <div class=" dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" id="muenudrop">
-                               
-                                <a class="dropdown-item" href="#">Perfil</a>
-                                <a class="dropdown-item" href="#">Configuración</a>
-                                
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="<?php echo base_url('/logout')?>">Cerrar sesión</a>
-
-    
-
-                                   
-                                </div>
-                            </li>
-                        <!-- @endguest -->
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-
-    <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
         <div class="col-md-3 col-lg-2 bg-blue">
-
             <!-- Contenido de la barra lateral -->
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-4 pt-2 mt-4 min-vh-100">
                 <a href="" class="imagen-con-lineas">
-                    <img src="..\public\img\logo.webp" alt="Imagen 1" class="imagen-pequena">
+                    <img src="..\public\img\logo.webp" alt="Imagen 1" class="imagen-pequena " >
                 </a>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mt-4" id="menu">
                     <li class="nav-item ">
                         <a href="<?php echo base_url('/inicio')?>" class="nav-link align-middle px-0">
                             <img src="..\public\img\Inicio.png" alt="Inicio" class="icono-sidebar"><span
@@ -151,9 +81,126 @@
     <!-- End Sidebar-->
 
     <!-- ======= Main ======= -->
-    <main id="main"  >        
+    <main id="main"  >    
+            <!-- Navbar--> 
+        <div id="app">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <div class=" container-fluid">
+                <!--   <a class="navbar-brand" href="{{ url('/') }}">
+                        {{ config('app.name', 'Laravel') }}
+                    </a>-->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav d-flex justify-content-center align-items-center">
+                            <a class="navbar-botonmenu" href="#">
+                            <i class="bi bi-list toggle-sidebar-btn"></i>
+                            </a>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#"><b>Institucion Educativa Siglo XXI</b></a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ms-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#"></a>
+                                    </li>
+                                <li class="nav-item dropdown ">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        <?php echo session('nombre')?>
+                                    </a>
+
+                                    <div class=" dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" id="muenudrop">
+                                
+                                    <a class="dropdown-item" href="#">Perfil</a>
+                                    <a class="dropdown-item" href="#">Configuración</a>
+                                    
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="<?php echo base_url('/logout')?>">Cerrar sesión</a>      
+                                    </div>
+                                </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- ======= Sidebar ======= -->
+
+        <!-- ======= CONTENIDO PAGINA ======= -->
+
         <?php echo $this->renderSection('content'); ?>
+
+        <!-- =======FIN CONTENIDO PAGINA ======= -->
+
+        <!-- ======= FOOTER ======= -->
+        <div class="container-fluid mt-6 headerModal mt-4 mt-4 ">
+            <footer  class="text-center text-lg-start text-white" >
+            <div class="container p-4 pb-0">
+                <label for="">Institución Educativa Siglo XXI - Sistema de gestión de Calificaciones</label>
+        
+                <hr class="my-3">
+        
+                <section class="p-3 pt-0">
+                <div class="row d-flex align-items-center">
+                    <div class="col-md-7 col-lg-8 text-center text-md-start">
+                    <div class="p-3">
+                        © 2023 Copyright:
+                        <a class="text-white" href="#"
+                        >DevelopersUdenar</a
+                        >
+                    </div>
+                    </div>
+
+                    <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+                    <!-- Facebook -->
+                    <a
+                        class="btn btn-outline-light btn-floating m-1"
+                        class="text-white"
+                        role="button"
+                        ><i class="fab fa-facebook-f"></i
+                        ></a>
+        
+                    <!-- Twitter -->
+                    <a
+                        class="btn btn-outline-light btn-floating m-1"
+                        class="text-white"
+                        role="button"
+                        ><i class="fab fa-twitter"></i
+                        ></a>
+        
+                    <!-- Google -->
+                    <a
+                        class="btn btn-outline-light btn-floating m-1"
+                        class="text-white"
+                        role="button"
+                        ><i class="fab fa-google"></i
+                        ></a>
+        
+                    <!-- Instagram -->
+                    <a
+                        class="btn btn-outline-light btn-floating m-1"
+                        class="text-white"
+                        role="button"
+                        ><i class="fab fa-instagram"></i
+                        ></a>
+                    </div>
+                </div>
+                </section>
+            </div>
+            </footer>
+         </div>
+        <!-- =======END - FOOTER ======= -->
+
     </main><!-- End #main -->
+
+
+    
 
     <!-- Bootstrap JS Files -->
     <!-- Bootstrap JavaScript Libraries -->

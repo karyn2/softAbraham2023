@@ -157,8 +157,8 @@
                         </div>
                         <div class="col-md-9">
                             <select class="form-select" id="estado" name="estado" >
-                                <option value="1">Activo</option>
-                                <option value="0">Inactivo</option>                                        
+                                <option value="0">Activo</option>
+                                <option value="1">Inactivo</option>                                        
                             </select>
                         </div>            
                     </div>

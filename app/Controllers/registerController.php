@@ -89,10 +89,10 @@ class registerController extends BaseController
         $usuario = new usuarios();
         $documento = $this->request->getPost('documento');
         $nuevoNombre = $this->request->getPost('nombre');
-        //$nuevoCorreo = $this->request->getPost('correo');
+
         $nuevoRol= $this->request->getPost('rol');
         $estado= $this->request->getPost('estado');
-        $esActivo = ($estado == 1) ? true : false;
+        $esActivo = ($estado == 0) ? true : false;
         
     
         // Realizar la actualización utilizando el modelo

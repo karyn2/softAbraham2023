@@ -24,12 +24,9 @@ $(document).ready(function () {
               name.value = userData.nombre;
               email.value = userData.correo;
               rol.value = userData.rol;
-              if(userData.estado==1){
-                estado.value ='1'
-              }
-              else
-              estado.value ='0'
-
+              estado.value= userData.estado ? '0' : '1'
+               
+           
                 // Mostrar el modal
                 $('#editModal').modal('show');
             },
@@ -108,12 +105,12 @@ function enviarIdUsuario(documento, estado) {
             estado:estado
         },
         success: function (response) {
-            Swal.fire('Usuario activado con éxito', '', 'success');
+            Swal.fire('Guardado con éxito', '', 'success');
             setTimeout(recargarPagina, 1000);
         },
         error: function (xhr, status, error) {
 
-            Swal.fire('Error al activar el usuario', 'Por favor, inténtalo de nuevo más tarde.', 'error');
+            Swal.fire('Error al activar/inactivar el usuario', 'Por favor, inténtalo de nuevo más tarde.', 'error');
         }
     });
     }
