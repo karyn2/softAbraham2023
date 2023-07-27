@@ -10,7 +10,7 @@ class Usuario extends Seeder
     {
         $documento="1085937260";
         $nombre="Angela Ceron";
-        $correo="Karynaceron@gmail.com";
+        $correo="karynaceron@gmail.com";
         $contrasenia = password_hash("1234", PASSWORD_DEFAULT);
         $rol="administrador";
         $estado=true;

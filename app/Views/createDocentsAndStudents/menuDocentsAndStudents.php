@@ -11,7 +11,7 @@
   <div class="row">
     
   <div class="col-md-6">
-      <a href="<?php echo base_url()?>newDocent" class="menu-option" style="background-color: #419BED;">
+      <a href="<?php echo base_url()?>crearProfesor" class="menu-option" style="background-color: #419BED;">
       <img src="..\public\img\newDocente.png" alt="Nuevo Docente" class="icono-sidebar">
         <div>Nuevo Docente</div>
       </a>
@@ -27,7 +27,7 @@
   
   <div class="row">
     <div class="col-md-6">
-      <a href="#" class="menu-option" style="background-color: #EB4FAD;">
+      <a href="<?php echo base_url()?>listarProfesores" class="menu-option" style="background-color: #EB4FAD;">
       <img src="..\public\img\listDocente.png" alt="Listar Docentes" class="icono-sidebar">
         <div>Listado Docentes</div>
       </a>
