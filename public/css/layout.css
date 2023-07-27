@@ -198,3 +198,32 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
     left: -300px;
   }
 }
+
+.botonera {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Agrega centrado horizontal */
+}
+
+.botonera button,
+.botonera a {
+  cursor: pointer;
+}
+
+.btn {
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.botonera button {
+  margin-right: 10px;
+}
+
+.botonera i {
+  font-size: 18px;
+}
+
+input[readonly] {
+  background-color: #f1f1f1; /* Color de fondo gris */
+  color:black; /* Color del texto gris */
+}
