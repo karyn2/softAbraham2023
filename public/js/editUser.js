@@ -26,12 +26,11 @@ $(document).ready(function () {
               rol.value = userData.rol;
               estado.value= userData.estado ? '0' : '1'
                
-           
                 // Mostrar el modal
                 $('#editModal').modal('show');
             },
             error: function (xhr, status, error) {
-                alert('error')
+                Swal.fire('Ha ocurrido un error', 'Por favor, inténtalo de nuevo más tarde.', 'error');
                 console.log(error); 
             }
         });
@@ -63,7 +62,7 @@ $(document).ready(function () {
                 $('#viewModal').modal('show');
             },
             error: function (xhr, status, error) {
-                alert('error')
+                Swal.fire('Ha ocurrido un error', 'Por favor, inténtalo de nuevo más tarde.', 'error');
                 console.log(error); 
             }
         });
@@ -109,7 +108,6 @@ function enviarIdUsuario(documento, estado) {
             setTimeout(recargarPagina, 1000);
         },
         error: function (xhr, status, error) {
-
             Swal.fire('Error al activar/inactivar el usuario', 'Por favor, inténtalo de nuevo más tarde.', 'error');
         }
     });

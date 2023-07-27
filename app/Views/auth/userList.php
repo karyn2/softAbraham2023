@@ -11,7 +11,7 @@
             <div class="col-md-12" >
                 <div class="card card-default"> 
                     <div class="card-header text-center">
-                       <b>USUARIOS DEL SISTEMA</b>
+                    <img src="..\public\img\usuariosSis.png" alt="usuarios" class="icono-sidebar"><b>USUARIOS DEL SISTEMA</b>
                     </div>
                     <div class="card-body">
                         <?php if (session()->getFlashdata('mensajeError')): ?>

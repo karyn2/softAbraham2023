@@ -26,7 +26,7 @@
   
     <div class="row ">
       <div class="col-md-4 mt-2 sombra">
-        <a href="#" class="menu-option bordeRedondo text-decoration-none " style="background-color: #32D2F6;">
+        <a href="<?php echo base_url()?>Institucion" class="menu-option bordeRedondo text-decoration-none " style="background-color: #32D2F6;">
         <img src="..\public\img\colegio.png" alt="matricula" class="icono-sidebar imgInicio mt-4" >
           <p class="letraBotonIn">
             Editar <br> Datos Institución

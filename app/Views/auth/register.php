@@ -8,7 +8,7 @@
 <div class="content container-fluid" ><br>
     <div class="card" id="contenedor">
         <div class="card-header text-center" id="titulo">
-            <b>Registrar Usuario</b>
+        <img src="..\public\img\newUsuario.png" alt="Docente Estudiante" class="icono-sidebar"> <b>Registrar Usuario</b>
         </div>
         <div class="card-body" id="area">
             <?php if (session()->getFlashdata('mensajeError')): ?>

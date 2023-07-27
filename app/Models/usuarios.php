@@ -4,16 +4,37 @@ use CodeIgniter\Model;
 class usuarios extends Model{
 
     protected $table            = 'usuarios';
-    protected $primaryKey       = 'documento';
+    protected $primaryKey       = 'id_usuario';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
-    protected $allowedFields    = ['documento', 'nombre','correo','contrasenia','rol','estado'];
+    protected $allowedFields    = ['id_usuario, documento', 'nombre','correo','contrasenia','rol','estado'];
 
     public function obtenerUsuario($data){
         $usuario = $this->db->table('usuarios');
         $usuario->where($data);
         return $usuario->get()->getResultArray();
     }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     public function actualizarUsuario($idUsuario, $data) {
         $usuario = $this->db->table('usuarios');

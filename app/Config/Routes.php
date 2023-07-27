@@ -52,6 +52,14 @@ $routes->get('/CursosBachillerato', 'newCursos::cursoBachillerato');
 
 
 
+
+
+
+
+
+
+
+
 //angela
 //loginController
 $routes->post('/loggin', 'loginController::login');
@@ -65,6 +73,11 @@ $routes->post('/registrar', 'registerController::registrar');
 $routes->post('/editUser', 'registerController::editUser');
 $routes->post('/editUserSave', 'registerController::editUserSave');
 $routes->Post('/activeUser', 'registerController::activeUser');
+//DatosInstituciónControler
+$routes->get('/Institucion', 'DatosInstController::index');
+$routes->get('/DatosInstitucion', 'DatosInstController::newInformation');
+$routes->Post('/SaveData', 'DatosInstController::guardarDatos');
+
 
 $routes->get('/menuDS', 'CreateDS::index');
 $routes->get('/newDocent', 'CreateDS::newDocent');
