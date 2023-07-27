@@ -1,104 +1,96 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 15-07-2023 a las 17:32:58
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.0.28
+CREATE TABLE `estudiantes` (
+  `id_Estudiante` integer PRIMARY KEY AUTO_INCREMENT,
+  `usuario_id` int(5),
+  `fecha_registro_estuediante` date,
+  `direccion_estudiante` varchar(20),
+  `celular_estudiante` varchar(10),
+  `fecha_nacimiento` date,
+  `genero_estudiante` varchar(20),
+  `curso_id` integer,
+  `documento_acudiente` varchar(10),
+  `nombre_acudiente` varchar(50),
+  `telefono_acudiente` varchar(50),
+  `correo_acudiente` varchar(50)
+);
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+CREATE TABLE `cursos` (
+  `id_curso` integer PRIMARY KEY AUTO_INCREMENT,
+  `nombre_curso` varchar(50),
+  `tipo_curso` varchar(50)
+);
 
+CREATE TABLE `asignaturas` (
+  `id_asignatura` integer PRIMARY KEY AUTO_INCREMENT,
+  `area_asignatura` varchar(50),
+  `descripcion_asignatura` text
+);
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+CREATE TABLE `cursosAsignatura` (
+  `id_curso_asignatura` integer PRIMARY KEY AUTO_INCREMENT,
+  `curso_id` integer,
+  `asignaruta_id` integer,
+  `profesor_id` integer
+);
 
---
--- Base de datos: `softabraham2023`
---
+CREATE TABLE `logro` (
+  `id_logro` integer PRIMARY KEY AUTO_INCREMENT,
+  `nombre_logro` varchar(50)
+);
 
--- --------------------------------------------------------
+CREATE TABLE `asignaturaLogro` (
+  `id_asignatura_logro` integer PRIMARY KEY AUTO_INCREMENT,
+  `curso_asignatura_id` integer,
+  `logro_id` integer,
+  `porcenteje` float
+);
 
---
--- Estructura de tabla para la tabla `migrations`
---
+CREATE TABLE `notas` (
+  `id_nota` integer PRIMARY KEY AUTO_INCREMENT,
+  `estudiante_id` integer,
+  `asignatura_logro_id` integer,
+  `nota` float
+);
 
-CREATE TABLE `migrations` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `version` varchar(255) NOT NULL,
-  `class` varchar(255) NOT NULL,
-  `group` varchar(255) NOT NULL,
-  `namespace` varchar(255) NOT NULL,
-  `time` int(11) NOT NULL,
-  `batch` int(11) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Volcado de datos para la tabla `migrations`
---
-
-INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
-(2, '2023-07-14-015323', 'App\\Database\\Migrations\\Usuarios', 'default', 'App', 1689372291, 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuarios`
---
+CREATE TABLE `profesores` (
+  `id` int(11) PRIMARY KEY AUTO_INCREMENT,
+  `usuario_id` int(5),
+  `fecha_nacimiento` date,
+  `numero_telefono` varchar(20),
+  `direccion_residencial` varchar(200),
+  `fecha_inicio_empleo` date,
+  `doc_contactosemergencia` int(11),
+  `nombre_emergencia` varchar(100),
+  `telefono_emergencia` varchar(100),
+  `titulo_academico` varchar(100),
+  `especializacion` varchar(100)
+);
 
 CREATE TABLE `usuarios` (
-  `id_usuario` int(5) UNSIGNED NOT NULL,
-  `documento` varchar(15) NOT NULL,
-  `nombre` varchar(255) NOT NULL,
-  `correo` varchar(255) NOT NULL,
-  `contrasenia` varchar(255) NOT NULL,
-  `rol` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `id_usuario` int(5) PRIMARY KEY AUTO_INCREMENT,
+  `documento` varchar(15),
+  `nombre` varchar(255),
+  `correo` varchar(255),
+  `contrasenia` varchar(255),
+  `rol` varchar(200),
+  `estado` tinyint(1)
+);
 
---
--- Volcado de datos para la tabla `usuarios`
---
+ALTER TABLE `estudiantes` ADD FOREIGN KEY (`curso_id`) REFERENCES `cursos` (`id_curso`);
 
-INSERT INTO `usuarios` (`id_usuario`, `documento`, `nombre`, `correo`, `contrasenia`, `rol`) VALUES
-(1, '1085937260', 'Angela Ceron', 'karynaceron@gmail.com', '$2y$10$8SvtscjVfUAckT7pkrM1LeyUhFedmsrzuSZdNeTHTq.QxandgTVgm', 'administrador');
+ALTER TABLE `profesores` ADD FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id_usuario`);
 
---
--- Índices para tablas volcadas
---
+ALTER TABLE `estudiantes` ADD FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id_usuario`);
 
---
--- Indices de la tabla `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `cursosAsignatura` ADD FOREIGN KEY (`curso_id`) REFERENCES `cursos` (`id_curso`);
 
---
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id_usuario`);
+ALTER TABLE `cursosAsignatura` ADD FOREIGN KEY (`asignaruta_id`) REFERENCES `asignaturas` (`id_asignatura`);
 
---
--- AUTO_INCREMENT de las tablas volcadas
---
+ALTER TABLE `cursosAsignatura` ADD FOREIGN KEY (`profesor_id`) REFERENCES `profesores` (`id`);
 
---
--- AUTO_INCREMENT de la tabla `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `asignaturaLogro` ADD FOREIGN KEY (`logro_id`) REFERENCES `logro` (`id_logro`);
 
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-COMMIT;
+ALTER TABLE `asignaturaLogro` ADD FOREIGN KEY (`curso_asignatura_id`) REFERENCES `cursosAsignatura` (`id_curso_asignatura`);
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+ALTER TABLE `notas` ADD FOREIGN KEY (`estudiante_id`) REFERENCES `estudiantes` (`id_Estudiante`);
+
+ALTER TABLE `notas` ADD FOREIGN KEY (`asignatura_logro_id`) REFERENCES `asignaturaLogro` (`id_asignatura_logro`);

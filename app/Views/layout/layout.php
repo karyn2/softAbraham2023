@@ -212,7 +212,7 @@
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
     <!-- Template Main JS File -->
-    <script src="../public/js/layout.js"></script>
+    <script src="..\public\js\layout.js"></script>
 
 
     <!--sweetAlert-->
