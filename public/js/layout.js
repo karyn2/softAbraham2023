@@ -86,7 +86,3 @@ function agregarTitulo() {
     document.getElementById("experiencias_docentes").appendChild(experienciaDocenteDiv);
   }
 
-  // Agregar evento de clic al botón 'agregar-experiencia-docente-btn'
-  on('click', '#agregar-experiencia-docente-btn', function(e) {
-    agregarExperienciaDocente();
-  });

@@ -46,8 +46,13 @@ $routes->get('/CursosBachillerato', 'newCursos::cursoBachillerato');
 
 
 //victor
-//$routes->get('/menuDS', 'CreateDS::index');
-//$routes->get('/newDocent', 'CreateDS::newDocent');
+$routes->get('listarProfesores', 'ProfesoresController::index');
+$routes->get('crearProfesor', 'ProfesoresController::crear');
+$routes->post('crearProfesor', 'ProfesoresController::crear');
+$routes->post('guardarProfesor', 'ProfesoresController::guardarProfesor');
+$routes->match(['get', 'post'], 'editarProfesores', 'ProfesoresController::editar');
+$routes->post('actualizarProfesor', 'ProfesoresController::actualizarProfesor');
+
 
 
 
@@ -84,36 +89,36 @@ $routes->get('/newDocent', 'CreateDS::newDocent');
 $routes->get('/listDocent', 'CreateDS::listDocent');
 
 
-//ruta de prueba
+
+
+
+
+
+
+
+
+
+
+
+
 
 if (session('rol') == 'docente') {
     $routes->get('/prueba', 'loginController::prueba');
+} else{
+    $routes->post('/loggin', 'loginController::login');
 }
 
-// if (session('rol') == 'administrador') {
-//     $routes->get('/prueba', 'loginController::prueba');
-//     $routes->get('/menuDS', 'CreateDS::index');
-//     $routes->get('/newDocent', 'CreateDS::newDocent');
-//     $routes->get('/listDocent', 'CreateDS::listDocent');
-// } else{
+if (session('rol') == 'administrador') {
+    $routes->get('/prueba', 'loginController::prueba');
+    $routes->get('/menuDS', 'CreateDS::index');
+    $routes->get('/newDocent', 'CreateDS::newDocent');
+    $routes->get('/listDocent', 'CreateDS::listDocent');
+} else{
     
-//     $routes->post('/loggin', 'loginController::login');
-// }
+    $routes->post('/loggin', 'loginController::login');
+}
 
 
-/*
- * --------------------------------------------------------------------
- * Additional Routing
- * --------------------------------------------------------------------
- *
- * There will often be times that you need additional routing and you
- * need it to be able to override any defaults in this file. Environment
- * based routes is one such time. require() additional route files here
- * to make that happen.
- *
- * You will have access to the $routes object within that file without
- * needing to reload it.
- */
 
 
 
