@@ -22,13 +22,15 @@ class CreateDS extends BaseController
     public function listDocent()
     {
         $usuariosModel = new usuarios();
-        $dataUsers['dataUsers'] = $usuariosModel->where('rol', 'docente')->findAll();
+        $dataUsers['dataUsers'] = $usuariosModel
+            ->where('rol', 'docente')
+            ->where('estado', '1')
+            ->findAll();
     
         $docenteModel = new DocenteModel();
         $dataDocentes['dataDocentes'] = $docenteModel->findAll();
     
         return view('createDocentsAndStudents/listDocent', $dataUsers + $dataDocentes);
-    }
-    
+    }    
 }
 
