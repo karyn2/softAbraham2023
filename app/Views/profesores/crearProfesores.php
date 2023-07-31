@@ -19,6 +19,8 @@
                     <div class="col-md-6">
                         <button type="submit" class="btn btn-info text-white">
                         <i class="fa fa-search" aria-hidden="true"></i>&nbsp;Buscar</button>
+                        <button type="submit" class="btn btn-info text-white">
+                        <i class="fa fa-search" aria-hidden="true"></i>&nbsp;Buscar</button>
                     </div>
                 </div>
             </form>
@@ -102,16 +104,8 @@
 
                     <!-- Botón Registrar -->
                     <div class="row mb-3">
-                        <div class="text-center mt-4">
-                            <a href="<?php echo base_url()?>listarProfesores" type="button" class="botonRegresar text-decoration-none">
-                            <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>&nbsp;&nbsp;Regresar</a>
-
-                            <button type="submit" class="botonRegistrar" name="registrar_profesor">
-                            <i class="fas fa-save"></i> &nbsp;Registrar Profesor</button>
-
-                            <button class="botonLimpiar" type="reset">
-                            <i class="fas fa-broom"></i>&nbsp; Limpiar &nbsp;
-                            </button>                            
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-succes" name="registrar_profesor">Registrar doc</button>
                         </div>
                     </div>
                 </form>
