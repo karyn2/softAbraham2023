@@ -47,10 +47,8 @@ $routes->get('/', 'loginController::index');
 
 //victor
 $routes->get('/menuDS', 'CreateDS::index');
-$routes->get('/menuDS', 'CreateDS::index');
 $routes->get('listarProfesores', 'ProfesoresController::index');
-$routes->get('crearProfesor', 'ProfesoresController::crear');
-$routes->post('crearProfesor', 'ProfesoresController::crear');
+$routes->match(['get','post'], 'crearProfesor', 'ProfesoresController::crear');
 $routes->post('guardarProfesor', 'ProfesoresController::guardarProfesor');
 $routes->match(['get', 'post'], 'editarProfesores', 'ProfesoresController::editar');
 $routes->post('actualizarProfesor', 'ProfesoresController::actualizarProfesor');
@@ -58,6 +56,16 @@ $routes->post('actualizarProfesor', 'ProfesoresController::actualizarProfesor');
 
 
 
+
+
+
+
+
+
+$routes->get('/AsignaturaCursos', 'AsignaturaCursosController::index');
+$routes->post('/agregarDatosSelect', 'AsignaturaCursosController::agregarDatosSelect');
+$routes->post('/AsignaturaCursosGuardarEdicion', 'AsignaturaCursosController::guardarEdicion');
+$routes->post('/inactivarActivarRegistroAC', 'AsignaturaCursosController::inactivarActivarRegistro');
 
 
 
