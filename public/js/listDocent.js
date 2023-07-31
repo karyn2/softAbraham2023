@@ -1,15 +1,4 @@
 
-$(document).ready(function () {
-    $('#miTablaDocente').DataTable(
-        {
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
-            },
-        }
-    );
-
-});
-
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -36,6 +25,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Al cerrar el modal, limpiar los datos usando la función limpiarDatosModal
-    document.getElementById('mostrarDatosDocenteModal').addEventListener('hidden.bs.modal', limpiarDatosModal);
+
 });
