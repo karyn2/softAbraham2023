@@ -108,6 +108,9 @@ $routes->Post('/ActualizarEstudiante', 'EstudiantesController::editStudentSave')
 
 
 
+$routes->get('/menuDS', 'CreateDS::index');
+$routes->get('/newDocent', 'CreateDS::newDocent');
+$routes->get('/listDocent', 'CreateDS::listDocent');
 
 
 
