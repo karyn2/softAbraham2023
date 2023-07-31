@@ -24,7 +24,7 @@ $(document).ready(function () {
               name.value = userData.nombre;
               email.value = userData.correo;
               rol.value = userData.rol;
-              estado.value= userData.estado ? '0' : '1'
+              estado.value= userData.estado ? '1' : '0'
                
            
                 // Mostrar el modal

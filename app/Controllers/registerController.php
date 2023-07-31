@@ -92,7 +92,7 @@ class registerController extends BaseController
 
         $nuevoRol= $this->request->getPost('rol');
         $estado= $this->request->getPost('estado');
-        $esActivo = ($estado == 0) ? true : false;
+        $esActivo = ($estado == 1) ? true : false;
         
     
         // Realizar la actualización utilizando el modelo

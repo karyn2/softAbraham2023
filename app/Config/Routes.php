@@ -67,6 +67,16 @@ $routes->post('/inactivarActivarRegistroAC', 'AsignaturaCursosController::inacti
 
 
 
+
+
+
+
+
+
+
+
+
+
 //angela
 //loginController
 $routes->post('/loggin', 'loginController::login');
@@ -80,6 +90,14 @@ $routes->post('/registrar', 'registerController::registrar');
 $routes->post('/editUser', 'registerController::editUser');
 $routes->post('/editUserSave', 'registerController::editUserSave');
 $routes->Post('/activeUser', 'registerController::activeUser');
+//estudiantesController
+$routes->get('/Estudiantes', 'EstudiantesController::index');
+$routes->get('/NuevoEstudiante', 'EstudiantesController::newStudent');
+$routes->Post('/buscarEstudiante', 'EstudiantesController::searchStudent');
+$routes->Post('/NuevoEstudianteGuardar', 'EstudiantesController::newStudentSave');
+$routes->Post('/EditarEstudiante', 'EstudiantesController::editStudent');
+$routes->Post('/ActualizarEstudiante', 'EstudiantesController::editStudentSave');
+
 
 
 
