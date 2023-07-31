@@ -52,6 +52,26 @@ $routes->match(['get','post'], 'crearProfesor', 'ProfesoresController::crear');
 $routes->post('guardarProfesor', 'ProfesoresController::guardarProfesor');
 $routes->match(['get', 'post'], 'editarProfesores', 'ProfesoresController::editar');
 $routes->post('actualizarProfesor', 'ProfesoresController::actualizarProfesor');
+$routes->get('/AsignaturaCursos', 'AsignaturaCursosController::index');
+$routes->post('/agregarDatosSelect', 'AsignaturaCursosController::agregarDatosSelect');
+$routes->post('/AsignaturaCursosGuardarEdicion', 'AsignaturaCursosController::guardarEdicion');
+$routes->post('/inactivarActivarRegistroAC', 'AsignaturaCursosController::inactivarActivarRegistro');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -80,13 +100,6 @@ $routes->post('/registrar', 'registerController::registrar');
 $routes->post('/editUser', 'registerController::editUser');
 $routes->post('/editUserSave', 'registerController::editUserSave');
 $routes->Post('/activeUser', 'registerController::activeUser');
-//estudiantesController
-$routes->get('/Estudiantes', 'EstudiantesController::index');
-$routes->get('/NuevoEstudiante', 'EstudiantesController::newStudent');
-$routes->Post('/buscarEstudiante', 'EstudiantesController::searchStudent');
-$routes->Post('/NuevoEstudianteGuardar', 'EstudiantesController::newStudentSave');
-$routes->Post('/EditarEstudiante', 'EstudiantesController::editStudent');
-$routes->Post('/ActualizarEstudiante', 'EstudiantesController::editStudentSave');
 
 
 
