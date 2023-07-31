@@ -22,6 +22,8 @@
                     <div class="mt-4 table-container">
                         <table class="table mt-4 table-striped table-bordered table-container" 
                         id="miTablaProfesores"name="miTablaProfesores" style="width:100%">
+                        <table class="table mt-4 table-striped table-bordered table-container" 
+                        id="miTablaProfesores"name="miTablaProfesores" style="width:100%">
                             <thead class="headerTable bordered-table text-center">
                                 <tr class="text-center">
                                     <th>Nombre</th>
