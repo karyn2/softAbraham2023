@@ -141,7 +141,7 @@
                                             <input type="hidden" name="estadoca"
                                                 value="<?= $cursoAsignatura['estadoca']; ?>">
                                             <!-- Resto de los campos del formulario... -->
-                                            &nbsp; <button title="Activar/Inactivar"type="submit" class="btn btn-danger"><i class="fas fa-ban"
+                                            &nbsp; <button title="Activar/Inactivar"type="submit" class="btn btn-sm btn-danger"><i class="fas fa-ban"
                                                     id="pencil-icon" aria-hidden="true"></i></button>
                                         </form>
                                     </th>

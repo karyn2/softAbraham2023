@@ -49,7 +49,7 @@
                                             <input type="hidden" name="usuario_id"
                                                 value="<?= $docente['id_usuario'] ?>" />
                                             <!-- Botón para editar el profesor -->
-                                            <button title="Editar"  type="submit" class="btn btn-info">
+                                            <button title="Editar"  type="submit" class="btn btn-info btn-sm">
                                                 <i id="pencil-icon" class="fas fa-pencil-alt" aria-hidden="true"></i>
                                             </button>
                                         </form>                                        
