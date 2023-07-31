@@ -46,7 +46,6 @@ $routes->get('/', 'loginController::index');
 
 
 //victor
-$routes->get('/menuDS', 'CreateDS::index');
 $routes->get('listarProfesores', 'ProfesoresController::index');
 $routes->match(['get','post'], 'crearProfesor', 'ProfesoresController::crear');
 $routes->post('guardarProfesor', 'ProfesoresController::guardarProfesor');
@@ -90,6 +89,13 @@ $routes->post('/registrar', 'registerController::registrar');
 $routes->post('/editUser', 'registerController::editUser');
 $routes->post('/editUserSave', 'registerController::editUserSave');
 $routes->Post('/activeUser', 'registerController::activeUser');
+//estudiantesController
+$routes->get('/Estudiantes', 'EstudiantesController::index');
+$routes->get('/NuevoEstudiante', 'EstudiantesController::newStudent');
+$routes->Post('/buscarEstudiante', 'EstudiantesController::searchStudent');
+$routes->Post('/NuevoEstudianteGuardar', 'EstudiantesController::newStudentSave');
+$routes->Post('/EditarEstudiante', 'EstudiantesController::editStudent');
+$routes->Post('/ActualizarEstudiante', 'EstudiantesController::editStudentSave');
 
 
 
@@ -100,9 +106,7 @@ $routes->Post('/activeUser', 'registerController::activeUser');
 
 
 
-$routes->get('/menuDS', 'CreateDS::index');
-$routes->get('/newDocent', 'CreateDS::newDocent');
-$routes->get('/listDocent', 'CreateDS::listDocent');
+
 
 
 

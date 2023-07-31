@@ -26,27 +26,28 @@
   
     <div class="row ">
       <div class="col-md-4 mt-2 sombra">
-        <a href="#" class="menu-option bordeRedondo text-decoration-none " style="background-color: #32D2F6;">
-        <img src="..\public\img\colegio.png" alt="matricula" class="icono-sidebar imgInicio mt-4" >
+        <a href="<?php echo base_url()?>usuarios" class="menu-option bordeRedondo text-decoration-none "
+         style="background-color: #5EBF16;">
+        <img src="..\public\img\user.png" alt="usuario" class="icono-sidebar imgInicio mt-4" >
           <p class="letraBotonIn">
-            Editar <br> Datos Institución
+            Usuarios <br> 
           </p> 
         </a>
       </div>
 
       <div class="col-md-4 mt-2">
         <a href="<?php echo base_url()?>AsignaturaCursos" class="menu-option bordeRedondo text-decoration-none" style="background-color: #419BED;">
-        <img src="..\public\img\confiCursos.png" alt="matricula" class="icono-sidebar imgInicio mt-4">
+        <img src="..\public\img\confiCursos.png" alt="curso" class="icono-sidebar imgInicio mt-4">
         <p class="letraBotonIn">
-            Configurar <br> Cursos
+            Cursos <br>
         </p> 
         </a>
       </div>
       <div class="col-md-4 mt-2">
         <a href="#" class="menu-option bordeRedondo text-decoration-none " style="background-color: #EB4FAD;">
-        <img src="..\public\img\asigMatPro.png" alt="matricula" class="icono-sidebar imgInicio mt-4">
+        <img src="..\public\img\boletin.png" alt="boletin" class="icono-sidebar imgInicio mt-4">
         <p class="letraBotonIn">
-            Asignar <br> Materias Profesores
+            Boletines <br>
         </p>   
         </a>
       </div>
@@ -54,27 +55,27 @@
     
     <div class="row">
       <div class="col-md-4 ">
-        <a href="<?php echo base_url()?>menuDS" class="menu-option bordeRedondo text-decoration-none" style="background-color: #419BED;">
-        <img src="..\public\img\agrDocEst.png" alt="matricula" class="icono-sidebar imgInicio mt-4">
+        <a href="<?php echo base_url()?>listarProfesores" class="menu-option bordeRedondo text-decoration-none" style="background-color: #419BED;">
+        <img src="..\public\img\docente.png" alt="docente" class="icono-sidebar imgInicio mt-4">
         <p class="letraBotonIn">
-            Agregar <br> Docentes y Estudiantes
+            Docentes <br> 
         </p>  
         </a>
     </div>
       
       <div class="col-md-4">
         <a href="<?php echo base_url()?>Estudiantes" class="menu-option bordeRedondo text-decoration-none" style="background-color: #EB4FAD;">
-        <img src="..\public\img\newEstudiante.png" alt="matricula" class="icono-sidebar imgInicio mt-4">
+        <img src="..\public\img\newEstudiante.png" alt="estudiante" class="icono-sidebar imgInicio mt-4">
         <p class="letraBotonIn">
-            Ver <br> Estudiantes
+         Estudiantes <br>
         </p>   
         </a>
       </div>
       <div class="col-md-4">
-        <a href="#" class="menu-option bordeRedondo text-decoration-none" style="background-color: #32D2F6">
-        <img src="..\public\img\conHorCla.png" alt="matricula" class="icono-sidebar imgInicio mt-4">
+        <a href="#" class="menu-option bordeRedondo text-decoration-none" style="background-color: #5EBF16">
+        <img src="..\public\img\notasg.png" alt="calificación" class="icono-sidebar imgInicio mt-4">
         <p class="letraBotonIn">
-            Configurar <br> Horarios de Clase
+            Calificaciones <br>
         </p>   
         </a>
       </div>
