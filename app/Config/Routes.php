@@ -57,6 +57,16 @@ $routes->post('actualizarProfesor', 'ProfesoresController::actualizarProfesor');
 
 
 
+
+
+
+
+
+
+
+
+
+
 //angela
 //loginController
 $routes->post('/loggin', 'loginController::login');
@@ -70,10 +80,15 @@ $routes->post('/registrar', 'registerController::registrar');
 $routes->post('/editUser', 'registerController::editUser');
 $routes->post('/editUserSave', 'registerController::editUserSave');
 $routes->Post('/activeUser', 'registerController::activeUser');
+//estudiantesController
+$routes->get('/Estudiantes', 'EstudiantesController::index');
+$routes->get('/NuevoEstudiante', 'EstudiantesController::newStudent');
+$routes->Post('/buscarEstudiante', 'EstudiantesController::searchStudent');
+$routes->Post('/NuevoEstudianteGuardar', 'EstudiantesController::newStudentSave');
+$routes->Post('/EditarEstudiante', 'EstudiantesController::editStudent');
+$routes->Post('/ActualizarEstudiante', 'EstudiantesController::editStudentSave');
 
-$routes->get('/menuDS', 'CreateDS::index');
-$routes->get('/newDocent', 'CreateDS::newDocent');
-$routes->get('/listDocent', 'CreateDS::listDocent');
+
 
 
 
@@ -91,19 +106,8 @@ $routes->get('/listDocent', 'CreateDS::listDocent');
 
 if (session('rol') == 'docente') {
     $routes->get('/prueba', 'loginController::prueba');
-} else{
-    $routes->post('/loggin', 'loginController::login');
-}
+} 
 
-if (session('rol') == 'administrador') {
-    $routes->get('/prueba', 'loginController::prueba');
-    $routes->get('/menuDS', 'CreateDS::index');
-    $routes->get('/newDocent', 'CreateDS::newDocent');
-    $routes->get('/listDocent', 'CreateDS::listDocent');
-} else{
-    
-    $routes->post('/loggin', 'loginController::login');
-}
 
 
 

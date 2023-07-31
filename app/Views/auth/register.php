@@ -8,7 +8,8 @@
 <div class="content container-fluid" ><br>
     <div class="card" id="contenedor">
         <div class="card-header text-center" id="titulo">
-            <b>Registrar Usuario</b>
+        <img src="..\public\img\nuevoUser.png" alt="usuarios"
+                        class="icono-sidebar" /><b>Registrar Usuario</b>
         </div>
         <div class="card-body" id="area">
             <?php if (session()->getFlashdata('mensajeError')): ?>
@@ -25,7 +26,7 @@
                         <input type="text" id="documento" name="documento" class="form-control"  autocomplete="off">
                     </div>
                     <div class="col-md-6">
-                        <label for="nombre" class="control-label">Nombre:</label>
+                        <label for="nombre" class="control-label">Nombre y apellido completo:</label>
                         <input type="text" id="nombre" name="nombre"  class="form-control" autocomplete="off">
                     </div>
                 </div>

@@ -11,7 +11,8 @@
             <div class="col-md-12" >
                 <div class="card card-default"> 
                     <div class="card-header text-center">
-                       <b>USUARIOS DEL SISTEMA</b>
+                    <img src="..\public\img\usuariosSis.png" alt="usuarios"
+                        class="icono-sidebar" /><b>USUARIOS DEL SISTEMA</b>
                     </div>
                     <div class="card-body">
                         <?php if (session()->getFlashdata('mensajeError')): ?>
@@ -157,8 +158,9 @@
                         </div>
                         <div class="col-md-9">
                             <select class="form-select" id="estado" name="estado" >
-                                <option value="0">Activo</option>
-                                <option value="1">Inactivo</option>                                        
+                                 <option value="0">Inactivo</option> 
+                                 <option value="1">Activo</option>
+                                                                     
                             </select>
                         </div>            
                     </div>

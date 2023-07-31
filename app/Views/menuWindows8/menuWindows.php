@@ -63,7 +63,7 @@
     </div>
       
       <div class="col-md-4">
-        <a href="#" class="menu-option bordeRedondo text-decoration-none" style="background-color: #EB4FAD;">
+        <a href="<?php echo base_url()?>Estudiantes" class="menu-option bordeRedondo text-decoration-none" style="background-color: #EB4FAD;">
         <img src="..\public\img\newEstudiante.png" alt="matricula" class="icono-sidebar imgInicio mt-4">
         <p class="letraBotonIn">
             Ver <br> Estudiantes

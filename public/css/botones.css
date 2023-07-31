@@ -30,4 +30,17 @@
     pointer-events: none;
     opacity: 0.6;
 }
+
+.botonRegresar{
+  background-color: #CF462B;
+  transition: background-color 0.3s;
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+.botonRegresar:hover {
+  background-color: #953B29; /* Color de fondo al hacer hover */
+  color: white;
+}
   

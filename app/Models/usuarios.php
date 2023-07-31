@@ -24,13 +24,24 @@ class usuarios extends Model{
                     ->where('estado', 1)
                     ->where('rol', 'docente')
                     ->first();
+    }
+    
+    public function buscarEstudiante($documento)
+    {
+        return $this->where('documento', $documento)
+                    ->where('estado', 1)
+                    ->where('rol', 'estudiante')
+                    ->first();
     }  
    
+
+    //busca al usuario enviadole el correo y la contraseña en la variable data
     public function obtenerUsuario($data){
         $usuario = $this->db->table('usuarios');
         $usuario->where($data);
         return $usuario->get()->getResultArray();
     }
+    
     
     public function actualizarUsuario($idUsuario, $data) {
         $usuario = $this->db->table('usuarios');
