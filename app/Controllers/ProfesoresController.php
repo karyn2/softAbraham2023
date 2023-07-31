@@ -26,42 +26,48 @@ class ProfesoresController extends Controller{
     public function  crear()
     {
         $searchTerm = $this->request->getPost('search_term');
-    
-        // Aquí realizamos la búsqueda del usuario por su número de documento.
-        $usuarioModel = new usuarios();
-        $usuario = $usuarioModel->buscarPorDocumento($searchTerm);
-
-        
-    
-        if ($usuario && $usuario['rol'] === 'docente' && $usuario['estado'] == 1) {
-            // Si encontramos el usuario y es un docente con estado 1, verificamos si ya está registrado como profesor.
-            $profesorModel = new ProfesoresModel();
-            $profesor = $profesorModel->buscarPorUsuarioId($usuario['id_usuario']);
-            
-            if ($profesor && $profesor['usuario_id'] === $usuario['id_usuario']) {
-                // Si ya está registrado como profesor, mostramos un mensaje de error.
-                $data['error'] = 'El usuario ya se encuentra registrado como profesor.';
-                $data['id_usuario'] = '';
-                $data['documento'] = '';
-                $data['nombre'] = '';
-                $data['correo'] = '';
-            } else {
-                // Si no está registrado como profesor, pasamos los datos a la vista para rellenar los campos.
-                $data['id_usuario'] = $usuario['id_usuario'];
-                $data['documento'] = $usuario['documento'];
-                $data['nombre'] = $usuario['nombre'];
-                $data['correo'] = $usuario['correo'];
-            }
-        } else {
-            // Si no encontramos el usuario o no es un docente válido, mostramos un mensaje de error.
-            $data['error'] = 'No se encontró un docente válido con el número de documento ingresado.';
+        if ($searchTerm=== NULL) {
+            $data['mensaje'] = 'Ingrese el número de documento del docente a registrar con el cual se registro en Usuarios.';
             $data['id_usuario'] = '';
             $data['documento'] = '';
             $data['nombre'] = '';
             $data['correo'] = '';
+        } else {
+                // Aquí realizamos la búsqueda del usuario por su número de documento.
+                $usuarioModel = new usuarios();
+                $usuario = $usuarioModel->buscarPorDocumento($searchTerm);
+                if ($usuario && $usuario['rol'] === 'docente' && $usuario['estado'] == 1) {
+                    // Si encontramos el usuario y es un docente con estado 1, verificamos si ya está registrado como profesor.
+                    $profesorModel = new ProfesoresModel();
+                    $profesor = $profesorModel->buscarPorUsuarioId($usuario['id_usuario']);
+                    
+                    if ($profesor && $profesor['usuario_id'] === $usuario['id_usuario']) {
+                        // Si ya está registrado como profesor, mostramos un mensaje de error.
+                        $data['error'] = 'El usuario ya se encuentra registrado como profesor.';
+                        $data['id_usuario'] = '';
+                        $data['documento'] = '';
+                        $data['nombre'] = '';
+                        $data['correo'] = '';
+                    } else {
+                        // Si no está registrado como profesor, pasamos los datos a la vista para rellenar los campos.
+                        $data['id_usuario'] = $usuario['id_usuario'];
+                        $data['documento'] = $usuario['documento'];
+                        $data['nombre'] = $usuario['nombre'];
+                        $data['correo'] = $usuario['correo'];
+                    }
+                } else  {
+                    // Si no encontramos el usuario o no es un docente válido, mostramos un mensaje de error.
+                    $data['error'] = 'No se encontró un docente válido con el número de documento ingresado.';
+                    $data['id_usuario'] = '';
+                    $data['documento'] = '';
+                    $data['nombre'] = '';
+                    $data['correo'] = '';
+                }
+
+                
         }
-    
         return view('profesores/crearProfesores', $data);
+        
     }
     
     public function guardarProfesor()
@@ -100,7 +106,7 @@ class ProfesoresController extends Controller{
             return view('profesores\editarProfesores', ['profesor' => $profesor]);
         } else {
             // En caso de que no se encuentre el profesor, puedes mostrar un error o redirigir a otra página
-            return redirect()->to(base_url('listarProfesores'));
+            return redirect()->to(base_url('/listarProfesores'));
         }
     }
     
@@ -146,10 +152,10 @@ public function actualizarProfesor()
         $model->updateProfesor($usuario_id, $data);
 
         // Redirigimos a la página de lista de profesores o a otra acción que desees
-        return redirect()->to(base_url('listarProfesores'));
+        return redirect()->to(base_url('/listarProfesores'));
     } else {
         // Si no se envió el formulario, puedes redirigir a la página de lista de profesores o a otra página
-        return redirect()->to(base_url('listarProfesores'));
+        return redirect()->to(base_url('/listarProfesores'));
     }
 }  
 

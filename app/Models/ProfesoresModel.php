@@ -21,8 +21,8 @@ class ProfesoresModel extends Model
         'titulo_academico',
         'especializacion'
     ];
-    // Relación uno a uno con la tabla 'usuarios'
-    protected $hasOne = [
+    
+    protected $belongsTo  = [
         'usuario' => [
             'model' => 'App\Models\UsuariosModel',
             'foreign_key' => 'id_usuario',
@@ -85,4 +85,30 @@ class ProfesoresModel extends Model
 
         return $valid;
     }
+
+    /*ADD @VADELGADO*/
+        // Relación con la tabla "usuarios"
+        // public function usuario()
+        // {
+        //     return $this->belongsTo('App\Models\UsuarioModel', 'usuario_id', 'documento');
+        // }
+    
+        // Relación con la tabla "cursosAsignatura"
+        public function cursosAsignatura()
+        {
+            return $this->hasMany('App\Models\CursoAsignaturaModel', 'profesor_id', 'id');
+        }
+
+            // Método para cargar ansiosamente la relación con la tabla 'usuarios'
+    public function buscarConUsuario(){
+        // Realizamos un JOIN para obtener los profesores que tienen una relación con usuarios
+        $this->select('profesores.*, usuarios.nombre as nombre_usuario');
+        $this->join('usuarios', 'usuarios.id_usuario = profesores.usuario_id', 'left');
+        $this->where('usuarios.estado', 1);    
+
+        return $this->findAll();
+    }
+
+
+    /*END*/
 }

@@ -8,8 +8,8 @@ class usuarios extends Model{
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $allowedFields    = ['documento', 'nombre','correo','contrasenia','rol','estado'];
-        // Relación uno a uno con la tabla 'profesores'
-    protected $hasOne = [
+        
+    protected $belongsTo  = [
            'profesor' => [
            'model' => 'App\Models\ProfesoresModel',
            'foreign_key' => 'usuario_id',
@@ -38,6 +38,19 @@ class usuarios extends Model{
         $usuario->where($this->primaryKey, $idUsuario); // Utilizamos $this->primaryKey para referenciar la clave primaria
         return $usuario->update();
     }
-    
+
+    /*ADD @VADELGADO*/
+    // Relación con la tabla "estudiantes"
+    public function estudiantes()
+    {
+        return $this->hasMany('App\Models\EstudianteModel', 'usuario_id', 'id_usuario');
+    }
+
+    // Relación con la tabla "profesores"
+    public function profesores()
+    {
+        return $this->belongsTo('App\Models\ProfesorModel', 'usuario_id', 'id_usuario');
+    }
+    /*END*/
 
 }

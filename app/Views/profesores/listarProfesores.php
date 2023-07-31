@@ -20,8 +20,8 @@
                     </div>
 
                     <div class="mt-4 table-container">
-                        <table class="table mt-4 table-striped table-bordered table-container" id="miTablaProfesores"
-                            name="miTablaProfesores" style="width:100%">
+                        <table class="table mt-4 table-striped table-bordered table-container" 
+                        id="miTablaProfesores"name="miTablaProfesores" style="width:100%">
                             <thead class="headerTable bordered-table text-center">
                                 <tr class="text-center">
                                     <th>Nombre</th>
@@ -49,11 +49,11 @@
                                             <input type="hidden" name="usuario_id"
                                                 value="<?= $docente['id_usuario'] ?>" />
                                             <!-- Botón para editar el profesor -->
-                                            <button type="submit" class="btn btn-primary">
-                                                <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                                            <button title="Editar"  type="submit" class="btn btn-info">
+                                                <i id="pencil-icon" class="fas fa-pencil-alt" aria-hidden="true"></i>
                                             </button>
                                         </form>                                        
-                                        <a href="#" type="button" class="btn btn-warning btn-sm btn-ver"                                            
+                                        <a title="Mostrar" href="#" type="button" class="btn btn-warning btn-sm btn-ver"                                            
                                             data-bs-docente="<?= htmlspecialchars(json_encode($docente), ENT_QUOTES, 'UTF-8') ?>"                                            
                                             data-bs-toggle="modal" data-bs-target="#mostrarDatosDocenteModal">
                                             <i class="fas fa-eye" id="pencil-icon" aria-hidden="true"></i>
@@ -100,7 +100,19 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+    $('#miTablaProfesores').DataTable(
+        {
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+            },
+        }
+    );
 
+});
+</script>
+<script id="base-url" data-url="<?php echo base_url(); ?>"></script>
 <script src="../public/js/listDocent.js"></script>
 
 <?php echo $this->endSection() ?>

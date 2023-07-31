@@ -17,12 +17,19 @@
                         <input class="form-control" type="text" name="search_term" id="search_term" >
                     </div>
                     <div class="col-md-6">
-                        <button type="submit" class="btn btn-primary">Buscar</button>
+                        <button type="submit" class="btn btn-info text-white">
+                        <i class="fa fa-search" aria-hidden="true"></i>&nbsp;Buscar</button>
                     </div>
                 </div>
             </form>
 
-            <?php if (isset($error)): ?>
+            <?php if (isset($mensaje)): ?>
+                <!-- Mostrar mensaje de error si no se encontró el docente -->
+                <div class="alert alert-info">
+                    <?= $mensaje ?>
+                </div>
+
+            <?php elseif (isset($error)): ?>
                 <!-- Mostrar mensaje de error si no se encontró el docente -->
                 <div class="alert alert-danger">
                     <?= $error ?>
@@ -95,8 +102,16 @@
 
                     <!-- Botón Registrar -->
                     <div class="row mb-3">
-                        <div class="col-md-6">
-                            <button type="submit" class="btn btn-succes" name="registrar_profesor">Registrar doc</button>
+                        <div class="text-center mt-4">
+                            <a href="<?php echo base_url()?>listarProfesores" type="button" class="botonRegresar text-decoration-none">
+                            <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>&nbsp;&nbsp;Regresar</a>
+
+                            <button type="submit" class="btn botonRegistrar" name="registrar_profesor">
+                            <i class="fas fa-save"></i> &nbsp;Registrar Profesor</button>
+
+                            <button class="botonLimpiar" type="reset">
+                            <i class="fas fa-broom"></i>&nbsp; Limpiar &nbsp;
+                            </button>                            
                         </div>
                     </div>
                 </form>
@@ -109,31 +124,62 @@
   // Función para validar el formulario
   function validarFormulario() {
     // Obtener los valores de los campos del formulario
-    const numeroTelefono = document.getElementById("numero_telefono").value;
-    const direccionResidencial = document.getElementById("direccion_residencial").value;
-    const fechaInicioEmpleo = document.getElementById("fecha_inicio_empleo").value;
-    const fechaNacimiento = document.getElementById("fecha_nacimiento").value;
+    const numero_telefono = document.getElementById("numero_telefono").value;
+    const direccion_residencial = document.getElementById("direccion_residencial").value;
+    const fecha_inicio_empleo = document.getElementById("fecha_inicio_empleo").value;
+    const fecha_nacimiento = document.getElementById("fecha_nacimiento").value;
+    const titulo_academico = document.getElementById('titulo_academico').value;
+    const especializacion = document.getElementById('especializacion').value;
+    const nombre_emergencia = document.getElementById('nombre_emergencia').value;
+    const telefono_emergencia = document.getElementById('telefono_emergencia').value;
+    const doc_contactosemergencia = document.getElementById('doc_contactosemergencia').value;
+      
 
     // Realizar las validaciones que desees aquí
-    if (numeroTelefono === "") {
+    if (numero_telefono === "") {
       mostrarError("El campo Número de Teléfono es obligatorio.");
       return false; // Detener el envío del formulario
     }
 
-    if (direccionResidencial === "") {
+    if (direccion_residencial === "") {
       mostrarError("El campo Dirección Residencial es obligatorio.");
       return false;
     }
 
-    if (fechaInicioEmpleo === "") {
+    if (fecha_inicio_empleo === "") {
       mostrarError("El campo Fecha de Inicio de Empleo es obligatorio.");
       return false;
     }
 
-    if (fechaNacimiento === "") {
+    if (fecha_nacimiento === "") {
       mostrarError("El campo Fecha de Nacimiento es obligatorio.");
       return false;
     }
+
+    if (titulo_academico === "") {
+      mostrarError("El campo título academico es obligatorio.");
+      return false;
+    }
+   
+    if (especializacion === "") {
+      mostrarError("El campo Especialización es obligatorio.");
+      return false;
+    }
+
+    if (nombre_emergencia === "") {
+      mostrarError("El campo del Nombre del contacto de emergencia es obligatorio.");
+      return false;
+    }
+
+    if (telefono_emergencia === "") {
+      mostrarError("El campo del teléfono del contacto de emergencia es obligatorio.");
+      return false;
+    }
+
+    if (doc_contactosemergencia === "") {
+      mostrarError("El campo del documento del contacto de emergencia es obligatorio.");
+      return false;
+    }   
 
     // Si todas las validaciones pasan, el formulario se enviará
     return true;
