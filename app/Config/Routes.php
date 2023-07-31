@@ -98,6 +98,16 @@ $routes->post('/inactivarActivarRegistroAC', 'AsignaturaCursosController::inacti
 
 
 
+
+
+
+
+
+
+
+
+
+
 //angela
 //loginController
 $routes->post('/loggin', 'loginController::login');
@@ -129,9 +139,6 @@ $routes->Post('/ActualizarEstudiante', 'EstudiantesController::editStudentSave')
 
 
 
-$routes->get('/menuDS', 'CreateDS::index');
-$routes->get('/newDocent', 'CreateDS::newDocent');
-$routes->get('/listDocent', 'CreateDS::listDocent');
 
 
 
