@@ -77,6 +77,16 @@ $routes->post('/inactivarActivarRegistroAC', 'AsignaturaCursosController::inacti
 
 
 
+
+
+
+
+
+
+
+
+
+
 //angela
 //loginController
 $routes->post('/loggin', 'loginController::login');
