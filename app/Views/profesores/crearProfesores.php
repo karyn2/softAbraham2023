@@ -106,7 +106,7 @@
                             <a href="<?php echo base_url()?>listarProfesores" type="button" class="botonRegresar text-decoration-none">
                             <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>&nbsp;&nbsp;Regresar</a>
 
-                            <button type="submit" class="btn botonRegistrar" name="registrar_profesor">
+                            <button type="submit" class="botonRegistrar" name="registrar_profesor">
                             <i class="fas fa-save"></i> &nbsp;Registrar Profesor</button>
 
                             <button class="botonLimpiar" type="reset">

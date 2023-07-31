@@ -94,7 +94,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
   #menu li.nav-item span {
     color: #324F87;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 20px;
   }
 
   .nav-link {

@@ -29,6 +29,7 @@
     <link href="..\public\css\tables.css" rel="stylesheet">
     <link href="..\public\css\botones.css" rel="stylesheet">
     <link href="..\public\css\principal.css" rel="stylesheet">
+    <link href="..\public\css\collapse.css" rel="stylesheet">
 
     <!--iconos--> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -40,34 +41,108 @@
     <aside id="sidebar" class="sidebar">
         <div class="col-md-3 col-lg-2 bg-blue">
             <!-- Contenido de la barra lateral -->
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-4 pt-2 mt-4 min-vh-100">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-4 pt-2 min-vh-100">
                 <a href="" class="imagen-con-lineas">
                     <img src="..\public\img\logo.webp" alt="Imagen 1" class="imagen-pequena " >
                 </a>
+ 
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start mt-4" id="menu">
-                    <li class="nav-item ">
-                        <a href="<?php echo base_url('/inicio')?>" class="nav-link align-middle px-0">
+                               
+                    <li class="nav-item dropdown ">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                            role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <img src="..\public\img\Inicio.png" alt="Inicio" class="icono-sidebar"><span
                                 class="ms-1 d-none d-sm-inline ">Inicio</span>
                         </a>
+
+                        <div class=" dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" id="muenudrop">                
+                            <a class="dropdown-item" href="<?php echo base_url('/inicio')?>">Menú</a> 
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="<?php echo base_url('/logout')?>">Cerrar sesión</a>                                 
+                        </div>
                     </li>
-                    <li class="nav-item ">
-                        <a href="<?php echo base_url('/usuarios')?>" class="nav-link align-middle px-0">
-                            <img src="..\public\img\usuario.png" alt="usuario" class="icono-sidebar"><span
-                                class="ms-1 d-none d-sm-inline "> Usuarios</span>
+
+                    <li class="nav-item dropdown ">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                            role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <img src="..\public\img\user.png" alt="usuario" class="icono-sidebar"><span
+                            class="ms-1 d-none d-sm-inline "> Usuarios</span>
                         </a>
+                        <div class=" dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" id="muenudrop">                   
+                        <a class="dropdown-item" href="<?php echo base_url('/usuarios')?>">Usuarios</a>                             
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?php echo base_url('/register')?>">Nuevo Usuario</a>    
+                        </div>
                     </li>
-                    <li class="nav-item ">
-                        <a href="#" class="nav-link align-middle px-0">
-                            <img src="..\public\img\matricula.png" alt="matricula" class="icono-sidebar"> <span
-                                class="ms-1 d-none d-sm-inline ">Matricula</span>
+
+                    <li class="nav-item dropdown ">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                            role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <img src="..\public\img\confiCursos.png" alt="usuario" class="icono-sidebar"><span
+                                class="ms-1 d-none d-sm-inline "> Cursos</span>
                         </a>
+                        <div class=" dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" id="muenudrop">                   
+                        <a class="dropdown-item" href="<?php echo base_url('/AsignaturaCursos')?>">Configurar Curso</a>                             
+  
+                        </div>
                     </li>
-                    <li class="nav-item ">
-                        <a href="#" class="nav-link align-middle px-0">
-                            <img src="..\public\img\notas.png" alt="notas" class="icono-sidebar"> <span
-                                class="ms-1 d-none d-sm-inline vertical-center">Notas</span>
+
+                    <li class="nav-item dropdown ">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                            role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <img src="..\public\img\boletin.png" alt="matricula" class="icono-sidebar"> <span
+                                class="ms-1 d-none d-sm-inline ">Boletines</span>
                         </a>
+                        <div class=" dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" id="muenudrop">                   
+                        <a class="dropdown-item" href="#">Consultar Boletín</a>                             
+                    </li>
+
+                    <li class="nav-item dropdown ">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                            role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <img src="..\public\img\docente.png" alt="usuario" class="icono-sidebar"><span
+                                class="ms-1 d-none d-sm-inline "> Docentes</span>
+                        </a>
+                        <div class=" dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" id="muenudrop">                   
+                        <a class="dropdown-item" href="<?php echo base_url('/listarProfesores')?>">Docentes</a>                             
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?php echo base_url('/crearProfesor')?>">Nuevo Docente</a>    
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown ">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                            role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <img src="..\public\img\newEstudiante.png" alt="usuario" class="icono-sidebar"><span
+                                class="ms-1 d-none d-sm-inline "> Estudiantes</span>
+                        </a>
+                        <div class=" dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" id="muenudrop">                   
+                        <a class="dropdown-item" href="<?php echo base_url('/Estudiantes')?>">Estudiantes</a>                             
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?php echo base_url('/NuevoEstudiante')?>">Nuevo Estudiante</a>    
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown ">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                            role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <img src="..\public\img\notasg.png" alt="notas" class="icono-sidebar"> <span
+                                class="ms-1 d-none d-sm-inline vertical-center">Calificaciones</span>
+                        </a>
+                        <div class=" dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" id="muenudrop">                   
+                              <a class="dropdown-item" href="#">Ver Calificaciones</a>                             
+   
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown ">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                            role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <img src="..\public\img\acerca-de.png" alt="notas" class="icono-sidebar"> <span
+                                class="ms-1 d-none d-sm-inline vertical-center">Acerca de</span>
+                        </a>
+                        <div class=" dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" id="muenudrop">                   
+                              <a class="dropdown-item" href="#">Presentación</a>                             
+   
+                        </div>
                     </li>
 
                 </ul>
