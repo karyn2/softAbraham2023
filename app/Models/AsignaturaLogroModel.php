@@ -9,7 +9,8 @@ class AsignaturaLogroModel extends Model{
     protected $allowedFields = [
         'curso_asignatura_id',
         'logro_id',
-        'porcentaje',
+        'porcenteje',
+        'periodo'
     ];
 
     // Relación con la tabla "cursosAsignatura"
@@ -28,5 +29,15 @@ class AsignaturaLogroModel extends Model{
     public function notas()
     {
         return $this->hasMany('App\Models\NotasModel', 'asignatura_logro_id', 'id_asignatura_logro');
+    }
+
+    public function porcentajeLogro($id_logro, $id_curso_asignatura)
+    {
+        $porcentaje = $this
+        ->where('asignaturalogro.curso_asignatura_id', $id_curso_asignatura)
+        ->where('asignaturalogro.logro_id', $id_logro)
+        ->join('logro', 'asignaturalogro.logro_id = logro.id_logro')
+        ->first(); 
+        return $porcentaje;
     }
 }

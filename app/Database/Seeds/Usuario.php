@@ -22,7 +22,6 @@ class Usuario extends Seeder
             'rol'    => $rol,
             'estado' => $estado
         ];
-
         
         // Using Query Builder
         $this->db->table('usuarios')->insert($data);

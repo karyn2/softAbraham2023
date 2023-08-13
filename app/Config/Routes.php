@@ -96,8 +96,11 @@ $routes->Post('/buscarEstudiante', 'EstudiantesController::searchStudent');
 $routes->Post('/NuevoEstudianteGuardar', 'EstudiantesController::newStudentSave');
 $routes->Post('/EditarEstudiante', 'EstudiantesController::editStudent');
 $routes->Post('/ActualizarEstudiante', 'EstudiantesController::editStudentSave');
-
-
+//Calificaciones Controller
+$routes->get('/Calificaciones', 'CalificacionesController::index');
+$routes->Post('/getAsignaturasporCurso', 'CalificacionesController::getAsignaturasporCurso');
+$routes->Post('/obtenerEstudiantes', 'CalificacionesController::obtenerEstudiantes');
+$routes->Post('/guardarCalificaciones', 'CalificacionesController::guardarCalificaciones');
 
 
 

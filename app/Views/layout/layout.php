@@ -29,7 +29,6 @@
     <link href="..\public\css\tables.css" rel="stylesheet">
     <link href="..\public\css\botones.css" rel="stylesheet">
     <link href="..\public\css\principal.css" rel="stylesheet">
-    <link href="..\public\css\collapse.css" rel="stylesheet">
 
     <!--iconos--> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -129,7 +128,7 @@
                                 class="ms-1 d-none d-sm-inline vertical-center">Calificaciones</span>
                         </a>
                         <div class=" dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" id="muenudrop">                   
-                              <a class="dropdown-item" href="#">Ver Calificaciones</a>                             
+                              <a class="dropdown-item" href="<?php echo base_url('/Calificaciones')?>">Ver Calificaciones</a>                             
    
                         </div>
                     </li>

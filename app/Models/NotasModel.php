@@ -9,7 +9,9 @@ class NotasModel extends Model{
     protected $allowedFields = [
         'estudiante_id',
         'asignatura_logro_id',
-        'nota',
+        'notaSr',
+        'notaSb',
+        'notaHc'
     ];
 
     // Relación con la tabla "estudiantes"

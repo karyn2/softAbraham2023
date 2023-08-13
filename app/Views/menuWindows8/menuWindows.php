@@ -72,7 +72,7 @@
         </a>
       </div>
       <div class="col-md-4">
-        <a href="#" class="menu-option bordeRedondo text-decoration-none" style="background-color: #5EBF16">
+        <a href="<?php echo base_url()?>Calificaciones" class="menu-option bordeRedondo text-decoration-none" style="background-color: #5EBF16">
         <img src="..\public\img\notasg.png" alt="calificación" class="icono-sidebar imgInicio mt-4">
         <p class="letraBotonIn">
             Calificaciones <br>

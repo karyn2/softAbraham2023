@@ -41,8 +41,7 @@
                         <select class="form-select" id="rol" name="rol" >
                             <option selected disabled value="">Rol de Usuario</option>
                             <option value="administrador">Administrador</option>
-                            <option value="docente">Docente</option>
-                            <option value="acudiente">Acudiente</option>                       
+                            <option value="docente">Docente</option>                     
                             <option value="estudiante">Estudiante</option>                                         
                         </select>
                     </div>
