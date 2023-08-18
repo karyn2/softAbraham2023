@@ -9,6 +9,7 @@ class CursoModel extends Model{
     protected $allowedFields = [
         'nombre_curso',
         'tipo_curso',
+        'estado_curso'
     ];
 
     // Relación con la tabla "estudiantes"

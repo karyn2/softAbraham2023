@@ -32,7 +32,7 @@ $routes->set404Override();
 $routes->get('/', 'loginController::index');
 
 //lucho
-
+$routes->get('cursos', 'CursosCrudController::index');
 
 
 
