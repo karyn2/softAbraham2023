@@ -81,7 +81,7 @@
                                 class="ms-1 d-none d-sm-inline "> Cursos</span>
                         </a>
                         <div class=" dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" id="muenudrop">                   
-                        <a class="dropdown-item" href="#">Asignaturas</a>   
+                        <a class="dropdown-item" href=" <?php echo base_url('Asignaturas');?> ">Asignaturas</a>   
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Cursos</a> 
                         <div class="dropdown-divider"></div>

@@ -43,7 +43,7 @@
 
                     <div class="row mt-2">
                         <div class="col-2">
-                            <label for="asignatura_id" class="form-label"> <b>Asignatura:</b> </label>
+                            <label for="asignatura_id" class="form-label"  > <b>Asignatura:</b> </label>
                         </div>
                         <div class="col-6">
                             <select name="asignatura_id" id="asignatura_id" class="form-select">

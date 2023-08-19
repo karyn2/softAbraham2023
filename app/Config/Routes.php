@@ -44,6 +44,10 @@ $routes->get('/', 'loginController::index');
 
 
 //niko
+$routes->get('Asignaturas', 'AsignaturasVerCrear::index');
+
+
+
 //menuCursos
 
 
