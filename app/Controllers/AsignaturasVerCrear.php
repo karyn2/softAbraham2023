@@ -3,11 +3,16 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\AsignaturaVerCrear;
 
 class AsignaturasVerCrear extends BaseController
 {
     public function index()
     {
-        return view('asignaturas/principal');
+        $asignaturas =new AsignaturaVerCrear();
+        $data = $asignaturas->findAll();
+        $data =['data'=> $data];
+        return view('asignaturas/principal', $data);
     }
+
 }
