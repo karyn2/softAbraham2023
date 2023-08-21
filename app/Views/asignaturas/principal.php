@@ -11,21 +11,9 @@
                         class="icono-sidebar" /><b>ASIGNATURAS</b>
                     </div>
                     <div class="card-body">
-                        <?php if (session()->getFlashdata('mensajeError')): ?>
-                            <div class="alert alert-danger mt-2 alert-dismissible fade show">
-                                <?php echo session()->getFlashdata('mensajeError'); ?> 
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <?php endif; ?>
-                        <?php if (session()->getFlashdata('mensaje')): ?>
-                            <div class="alert alert-success alert-dismissible fade show">
-                                <?php echo session()->getFlashdata('mensaje'); ?> 
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <?php endif; ?>
 
                         <div class="text-right">
-                            <a href="<?php echo base_url()?>register" type="button" class="btn btn-primary">
+                            <a href="<?php echo base_url('/CrearAsignatura')?>" type="button" class="btn btn-primary">
                             <i class="fas fa-plus" id="pencil-icon" aria-hidden="true"></i>&nbsp;&nbsp;Nueva Asignatura</a>             
                             <br>
                         </div>

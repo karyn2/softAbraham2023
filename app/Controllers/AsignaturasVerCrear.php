@@ -15,4 +15,9 @@ class AsignaturasVerCrear extends BaseController
         return view('asignaturas/principal', $data);
     }
 
+    public function regAsignatura(){
+
+        return view('asignaturas/regAsignatura');
+    }
+
 }
