@@ -7,7 +7,7 @@
             <div class="col-md-12" >
                 <div class="card card-default"> 
                     <div class="card-header text-center">
-                    <img src="..\public\img\usuariosSis.png" alt="usuarios"
+                    <img src="..\public\img\asignaturas.jpg" alt="usuarios"
                         class="icono-sidebar" /><b>ASIGNATURAS</b>
                     </div>
                     <div class="card-body">
@@ -15,7 +15,7 @@
                         <div class="text-right">
                             <a href="<?php echo base_url('/CrearAsignatura')?>" type="button" class="btn btn-primary">
                             <i class="fas fa-plus" id="pencil-icon" aria-hidden="true"></i>&nbsp;&nbsp;Nueva Asignatura</a>             
-                            <br>
+                            
                         </div>
 
                         <div class="mt-4 table-container" >
@@ -23,10 +23,10 @@
                             id="miTabla" name="miTabla" style="width:100%">
                                 <thead class="headerTable bordered-table text-center">
                                     <tr class="text-center">
-                                        <th scope="col">Id Asignatura</th>
-                                        <th scope="col">Area Asignatura</th>
-                                        <th scope="col">Descripcion de Asignatura</th>
-                                        <th scope="col">Estado de Asignatura</th>
+                                        <th scope="col">Código</th>
+                                        <th scope="col">Area</th>
+                                        <th scope="col">Descripción</th>
+                                        <th scope="col">Estado</th>
                                         <th scope="col">Opciones</th>
                                     </tr>
                                 </thead>
