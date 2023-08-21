@@ -40,4 +40,5 @@ class AsignaturaLogroModel extends Model{
         ->first(); 
         return $porcentaje;
     }
+
 }
