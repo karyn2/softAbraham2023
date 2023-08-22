@@ -66,5 +66,7 @@ composer require codeigniter4/framework
 
 en la carpeta writable crear la carpeta cache
 
+composer require codeigniter4/framework
+composer update
 npm install @fortawesome/fontawesome-free
 npm install sweetalert2

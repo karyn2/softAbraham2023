@@ -36,7 +36,7 @@
       </div>
 
       <div class="col-md-4 mt-2">
-        <a href="<?php echo base_url()?>AsignaturaCursos" class="menu-option bordeRedondo text-decoration-none" style="background-color: #419BED;">
+        <a href="<?php echo base_url()?>Cursos" class="menu-option bordeRedondo text-decoration-none" style="background-color: #419BED;">
         <img src="..\public\img\confiCursos.png" alt="curso" class="icono-sidebar imgInicio mt-4">
         <p class="letraBotonIn">
             Cursos <br>

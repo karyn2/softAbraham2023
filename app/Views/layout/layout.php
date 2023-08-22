@@ -85,7 +85,9 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Cursos</a> 
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="<?php echo base_url('/AsignaturaCursos')?>">Configurar Curso</a>                              
+                        <a class="dropdown-item" href="<?php echo base_url('/AsignaturaCursos')?>">Configurar Curso</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?php echo base_url('/AsignaturaLogro')?>">Configurar Porcentajes</a>                              
                         </div>
                     </li>
 
@@ -139,10 +141,10 @@
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
                             role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <img src="..\public\img\acerca-de.png" alt="notas" class="icono-sidebar"> <span
-                                class="ms-1 d-none d-sm-inline vertical-center">Acerca de</span>
+                                class="ms-1 d-none d-sm-inline vertical-center">Acerca De</span>
                         </a>
                         <div class=" dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" id="muenudrop">                   
-                              <a class="dropdown-item" href="#">Presentación</a>                             
+                              <a class="dropdown-item" href="<?php echo base_url('/Acercade')?>">Ver Más</a>                             
    
                         </div>
                     </li>

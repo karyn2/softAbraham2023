@@ -175,7 +175,6 @@
                     <div class="mb-3">
                         <label for="curso_id" class="form-label"><b>Curso:</b></label>
                         <select name="curso_id" id="curso_id" class="form-select">
-
                             <?php foreach ($cursos as $curso): ?>
                             <option value="<?= $curso['id_curso']; ?>"
                                 <?=$cursoAsignatura['curso_id']==$curso['id_curso'] ? 'selected' : '' ; ?>>
