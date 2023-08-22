@@ -62,5 +62,9 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
 
 instalaciones adicionales 
+composer require codeigniter4/framework 
+
+en la carpeta writable crear la carpeta cache
+
 npm install @fortawesome/fontawesome-free
 npm install sweetalert2

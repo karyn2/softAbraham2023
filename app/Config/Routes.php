@@ -114,6 +114,7 @@ $routes->get('/Calificaciones', 'CalificacionesController::index');
 $routes->Post('/getAsignaturasporCurso', 'CalificacionesController::getAsignaturasporCurso');
 $routes->Post('/obtenerEstudiantes', 'CalificacionesController::obtenerEstudiantes');
 $routes->Post('/guardarCalificaciones', 'CalificacionesController::guardarCalificaciones');
+$routes->Post('/actualizarCalificaciones', 'CalificacionesController::actualizarCalificaciones');
 
 
 

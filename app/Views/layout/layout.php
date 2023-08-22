@@ -131,7 +131,7 @@
                                 class="ms-1 d-none d-sm-inline vertical-center">Calificaciones</span>
                         </a>
                         <div class=" dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" id="muenudrop">                   
-                              <a class="dropdown-item" href="<?php echo base_url('/Calificaciones')?>">Ver Calificaciones</a>                             
+                              <a class="dropdown-item" href="<?php echo base_url('/Calificaciones')?>">Asignar Calificaciones</a>                             
    
                         </div>
                     </li>

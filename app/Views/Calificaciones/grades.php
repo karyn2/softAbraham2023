@@ -13,15 +13,14 @@
                         class="icono-sidebar" /><b> Asignación de Calificaciones</b>
         </div>
         <div class="card-body" id="area">
-            <?php if (session()->getFlashdata('mensajeError')): ?>
+            <?php if (!empty($mensaje)) : ?>
                 <div class="alert alert-danger mt-2 alert-dismissible fade show">
-                    <?php echo session()->getFlashdata('mensajeError'); ?> 
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <?php echo $mensaje; ?> 
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-            <?php endif; ?>       
+            <?php endif; ?>      
             <form method="POST" action="<?php echo base_url()?>obtenerEstudiantes"
                 name="formAsignar" id="formAsignar" class="mt-4">
-                    
                     <div class="row mt-3">
                         <div class="col-md-2">
                           <label class="control-label"><b>Curso:</b></label>
@@ -79,19 +78,19 @@
                             <?php foreach ($estudiantes as $estudiante) : ?>
                             <tr>
                                 <td>
-                                    <?= $estudiante ['documento']; ?>
+                                    <?= $estudiante['documento']; ?>
                                 </td>
                                 <td>
                                     <?= $estudiante['nombre']; ?>
                                 </td>
                                 <td>
-                                    <input type="number" class="form-control">
+                                    <input type="number" class="form-control" min=1 max=5>
                                 </td>
                                 <td>
-                                    <input type="number" class="form-control">
+                                    <input type="number" class="form-control" min=1 max=5>
                                 </td>
                                 <td>
-                                    <input type="number" class="form-control">
+                                    <input type="number" class="form-control" min=1 max=5>
                                 </td>
                                 <td>
                                     <input type="number" class="form-control" readonly>
@@ -100,8 +99,34 @@
                                 <a type="button" class="botonRegistrar btn-sm btn-guardar" title="Guardar" data-id_curso_asignatura="<?php echo $estudiante['id_curso_asignatura']; ?>" >
                                   <i id="pencil-icon" class="fas fa-save" aria-hidden="true"></i>
                                 </a>
-                                    <a href="#" type="button" class="btn btn-warning btn-sm view-btn" title="Ver">
-                                        <i class="fas fa-eye" id="pencil-icon" aria-hidden="true"></i></a>
+                                </td>                             
+                            </tr>
+                            <?php endforeach; ?>
+                            <?php foreach ($estudiantesConNota as $estudiante) : ?>
+                            <tr>
+                                <td>
+                                    <?= $estudiante['documento']; ?>
+                                </td>
+                                <td>
+                                    <?= $estudiante['nombre']; ?>
+                                </td>
+                                <td>
+                                    <input type='number' class="form-control" min=1 max=5 value="<?= htmlspecialchars($estudiante['notaSr']); ?>">
+                                </td>
+                                <td>
+                                    <input type='number' class="form-control" min=1 max=5 value="<?= htmlspecialchars($estudiante['notaSb']); ?>">
+                                </td>
+                                <td>
+                                    <input type='number' class="form-control" min=1 max=5 value="<?= htmlspecialchars($estudiante['notaHc']); ?>">
+                                </td>
+                                <td>
+                                      <input type="number" class="form-control" min=1 max=5 value="<?= htmlspecialchars($estudiante['sumaNotas']); ?>" readonly>
+
+                                </td>
+                                <td>
+                                <a type="button" class="botonEditar btn-sm btn-guardar-edicion" id="btnActualizar" title="Guardar Actualización" data-id_nota="<?php echo $estudiante['id_nota']; ?>" data-id_curso_asignatura="<?php echo $estudiante['id_curso_asignatura']; ?>">
+                                    <i id="pencil-icon" class="fas fa-pencil-alt" aria-hidden="true"></i>
+                                </a>
                                 </td>                             
                             </tr>
                             <?php endforeach; ?>
@@ -112,7 +137,6 @@
         </div>
     </div>
 </div>
-
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 <script src="../public/js/asigCalificaciones.js"></script>
@@ -131,5 +155,6 @@
 </script>
 
 <script id="base-url" data-url="<?php echo base_url(); ?>"></script>
+
 
 <?php echo $this->endSection() ?>
