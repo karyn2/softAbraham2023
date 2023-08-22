@@ -70,9 +70,9 @@ $routes->post('/AsignaturaCursosGuardarEdicion', 'AsignaturaCursosController::gu
 $routes->post('/inactivarActivarRegistroAC', 'AsignaturaCursosController::inactivarActivarRegistro');
 $routes->get('/AsignaturaLogro','AsignaturaLogroController::index');
 $routes->post('/asignarPorcentaje', 'AsignaturaLogroController::asignarPorcentaje');
+$routes->post('/editarAsignaturaLogro', 'AsignaturaLogroController::editarAsignaturaLogro');
 $routes->get('/Cursos', 'CursoViewController::index');
 $routes->get('/Acercade', 'AcercadeController::index');
-
 
 
 
