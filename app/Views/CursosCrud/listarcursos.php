@@ -11,8 +11,8 @@
             <div class="col-md-12" >
                 <div class="card card-default"> 
                     <div class="card-header text-center">
-                    <img src="..\public\img\verEst.png" alt="usuarios"
-                        class="icono-sidebar" /><b>ESTUDIANTES</b>
+                    <img src="..\public\img\confCurso.png" alt="usuarios"
+                        class="icono-sidebar" /><b>CURSOS</b>
                     </div>
                     <div class="card-body">
                         <?php if (session()->getFlashdata('mensajeError')): ?>
@@ -30,7 +30,7 @@
 
                         <div class="text-right">
                             <a href="<?php echo base_url()?>NuevoEstudiante" type="button" class="btn btn-primary">
-                            <i class="fas fa-plus" id="pencil-icon" aria-hidden="true"></i>&nbsp;&nbsp;Nuevo Estudiante</a>             
+                            <i class="fas fa-plus" id="pencil-icon" aria-hidden="true"></i>&nbsp;&nbsp;Nuevo curso</a>             
                             <br>
                         </div>
                         
