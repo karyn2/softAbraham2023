@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-08-2023 a las 21:31:30
+-- Tiempo de generación: 24-08-2023 a las 01:16:53
 -- Versión del servidor: 10.4.28-MariaDB-log
 -- Versión de PHP: 8.0.28
 
@@ -40,9 +40,27 @@ CREATE TABLE `asignaturalogro` (
 --
 
 INSERT INTO `asignaturalogro` (`id_asignatura_logro`, `curso_asignatura_id`, `logro_id`, `porcenteje`, `periodo`) VALUES
-(4, 36, 1, 0.45, '1'),
-(5, 36, 2, 0.35, '1'),
-(6, 36, 3, 0.2, '1');
+(4, 36, 1, 0.45, 'PRIMER PERIODO'),
+(5, 36, 2, 0.35, 'PRIMER PERIODO'),
+(6, 36, 3, 0.2, 'PRIMER PERIODO'),
+(7, 39, 1, 0.4, 'PRIMER PERIODO'),
+(8, 39, 2, 0.5, 'PRIMER PERIODO'),
+(9, 39, 3, 0.1, 'PRIMER PERIODO'),
+(10, 37, 1, 0.4, 'PRIMER PERIODO'),
+(11, 37, 2, 0.45, 'PRIMER PERIODO'),
+(12, 37, 3, 0.15, 'PRIMER PERIODO'),
+(13, 38, 1, 0.4, 'PRIMER PERIODO'),
+(14, 38, 2, 0.5, 'PRIMER PERIODO'),
+(15, 38, 3, 0.1, 'PRIMER PERIODO'),
+(16, 40, 1, 0.4, 'PRIMER PERIODO'),
+(17, 40, 2, 0.3, 'PRIMER PERIODO'),
+(18, 40, 3, 0.3, 'PRIMER PERIODO'),
+(19, 41, 1, 0.4, 'PRIMER PERIODO'),
+(20, 41, 2, 0.4, 'PRIMER PERIODO'),
+(21, 41, 3, 0.2, 'PRIMER PERIODO'),
+(22, 42, 1, 0.5, 'PRIMER PERIODO'),
+(23, 42, 2, 0.3, 'PRIMER PERIODO'),
+(24, 42, 3, 0.2, 'PRIMER PERIODO');
 
 -- --------------------------------------------------------
 
@@ -158,7 +176,13 @@ CREATE TABLE `cursosasignatura` (
 --
 
 INSERT INTO `cursosasignatura` (`id_curso_asignatura`, `curso_id`, `asignatura_id`, `profesor_id`, `estadoca`) VALUES
-(36, 17, 2, 17, 1);
+(36, 17, 2, 17, 1),
+(37, 17, 1, 18, 1),
+(38, 17, 3, 19, 1),
+(39, 1, 21, 24, 1),
+(40, 17, 4, 20, 1),
+(41, 1, 17, 30, 1),
+(42, 1, 18, 26, 1);
 
 -- --------------------------------------------------------
 
@@ -186,17 +210,36 @@ CREATE TABLE `estudiantes` (
 --
 
 INSERT INTO `estudiantes` (`id_Estudiante`, `usuario_id`, `fecha_registro_estuediante`, `direccion_estudiante`, `celular_estudiante`, `fecha_nacimiento`, `genero_estudiante`, `curso_id`, `documento_acudiente`, `nombre_acudiente`, `telefono_acudiente`, `correo_acudiente`) VALUES
-(2, 28, '2023-08-02', 'Calle 123, Ciudad A', '3001111111', '2010-05-15', 'Femenino', 2, '7654872193', 'María Silva', '3102222222', 'maria.silva@example.com'),
+(2, 28, '2023-08-02', 'Calle 123, Ciudad A', '3001111111', '2010-05-15', NULL, 1, '7654872193', 'María Silva', '3102222222', 'maria.silva@example.com'),
 (3, 29, '2023-08-02', 'Av. Principal, Ciuda', '3012222222', '2011-08-20', NULL, 17, '5678321045', 'Andrés Vargas', '3203333333', 'andres.vargas@example.com'),
 (4, 30, '2023-08-02', 'Cra. 45, Ciudad C', '3023333333', '2012-10-10', NULL, 17, '2893756123', 'Valentina Ríos', '3304444444', 'valentina.rios@example.com'),
 (5, 31, '2023-08-02', 'Calle 7, Ciudad D', '3034444444', '2013-01-05', NULL, 17, '9012873456', 'Fernando Pérez', '3405555555', 'fernando.perez@example.com'),
 (6, 32, '2023-08-02', 'Av. Central, Ciudad ', '3045555555', '2014-04-22', NULL, 17, '4387120659', 'Isabella Gómez', '3506666666', 'isabella.gomez@example.com'),
-(7, 33, '2023-08-02', 'Cra. 20, Ciudad F', '3056666666', '2015-07-12', 'Masculino', 7, '5467321890', 'Ricardo Mendoza', '3607777777', 'ricardo.mendoza@example.com'),
-(8, 34, '2023-08-02', 'Calle 10, Ciudad G', '3067777777', '2016-11-30', 'Femenino', 8, '3284097546', 'Diana Ramírez', '3708888888', 'diana.ramirez@example.com'),
+(7, 33, '2023-08-02', 'Cra. 20, Ciudad F', '3056666666', '2015-07-12', NULL, 1, '5467321890', 'Ricardo Mendoza', '3607777777', 'ricardo.mendoza@example.com'),
+(8, 34, '2023-08-02', 'Calle 10, Ciudad G', '3067777777', '2016-11-30', NULL, 1, '3284097546', 'Diana Ramírez', '3708888888', 'diana.ramirez@example.com'),
 (9, 35, '2023-08-02', 'Av. Sur, Ciudad H', '3078888888', '2017-02-25', NULL, 17, '1928374655', 'Felipe Sánchez', '3809999999', 'felipe.sanchez@example.com'),
 (10, 36, '2023-08-02', 'Cra. 50, Ciudad I', '3089999999', '2018-06-18', NULL, 17, '8095743210', 'Gabriela Torres', '3901010101', 'gabriela.torres@example.com'),
-(11, 37, '2023-08-02', 'Calle 15, Ciudad J', '3091010101', '2019-09-09', 'Masculino', 11, '1085937260', 'Angela Ceron', '3002020202', 'angela.ceron@example.com'),
-(12, 39, '2023-08-08', 'Barrio San Luis', '3216783456', '2000-01-13', 'M', 15, '123789', 'Maria Ruano', '3214567890', 'maria@gmail.com');
+(11, 37, '2023-08-02', 'Calle 15, Ciudad J', '3091010101', '2019-09-09', NULL, 1, '1085937260', 'Angela Ceron', '3002020202', 'angela.ceron@example.com'),
+(12, 39, '2023-08-08', 'Barrio San Luis', '3216783456', '2000-01-13', 'M', 1, '123789', 'Maria Ruano', '3214567890', 'maria@gmail.com'),
+(13, 40, '2023-08-02', 'Calle 123, Ipiales', '3001111111', '2010-05-15', 'Femenino', 2, '7654872193', 'María Silva', '3102222222', 'maria.silva@example.com'),
+(14, 41, '2023-08-02', 'Carrera 45, Ipiales', '3002222222', '2009-10-20', NULL, 12, '8192374658', 'Ana Martínez', '3103333333', 'ana.martinez@example.com'),
+(15, 42, '2023-08-02', 'Avenida Principal, I', '3003333333', '2011-03-08', 'Femenino', 1, '6148027536', 'Carlos Rodríguez', '3104444444', 'carlos.rodriguez@example.com'),
+(16, 43, '2023-08-02', 'Plaza Central, Ipial', '3004444444', '2010-07-12', NULL, 12, '9357102468', 'María Sánchez', '3105555555', 'maria.sanchez@example.com'),
+(17, 44, '2023-08-02', 'Calle Mayor, Ipiales', '3005555555', '2009-09-25', 'Femenino', 2, '5789021346', 'Javier Pérez', '3106666666', 'javier.perez@example.com'),
+(18, 45, '2023-08-02', 'Avenida Central, Ipi', '3006666666', '2011-01-18', NULL, 12, '3694857102', 'Laura García', '3107777777', 'laura.garcia@example.com'),
+(19, 46, '2023-08-02', 'Carrera 27, Ciudad G', '3007777777', '2010-12-03', 'Femenino', 1, '8250394617', 'Diego López', '3108888888', 'diego.lopez@example.com'),
+(20, 47, '2023-08-02', 'Avenida 8, Ciudad H', '3008888888', '2009-08-28', NULL, 12, '4827360591', 'Isabel Ramírez', '3109999999', 'isabel.ramirez@example.com'),
+(21, 48, '2023-08-02', 'Plaza Mayor, Ciudad ', '3009999999', '2011-06-07', 'Femenino', 2, '7591248036', 'Alejandro Torres', '3101010101', 'alejandro.torres@example.com'),
+(22, 49, '2023-08-02', 'Calle 5, Ciudad J', '3101010101', '2010-04-23', NULL, 12, '6238947510', 'Mariana Ortega', '3101111111', 'mariana.ortega@example.com'),
+(23, 50, '2023-08-02', 'Avenida 18, Ciudad K', '3101111111', '2009-11-09', 'Femenino', 1, '7483921650', 'Andrés Morales', '3101212121', 'andres.morales@example.com'),
+(24, 51, '2023-08-02', 'Carrera 8, Ciudad L', '3101212121', '2011-08-14', NULL, 12, '5194762380', 'Fernanda Castro', '3101313131', 'fernanda.castro@example.com'),
+(25, 52, '2023-08-02', 'Avenida 12, Ciudad M', '3101313131', '2010-02-10', NULL, 1, '8276019453', 'Ricardo Vargas', '3101414141', 'ricardo.vargas@example.com'),
+(26, 53, '2023-08-02', 'Plaza 2, Ciudad N', '3101414141', '2009-07-17', NULL, 12, '6749835120', 'Camila Ríos', '3101515151', 'camila.rios@example.com'),
+(27, 54, '2023-08-02', 'Calle 9, Ciudad O', '3101515151', '2011-09-30', 'Femenino', 1, '3598214706', 'José González', '3101616161', 'jose.gonzalez@example.com'),
+(28, 55, '2023-08-02', 'Avenida 5, Ciudad P', '3101616161', '2010-10-05', NULL, 12, '7064519823', 'Paola Navarro', '3101717171', 'paola.navarro@example.com'),
+(29, 56, '2023-08-02', 'Calle 123, Ipiales', '3001111111', '2010-05-15', 'Femenino', 2, '7654872193', 'María Silva', '3102222222', 'maria.silva@example.com'),
+(30, 57, '2023-08-02', 'Carrera 45, Ipiales', '3002222222', '2009-10-20', NULL, 12, '8192374658', 'Ana Martínez', '3103333333', 'ana.martinez@example.com'),
+(31, 58, '2023-08-02', 'Avenida Principal, I', '3003333333', '2011-03-08', 'Femenino', 1, '6148027536', 'Carlos Rodríguez', '3104444444', 'carlos.rodriguez@example.com');
 
 -- --------------------------------------------------------
 
@@ -254,8 +297,62 @@ CREATE TABLE `notas` (
 --
 
 INSERT INTO `notas` (`id_nota`, `usuario_doc`, `curso_asignatura_id`, `notaSr`, `notaSb`, `notaHc`) VALUES
-(3, '1928374655', 36, 0.4, 1.05, 1.8),
-(4, '1928374655', 36, 0.6, 1.4, 2.25);
+(13, '6543129087', 36, 1, 1.75, 2.25),
+(17, '3284097546', 36, 0.46, 1.58, 1.58),
+(18, '1928374655', 36, 0.8, 1.05, 2.03),
+(19, '2893756123', 36, 0.8, 1.75, 1.8),
+(20, '2965738291', 36, 0.6, 1.75, 1.8),
+(22, '9012873456', 36, 1, 1.75, 1.8),
+(23, '123456789', 39, 0.4, 2, 1.8),
+(24, '4387120659', 39, 0.45, 2, 2.25),
+(25, '5467321890', 39, 0.5, 2.5, 2),
+(26, '7526483719', 39, 0.4, 1.95, 1.04),
+(27, '8095743210', 39, 0.3, 1.5, 1.8),
+(28, '1928374655', 37, 0.45, 1.8, 2),
+(29, '2893756123', 37, 0.45, 0.9, 0.8),
+(30, '2965738291', 37, 0.6, 2.25, 1.2),
+(31, '3284097546', 37, 0.3, 1.35, 1.6),
+(32, '6543129087', 37, 0.45, 1.35, 2),
+(33, '9012873456', 37, 0.75, 1.35, 1.6),
+(34, '1928374655', 38, 0.4, 1.8, 1.36),
+(35, '2893756123', 38, 0.5, 1.5, 1.2),
+(36, '2965738291', 38, 0.4, 2.3, 1.88),
+(37, '3284097546', 38, 0.5, 2.4, 1.96),
+(38, '6543129087', 38, 0.23, 1.85, 1.6),
+(39, '9012873456', 38, 0.5, 1.5, 1.6),
+(40, '6543129087', 40, 0.75, 0.75, 0.8),
+(42, '5467321890', 42, 0.46, 0.6, 2.5),
+(43, '2965738291', 40, 1.5, 1.2, 2),
+(44, '2893756123', 40, 1.2, 1.2, 1.6),
+(45, '9012873456', 40, 0.9, 0.9, 0.8),
+(46, '1928374655', 40, 0.6, 0.9, 1.6),
+(47, '7591248036', 39, 0.34, 2.15, 0.48),
+(48, '7483921650', 39, 0.35, 2.05, 1.52),
+(49, '6148027536', 39, 0.5, 2, 1.2),
+(50, '3598214706', 39, 0.5, 1.7, 1),
+(51, '100003', 39, 0.2, 1.5, 1.6),
+(52, '8250394617', 39, 0.3, 2, 2),
+(53, '5467321890', 41, 0.6, 1.2, 1.8),
+(54, '6148027536', 41, 0.9, 1.36, 1.36),
+(55, '4387120659', 41, 0.6, 1.2, 1.6),
+(56, '7526483719', 41, 0.5, 1.68, 0.84),
+(57, '7483921650', 41, 0.72, 1.84, 1.36),
+(58, '7591248036', 41, 0.6, 0.8, 1.6),
+(59, '8095743210', 41, 1, 1.8, 1.28),
+(60, '3598214706', 41, 0.9, 1.16, 1.72),
+(61, '123456789', 41, 0.52, 1.52, 1.72),
+(62, '100003', 41, 0.6, 1.6, 2),
+(64, '123456789', 42, 1, 1.5, 2.5),
+(65, '3598214706', 42, 1, 1.5, 2.5),
+(67, '100003', 42, 0.6, 0.9, 1.5),
+(69, '4387120659', 42, 1, 1.5, 2.5),
+(70, '6148027536', 42, 0.8, 0.9, 1.5),
+(71, '7483921650', 42, 0.4, 0.9, 1.5),
+(72, '7526483719', 42, 0.6, 1.2, 2),
+(73, '7591248036', 42, 0.8, 1.5, 0.5),
+(74, '8095743210', 42, 0.64, 1.05, 1.4),
+(75, '8250394617', 42, 0.8, 1.5, 2),
+(76, '8250394617', 41, 0.46, 1.8, 1.2);
 
 -- --------------------------------------------------------
 
@@ -290,7 +387,12 @@ INSERT INTO `profesores` (`id`, `usuario_id`, `fecha_nacimiento`, `numero_telefo
 (22, 24, '1981-11-30', '3067777777', 'Calle 10, Ciudad G', '2016-07-05', 12347890, 'Sofía Ramírez', '3708888888', 'Licenciado en Educación Física', 'Educación Física'),
 (23, 25, '1986-02-25', '3078888888', 'Av. Sur, Ciudad H', '2017-08-18', 123458901, 'Gabriel López', '3809999999', 'Licenciada en Ciencias Sociales', 'Ciencias Sociales'),
 (24, 26, '1989-07-18', '3089999999', 'Cra. 50, Ciudad I', '2018-09-10', 234569012, 'Diana Torres', '3901010101', 'Licenciado en Ciencias Naturales', 'Física'),
-(25, 27, '1984-10-09', '3091010101', 'Calle 15, Ciudad J', '2019-10-22', 345670123, 'Felipe Sánchez', '3002020202', 'Licenciado en Lengua Castellana', 'Literatura');
+(25, 27, '1984-10-09', '3091010101', 'Calle 15, Ciudad J', '2019-10-22', 345670123, 'Felipe Sánchez', '3002020202', 'Licenciado en Lengua Castellana', 'Literatura'),
+(26, 59, '1985-03-10', '3001111111', 'Calle 123, Ciudad A', '2010-01-15', 456781234, 'María Pérez', '3102222222', 'Licenciado en Educación', 'Pedagogía'),
+(27, 60, '1982-08-20', '3002222222', 'Carrera 45, Ciudad B', '2008-05-10', 789012345, 'Javier Gómez', '3103333333', 'Licenciado en Matemáticas', 'Educación Matemática'),
+(28, 61, '1990-11-05', '3003333333', 'Avenida Principal, Ciudad C', '2015-02-18', 678901234, 'Laura Rodríguez', '3104444444', 'Licenciada en Lengua Castellana', 'Lingüística Aplicada'),
+(29, 62, '1988-06-15', '3004444444', 'Plaza Central, Ciudad D', '2012-09-05', 567890123, 'Carlos Martínez', '3105555555', 'Licenciado en Ciencias Sociales', 'Educación Social'),
+(30, 63, '1983-04-25', '3005555555', 'Calle 8, Ipiales', '2009-07-02', 456789012, 'María Sánchez', '3106666666', 'Licenciada en Educación Física', 'Educación Física');
 
 -- --------------------------------------------------------
 
@@ -335,10 +437,29 @@ INSERT INTO `usuarios` (`id_usuario`, `documento`, `nombre`, `correo`, `contrase
 (38, '1085937260', 'Angela Ceron Benavides', 'karynaceron@gmail.com', '$2y$10$SL9gVrPOgSHSmz6YOWysYeVMCAfjdacFOOAQvCrorWvKsLVl7TYKq', 'administrador', 1),
 (39, '123456789', 'Francisco Gonzales Ruano', 'francisco@gmail.com', '$2y$10$CG0.nnZiX85jFHCmx78TEOhbfEKu4V2qgxSb3yDrHybYqX7aGxufO', 'estudiante', 1),
 (40, '1001', 'Sofia Rosales Castro Jiménez', 'sofia@gmail.com', '$2y$10$mMhM86F/6sPeHZ/GecYs8Oozj98zHr9/J3.q1DhI6VeJInlWEVJu.', 'estudiante', 1),
-(41, '1088597928', 'Jose Luis Chalparizan CUAICAL', 'luis@gmail.com', '$2y$10$YQlhs1DBQX2S./IjxcPZwuia3m8osLunaT6iTBeLoxJTrmZ7zKYBG', 'administrador', 1),
-(42, '100003', 'Nixon Benavides REPLICADO', 'niko@gmail.com', '$2y$10$3/N9mZHr9d14IgbqtaFjSOPXroG2wC71pAMzbqcmEgBFJiNCm1rwq', 'docente', 0),
-(43, '102010', 'Pedro Dominguez', 'usuario@gmail.com', '$2y$10$8QQaQoO3sPy2uHnhCPJXUOFTroQBgJMYjCh2hsEfyG48/8eRAhQbe', 'administrador', 1),
-(44, '1004673383', 'USUARIO REPLICADO 1', 'lubier@gmail.com', '$2y$10$gffLdBSzH/nPIyhXiOnRc.RiTIvtqGPm7Nw09/X7W4migVK6CDy3a', 'estudiante', 0);
+(41, '1088597928', 'Jose Luis Chalparizan ', 'luis@gmail.com', '$2y$10$YQlhs1DBQX2S./IjxcPZwuia3m8osLunaT6iTBeLoxJTrmZ7zKYBG', 'estudiante', 1),
+(42, '100003', 'Nixon Benavides ', 'niko@gmail.com', '$2y$10$3/N9mZHr9d14IgbqtaFjSOPXroG2wC71pAMzbqcmEgBFJiNCm1rwq', 'estudiante', 1),
+(43, '102010', 'Pedro Dominguez', 'usuario@gmail.com', '$2y$10$8QQaQoO3sPy2uHnhCPJXUOFTroQBgJMYjCh2hsEfyG48/8eRAhQbe', 'estudiante', 1),
+(44, '1004673383', 'Fernanda Bustos', 'fernandabustos@gmail.com', '$2y$10$gffLdBSzH/nPIyhXiOnRc.RiTIvtqGPm7Nw09/X7W4migVK6CDy3a', 'estudiante', 0),
+(45, '8192374658', 'Ana Martínez', 'anamartinez@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'estudiante', 1),
+(46, '6148027536', 'Carlos Rodríguez', 'carlosrodriguez@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'estudiante', 1),
+(47, '9357102468', 'María Sánchez', 'mariasanchez@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'estudiante', 1),
+(48, '5789021346', 'Javier Pérez', 'javierperez@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'estudiante', 1),
+(49, '3694857102', 'Laura García', 'lauragarcia@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'estudiante', 1),
+(50, '8250394617', 'Diego López', 'diegolopez@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'estudiante', 1),
+(51, '4827360591', 'Isabel Ramírez', 'isabelramirez@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'estudiante', 1),
+(52, '7591248036', 'Alejandro Torres', 'alejandrotorres@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'estudiante', 1),
+(53, '6238947510', 'Mariana Ortega', 'marianaortega@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'estudiante', 1),
+(54, '7483921650', 'Andrés Morales', 'andresmorales@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'estudiante', 1),
+(55, '5194762380', 'Fernanda Castro', 'fernandacastro@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'estudiante', 1),
+(56, '8276019453', 'Ricardo Vargas', 'ricardovargas@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'estudiante', 1),
+(57, '6749835120', 'Camila Ríos', 'camilarios@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'estudiante', 1),
+(58, '3598214706', 'José González', 'josegonzalez@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'estudiante', 1),
+(59, '7064519823', 'Paola Navarro', 'paolanavarro@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'docente', 1),
+(60, '8391267540', 'Héctor Molina', 'hectormolina@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'docente', 1),
+(61, '5247103986', 'Carla Peña', 'carlapena@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'docente', 1),
+(62, '7182903514', 'Sara Núñez', 'saranunez@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'docente', 1),
+(63, '9015638248', 'Nicolás Vidal', 'nicolasvidal@gmail.com', '$2y$10$peOfjHYj2jMQMzFia9W8S..py14Z5HtZGsJpx53w2XeE8ZcFRbhtW', 'docente', 1);
 
 --
 -- Índices para tablas volcadas
@@ -420,7 +541,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `asignaturalogro`
 --
 ALTER TABLE `asignaturalogro`
-  MODIFY `id_asignatura_logro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_asignatura_logro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `asignaturas`
@@ -438,13 +559,13 @@ ALTER TABLE `cursos`
 -- AUTO_INCREMENT de la tabla `cursosasignatura`
 --
 ALTER TABLE `cursosasignatura`
-  MODIFY `id_curso_asignatura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_curso_asignatura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
-  MODIFY `id_Estudiante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_Estudiante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `logro`
@@ -462,19 +583,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `notas`
 --
 ALTER TABLE `notas`
-  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_nota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT de la tabla `profesores`
 --
 ALTER TABLE `profesores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- Restricciones para tablas volcadas
