@@ -65,7 +65,6 @@ class CalificacionesController extends BaseController
         $asigCurso = new CursoAsignaturaModel();
         $curso = new CursoModel();
         $logroAsig = new AsignaturaLogroModel();
-        $logroAsig = new AsignaturaLogroModel();
 
         $curso_id = $this->request->getPost('curso');
         $asignatura_id = $this->request->getPost('asignatura');

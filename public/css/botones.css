@@ -71,4 +71,8 @@ button:disabled:hover {
   border-radius: 5px;
 }
 
+.botonEditar:hover {
+  background-color: #953B29; /* Color de fondo al hacer hover */
+}
+
   
