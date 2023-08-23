@@ -76,9 +76,11 @@ $routes->get('/AsignaturaCursos', 'AsignaturaCursosController::index');
 $routes->post('/agregarDatosSelect', 'AsignaturaCursosController::agregarDatosSelect');
 $routes->post('/AsignaturaCursosGuardarEdicion', 'AsignaturaCursosController::guardarEdicion');
 $routes->post('/inactivarActivarRegistroAC', 'AsignaturaCursosController::inactivarActivarRegistro');
-
-
-
+$routes->get('/AsignaturaLogro','AsignaturaLogroController::index');
+$routes->post('/asignarPorcentaje', 'AsignaturaLogroController::asignarPorcentaje');
+$routes->post('/editarAsignaturaLogro', 'AsignaturaLogroController::editarAsignaturaLogro');
+$routes->get('/Cursos', 'CursoViewController::index');
+$routes->get('/Acercade', 'AcercadeController::index');
 
 
 
@@ -122,6 +124,7 @@ $routes->get('/Calificaciones', 'CalificacionesController::index');
 $routes->Post('/getAsignaturasporCurso', 'CalificacionesController::getAsignaturasporCurso');
 $routes->Post('/obtenerEstudiantes', 'CalificacionesController::obtenerEstudiantes');
 $routes->Post('/guardarCalificaciones', 'CalificacionesController::guardarCalificaciones');
+$routes->Post('/actualizarCalificaciones', 'CalificacionesController::actualizarCalificaciones');
 
 
 

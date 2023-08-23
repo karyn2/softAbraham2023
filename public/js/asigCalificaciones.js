@@ -42,50 +42,148 @@ $(document).ready(function() {
 
 
     // Manejar el clic en el botón "guardar"
-    $('.btn-guardar').click(function () {            
+    $('.btn-guardar').click(function () {       
+        var botonGuardar = $(this); // Referencia al botón original     
         var id_curso_asignatura = $(this).data('id_curso_asignatura');
         var fila = $(this).closest('tr');
-        var documento = fila.find('td:nth-child(1)').text();
+        var documento = fila.find('td:nth-child(1)').text().trim();
         var ser = fila.find('td:nth-child(3) input').val();
         var saber = fila.find('td:nth-child(4) input').val();
         var hacer = fila.find('td:nth-child(5) input').val();
         var promedioInput = fila.find('td:nth-child(6) input');
 
-        // como saber la fila seleccionada tambien para enviarla como parametro
-        //y poder ubicar la nota en la fila correspondiente
-        alert('id: '+id_curso_asignatura+'doc: '+documento+'ser: '+ser+' saber: '+saber+' hacer: '+hacer)
-        // Enviar una solicitud AJAX al controlador
-        $.ajax({
-            url: baseUrl + 'guardarCalificaciones',
-            type: 'POST',
-            data: {
-                id_curso_asignatura: id_curso_asignatura,
-                documento: documento,
-                ser:ser,
-                saber:saber,
-                hacer:hacer
-            },
-            success: function (response) {
-
-                // Manejar la respuesta JSON aquí
-                var resultado = JSON.parse(response); // Convertir la respuesta JSON a objeto
-
-                promedioInput.val(resultado);
-                console.log(resultado)
-                // Hacer algo con el resultado, por ejemplo, mostrarlo en una alerta
-                alert('Resultado: ' + resultado);
-
-            },
-            error: function (xhr, status, error) {
-                console.log(error);
-                alert('Error en la solicitud AJAX: ' + error);
+    
+        if(ser=="" || saber=="" || hacer==""){
+            Swal.fire(
+                'Alerta',
+                'Debe ingresar las tres notas',
+                'warning'
+              )
+        }
+        else{
+            if(!validarRango(ser,saber,hacer)){
+                Swal.fire(
+                    'Alerta',
+                    'Ingrese valores válidos (0 a 5)',
+                    'warning'
+                  )
             }
-        });
+            else{
+                // Enviar una solicitud AJAX al controlador
+                $.ajax({
+                    url: baseUrl + 'guardarCalificaciones',
+                    type: 'POST',
+                    data: {
+                        id_curso_asignatura: id_curso_asignatura,
+                        documento: documento,
+                        ser:ser,
+                        saber:saber,
+                        hacer:hacer
+                    },
+                    success: function (response) {
+                        var resultado = JSON.parse(response); // Convertir la respuesta JSON a objeto
+                        promedioInput.val(resultado);    
+                        // Reemplazar el botón original con el nuevo botón
+                        var botonActualizar = $('<a>', {
+                            'type': 'button',
+                            'class': 'botonEditar btn-sm btn-guardar-edicion',
+                            'id': 'btnActualizar',
+                            'title': 'Guardar Actualización',
+                            'data-id_nota': botonGuardar.data('id_curso_asignatura'),
+                            'data-id_curso_asignatura': botonGuardar.data('id_curso_asignatura')
+                        }).append($('<i>', {
+                            'class': 'fas fa-pencil-alt',
+                            'aria-hidden': 'true'
+                        }));
+                    
+                        botonGuardar.replaceWith(botonActualizar);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                        alert('Error en la solicitud AJAX: ' + error);
+                    }
+                });
+            }
+            
+
+        }
+      
+    });
+
+    // Manejar el clic en el botón "Actualizar nota"
+    $(document).on('click', '.btn-guardar-edicion', function () {            
+        var id_nota = $(this).data('id_nota');
+        var id_curso_asignatura = $(this).data('id_curso_asignatura');
+        var fila = $(this).closest('tr');
+        var documento = fila.find('td:nth-child(1)').text().trim();
+        var ser = fila.find('td:nth-child(3) input').val();
+        var saber = fila.find('td:nth-child(4) input').val();
+        var hacer = fila.find('td:nth-child(5) input').val();
+        var promedioInput = fila.find('td:nth-child(6) input');
+
+        if(ser=="" || saber=="" || hacer==""){
+            Swal.fire(
+                'Alerta',
+                'Debe ingresar las tres notas',
+                'warning'
+              )
+        }
+        else{
+            if(!validarRango(ser,saber,hacer)){
+
+                alert(ser+"   "+saber+"   "+hacer)
+
+                Swal.fire(
+                    'Alerta',
+                    'Ingrese valores válidos (0 a 5)',
+                    'warning'
+                  )
+            }
+            else{
+                //Enviar una solicitud AJAX al controlador
+                $.ajax({
+                    url: baseUrl + 'actualizarCalificaciones',
+                    type: 'POST',
+                    data: {
+                        id_nota:id_nota,
+                        id_curso_asignatura: id_curso_asignatura,
+                        documento: documento,
+                        ser:ser,
+                        saber:saber,
+                        hacer:hacer
+                    },
+                    success: function (response) {
+                        var resultado = JSON.parse(response); // Convertir la respuesta JSON a objeto
+                        promedioInput.val(resultado);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                        alert('Error en la solicitud AJAX: ' + error);
+                    }
+                });
+
+            }
+        
+        }
+        
     });
 
 
 });
 
+
+function validarRango(ser, saber, hacer){
+    const numero1 = parseFloat(ser);
+    const numero2 = parseFloat(saber);
+    const numero3 = parseFloat(hacer);
+    if(numero1<0 || numero1>5 || numero2<0 || numero2>5 || numero3<0 || numero3>5){
+        return false
+    }
+    else{
+        return true
+    }
+
+}
 
 function asignarCalificaciones(){
 
