@@ -198,7 +198,7 @@ class EstudiantesController extends BaseController
                 return redirect()->to(base_url('/Estudiantes'))->with('mensaje', 'Estudiante actualizado con éxito');
             } 
             else{
-                return redirect()->to(base_url('/Estudiantes'))->with('mensaje', 'Ha ocurrido un error en la actualización');
+                return redirect()->to(base_url('/Estudiantes'))->with('mensajeError', 'Ha ocurrido un error en la actualización');
             }
         }             
        
@@ -206,16 +206,20 @@ class EstudiantesController extends BaseController
 
     public function generateFilteredPDF($cursoId) {
         $estudiantes = $this->getFilteredDataForPDF($cursoId); // Obtén los datos filtrados
+        if (empty($estudiantes)) {
+            return redirect()->to(base_url('/Estudiantes'))->with('mensajeError', 'No hay estudiantes Registrados en el Curso.');
+        }
     
         // Cargar la vista en una variable
         $data['estudiantes'] = $estudiantes;
         $html = view('estudiantes/pdf_template', $data);
-        
+    
         $options = new Options();
         $options->setIsRemoteEnabled(true);
+        
         // Crear una instancia de Dompdf
         $dompdf = new Dompdf($options);
-
+    
         // Cargar el HTML en Dompdf
         $dompdf->loadHtml($html);
     
@@ -228,6 +232,7 @@ class EstudiantesController extends BaseController
         // Enviar el PDF al navegador
         $dompdf->stream('reporte_estudiantes.pdf', ['Attachment' => false]);
     }
+    
     
 
     private function getFilteredDataForPDF($cursoId) {
