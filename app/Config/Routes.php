@@ -73,6 +73,7 @@ $routes->post('/asignarPorcentaje', 'AsignaturaLogroController::asignarPorcentaj
 $routes->post('/editarAsignaturaLogro', 'AsignaturaLogroController::editarAsignaturaLogro');
 $routes->get('/Cursos', 'CursoViewController::index');
 $routes->get('/Acercade', 'AcercadeController::index');
+$routes->get('GenerarPDF/(:num)', 'EstudiantesController::generateFilteredPDF/$1');
 
 
 

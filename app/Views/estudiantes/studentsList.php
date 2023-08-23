@@ -33,6 +33,11 @@
                             <i class="fas fa-plus" id="pencil-icon" aria-hidden="true"></i>&nbsp;&nbsp;Nuevo Estudiante</a>             
                             <br>
                         </div>
+                        <div>
+                        <?php foreach ($cursos as $curso) : ?>
+                            <a href="<?php echo base_url('GenerarPDF/' . $curso['id_curso']); ?>" class="btn btn-secondary">Generar PDF para <?php echo $curso['nombre_curso']; ?></a>
+                        <?php endforeach; ?>
+                        </div>
                         
                         <div class="mt-4 table-container" >
                             <table class="table mt-4 table-striped table-bordered table-container" 

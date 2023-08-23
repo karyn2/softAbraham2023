@@ -70,3 +70,5 @@ composer require codeigniter4/framework
 composer update
 npm install @fortawesome/fontawesome-free
 npm install sweetalert2
+composer dompdf/dompdf
+composer update dompdf/dompdf

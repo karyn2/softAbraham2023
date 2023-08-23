@@ -4,9 +4,12 @@ namespace App\Controllers;
 use App\Models\CursoModel;
 use App\Models\usuarios;
 use App\Models\EstudiantesModel;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class EstudiantesController extends BaseController
 {
+
     public function index()
     {
         $estudiante = new EstudiantesModel();
@@ -17,8 +20,12 @@ class EstudiantesController extends BaseController
         ->join('estudiantes', 'estudiantes.usuario_id = usuarios.id_usuario') 
         ->join('cursos', 'cursos.id_curso = estudiantes.curso_id')
         ->findAll();
+        $cursoModel = new CursoModel();
+        $cursos = $cursoModel->findAll();
+        $data = ['cursos' => $cursos];
     
-        return view('estudiantes/studentsList', ['estudiantes' => $estudiantes]);
+        return view('estudiantes/studentsList', ['estudiantes' => $estudiantes] + $data);
+
     }
 
     public function newStudent()
@@ -193,11 +200,50 @@ class EstudiantesController extends BaseController
             else{
                 return redirect()->to(base_url('/Estudiantes'))->with('mensaje', 'Ha ocurrido un error en la actualización');
             }
-        }      
-
-
-       
+        }             
        
     }
+
+    public function generateFilteredPDF($cursoId) {
+        $estudiantes = $this->getFilteredDataForPDF($cursoId); // Obtén los datos filtrados
+    
+        // Cargar la vista en una variable
+        $data['estudiantes'] = $estudiantes;
+        $html = view('estudiantes/pdf_template', $data);
+        
+        $options = new Options();
+        $options->setIsRemoteEnabled(true);
+        // Crear una instancia de Dompdf
+        $dompdf = new Dompdf($options);
+
+        // Cargar el HTML en Dompdf
+        $dompdf->loadHtml($html);
+    
+        // Configuraciones adicionales de Dompdf
+        $dompdf->setPaper('landscape'); // Establece la orientación horizontal
+    
+        // Renderizar el PDF
+        $dompdf->render();
+    
+        // Enviar el PDF al navegador
+        $dompdf->stream('reporte_estudiantes.pdf', ['Attachment' => false]);
+    }
+    
+
+    private function getFilteredDataForPDF($cursoId) {
+
+        $estudiante = new EstudiantesModel();
+        $usuario = new usuarios();
+
+        $estudiantes = $usuario->where('rol', 'estudiante')
+            ->where('estado', 1)
+            ->join('estudiantes', 'estudiantes.usuario_id = usuarios.id_usuario') 
+            ->join('cursos', 'cursos.id_curso = estudiantes.curso_id')
+            ->where('estudiantes.curso_id', $cursoId) // Filtrar por ID de curso
+            ->findAll();
+
+        return $estudiantes;
+    }
+
 
 }
