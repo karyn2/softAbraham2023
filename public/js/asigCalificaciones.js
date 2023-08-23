@@ -97,6 +97,8 @@ $(document).ready(function() {
                         }));
                     
                         botonGuardar.replaceWith(botonActualizar);
+
+                        setTimeout(refreshPage, 1);
                     },
                     error: function (xhr, status, error) {
                         console.log(error);
@@ -109,6 +111,8 @@ $(document).ready(function() {
         }
       
     });
+
+   
 
     // Manejar el clic en el botón "Actualizar nota"
     $(document).on('click', '.btn-guardar-edicion', function () {            
@@ -184,6 +188,10 @@ function validarRango(ser, saber, hacer){
     }
 
 }
+
+function refreshPage() {
+    location.reload();
+  }
 
 function asignarCalificaciones(){
 

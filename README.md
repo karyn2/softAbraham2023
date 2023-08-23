@@ -80,7 +80,8 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 ❎ composer require codeigniter4/framework
 ❎ composer require codeigniter4/framework
 ❎ composer update
-❎ composer dompdf/dompdf
+❎ composer require dompdf/dompdf
+🎂😜😃😎
 ❎ composer update dompdf/dompdf
 ❎ composer require phpoffice/phpspreadsheet
 

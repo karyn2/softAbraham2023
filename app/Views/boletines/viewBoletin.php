@@ -321,8 +321,6 @@
             </table>    
          <br>
     <?php endforeach; ?>
-
-    
     
 </body>
 </html>

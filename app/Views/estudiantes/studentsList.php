@@ -26,13 +26,13 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     <?php endif; ?>
-                    <div class="row align-items-center mb-3">
-                        <div class="col-auto">
-                            <a href="<?php echo base_url()?>NuevoEstudiante" type="button" class="btn btn-primary">
-                                <i class="fas fa-plus" id="pencil-icon" aria-hidden="true"></i>&nbsp;&nbsp;Nuevo
-                                Estudiante
-                            </a>
-                        </div>
+                    <div class="mt-4">
+                        <a href="<?php echo base_url()?>NuevoEstudiante" type="button" class="btn btn-primary">
+                            <i class="fas fa-plus" id="pencil-icon" aria-hidden="true"></i>&nbsp;&nbsp;Nuevo
+                            Estudiante
+                        </a>
+                    </div>
+                    <div class="row align-items-center mb-3 mt-4">          
                         <div class="col-auto">
                             <label for="selectCurso">Selecciona un curso:</label>
                         </div>

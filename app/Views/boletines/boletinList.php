@@ -87,16 +87,11 @@
             var cursoId = $(this).data("curso-id");  
             var nuevaVentana =  window.open("<?= base_url('/verBoletin/') ?>" + cursoId, "_blank");
             nuevaVentana.onload = function() {
-            nuevaVentana.print();
+                nuevaVentana.print();
             };
         });
     });
 </script>
-
-
-
-
-
 
 
 <?php echo $this->endSection() ?>
