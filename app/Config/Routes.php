@@ -74,6 +74,7 @@ $routes->post('/editarAsignaturaLogro', 'AsignaturaLogroController::editarAsigna
 $routes->get('/Cursos', 'CursoViewController::index');
 $routes->get('/Acercade', 'AcercadeController::index');
 $routes->get('GenerarPDF/(:num)', 'EstudiantesController::generateFilteredPDF/$1');
+$routes->get('curso/generateExcel/(:num)', 'EstudiantesController::generateExcel/$1');
 
 
 

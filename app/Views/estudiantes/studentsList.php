@@ -37,18 +37,39 @@
                             <label for="selectCurso">Selecciona un curso:</label>
                         </div>
                         <div class="col-auto">
-                             <select id="selectCurso" class="form-select" onchange="handleSelectChange()">
+                            <select id="selectCurso" class="form-select" onchange="handleSelectChange()">
                                 <option disabled selected>seleccione....</option>
                                 <?php foreach ($cursos as $curso) : ?>
-                                    <option value="<?php echo $curso['id_curso']; ?>">
-                                        <?php echo $curso['nombre_curso']; ?>
-                                    </option>
+                                <option value="<?php echo $curso['id_curso']; ?>">
+                                    <?php echo $curso['nombre_curso']; ?>
+                                </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="col-auto">
-                        <a id="generarPDFBtn" class="btn btn-secondary" disabled>Generar PDF</a>
+                            <a id="generarPDFBtn" class="btn btn-danger" disabled>
+                                <i class="far fa-file-pdf me-2"></i>Generar PDF
+                            </a>
                         </div>
+
+
+                    <div class="col-auto">
+                        <label for="selectCursoExcel">Selecciona un curso:</label>
+                    </div>
+                    <div class="col-auto">
+                        <select id="selectCursoExcel" class="form-select" onchange="handleExcelSelectChange()">
+                            <option disabled selected>seleccione....</option>
+                            <?php foreach ($cursos as $curso) : ?>
+                            <option value="<?php echo $curso['id_curso']; ?>">
+                                <?php echo $curso['nombre_curso']; ?>
+                            </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <a id="generarExcelBtn" class="btn btn-success" href="#" disabled>
+                            <i class="far fa-file-excel me-2"></i>Generar Excel
+                        </a>
                     </div>
 
 
@@ -232,17 +253,29 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 <script src="../public/js/editStudent.js"></script>
-<script >
+<script>
     function handleSelectChange() {
         var selectCurso = document.getElementById("selectCurso");
         var generarPDFBtn = document.getElementById("generarPDFBtn");
-        
+
         if (selectCurso.value !== "") {
             generarPDFBtn.href = "<?php echo base_url()?>GenerarPDF/" + selectCurso.value;
             generarPDFBtn.removeAttribute("disabled");
         } else {
             generarPDFBtn.removeAttribute("href");
             generarPDFBtn.setAttribute("disabled", true);
+        }
+    }
+    function handleExcelSelectChange() {
+        var selectCursoExcel = document.getElementById("selectCursoExcel");
+        var generarExcelBtn = document.getElementById("generarExcelBtn");
+
+        if (selectCursoExcel.value !== "") {
+            generarExcelBtn.href = "<?php echo base_url()?>curso/generateExcel/" + selectCursoExcel.value;
+            generarExcelBtn.removeAttribute("disabled");
+        } else {
+            generarExcelBtn.removeAttribute("href");
+            generarExcelBtn.setAttribute("disabled", true);
         }
     }
 </script>
