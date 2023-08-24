@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\AsignaturaVerCrear;
+use Dompdf\Dompdf;
+use Illuminate\Support\Facades\View;
 
 class AsignaturasVerCrear extends BaseController
 {
@@ -29,18 +31,78 @@ class AsignaturasVerCrear extends BaseController
         return redirect()->to(base_url().'Asignaturas');
     }
 
-    public function form_editar($id)
+
+
+
+
+
+
+    public function form_editar()
     {
-        $asignaturas = new AsignaturaVerCrear();
-        $data = $asignaturas->find($id);
-        $data = ['data' => $data];
-        return view('asignaturas/editar', $data);
+        if (isset($_POST['id_asignatura'])) {
+            $id = $_POST['id_asignatura'];
+
+            $asignaturas = new AsignaturaVerCrear();
+            $data = $asignaturas->find($id);
+            $data = ['data' => $data];
+
+            echo json_encode($data);
+                exit;
+        }
+        else{
+            echo json_encode(['error' => 'Error al obtener las asignaturas']);
+            exit;
+        }   
 
     }
+    public function edicionAsignatura(){
+       
+        $asignaturas = new AsignaturaVerCrear();
+        $id_asignatura = $this->request->getPost('id_asignatura');
+        $data = [
+            'area_asignatura' => $this->request->getPost('area_asignatura'),
+            'descripcion_asignatura' => $this->request->getPost('descripcion_asignatura'),
+            'estado_asignatura'=> $this->request->getPost('estado_asignatura')
+        ];
+                
+        $isCorrect = $asignaturas->actualizarAsignatura($id_asignatura, $data);
+        if($isCorrect){
+            return redirect()->to(base_url('/Asignaturas'))->with('mensaje', 'Asignatura actualizado con éxito');
+        } 
+        else{
+            return redirect()->to(base_url('/Asignaturas'))->with('mensajeError', 'Ha ocurrido un error en la actualización');
+        }
 
-    public function editarAsignatura()
-    {
-      echo("hola");  
+     }
+    
+    
+
+
+
+
+
+
+    public function reporte()
+    {   
+        $asignaturas =new AsignaturaVerCrear();
+        $data = $asignaturas->findAll();
+        $data =['data'=> $data];
+        return view('asignaturas/reporte', $data);
+      
+    }
+
+    public function demoPDF(){
+        $asignaturas =new AsignaturaVerCrear();
+        $data = $asignaturas->findAll();
+        $data =['data'=> $data];
+        $html = view('asignaturas/reporte', $data);
+
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);  
+        $dompdf->setPaper('A4','portrait');
+        $dompdf->render();
+        $dompdf->stream('ReporteAsignaturas');
+        
     }
    
     

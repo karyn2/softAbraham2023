@@ -13,5 +13,12 @@ class AsignaturaVerCrear extends Model
     protected $returnType       = 'array';
     protected $allowedFields    = ['area_asignatura','descripcion_asignatura','estado_asignatura'];
 
+    public function actualizarAsignatura($id_asignatura, $data) {
+      $asignatura = $this->db->table('asignaturas');
+      $asignatura->set($data); // Utilizamos set() para establecer los nuevos datos
+      $asignatura->where($this->primaryKey, $id_asignatura); // Utilizamos $this->primaryKey para referenciar la clave primaria
+      return $asignatura->update();
+  }
+    
     
 }

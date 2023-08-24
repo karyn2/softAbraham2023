@@ -49,11 +49,11 @@ $routes->get('CrearAsignatura', 'AsignaturasVerCrear::regAsignatura');
 $routes->post('CrearAsignatura', 'AsignaturasVerCrear::registrar');
 
 $routes->post('Editar', 'AsignaturasVerCrear::editar');
-$routes->get('Editar/(:any)', 'AsignaturasVerCrear::form_editar/$1');
+$routes->post('EditarAsignatura', 'AsignaturasVerCrear::form_editar');
+$routes->post('editarAsignatura', 'AsignaturasVerCrear::edicionAsignatura');
 
-$routes->get('editarAsignatura/(:num)', 'AsignaturasVerCrear::editarAsignatura/$1');
-
-
+$routes->get('reporte','AsignaturasVerCrear::reporte');
+$routes->get('demo-pdf','AsignaturasVerCrear::demopdf');
 
 
 //menuCursos
