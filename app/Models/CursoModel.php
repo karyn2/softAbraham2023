@@ -23,4 +23,12 @@ class CursoModel extends Model{
     {
         return $this->hasMany('App\Models\CursoAsignaturaModel', 'curso_id', 'id_curso');
     }
+
+
+    public function actualizarCurso($id_curso, $data) {
+        $curso = $this->db->table('cursos');
+        $curso->set($data); // Utilizamos set() para establecer los nuevos datos
+        $curso->where($this->primaryKey, $id_curso); // Utilizamos $this->primaryKey para referenciar la clave primaria
+        return $curso->update();
+    }
 }

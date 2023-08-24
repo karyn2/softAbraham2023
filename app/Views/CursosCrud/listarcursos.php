@@ -60,11 +60,11 @@
                                     </td>
                                     
                                     <td>
-                                        <a href="#" type="button" class="btn btn-info btn-sm edit-btn" title="Editar" >
+                                        <a href="#" type="button" class="btn btn-info btn-sm edit-btn" title="Editar" data-id_curso="<?php echo $curso['id_curso']; ?>">
                                             <i id="pencil-icon" class="fas fa-pencil-alt" aria-hidden="true"></i>
                                         </a>
-                                        <a href="#" type="button" class="btn btn-warning btn-sm view-btn" title="Ver" >
-                                            <i class="fas fa-eye" id="pencil-icon" aria-hidden="true"></i></a>
+                                        <!-- <a href="#" type="button" class="btn btn-danger btn-sm view-btn" title="Eliminar" >
+                                            <i class="fas fa-trash" id="pencil-icon" aria-hidden="true"></i></a> -->
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
@@ -79,11 +79,57 @@
 
 
 <!-- Modal EDITAR -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" >
+        <div class="modal-content" style="width:600px">
+            <div class="modal-header headerModal text-center">
+                <h4 class="modal-title " id="editModalLabel">Editar Curso</h4>
+                <button type="button" class="btn-close"  data-bs-dismiss="modal"></button>
+            </div>
+            <form action="<?php echo base_url()?>edicionCurso" method="POST" id="formEditarEst">
+                
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label for="documento" class="form-label">Nombre curso:</label>
+                        <input type="text" class="form-control" id="nombre_curso" name="nombre_curso" >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="nombre" class="form-label">Tipo Curso:</label>
+                            <input type="text" class="form-control" id="tipo_curso" name="tipo_curso">
+                        </div>            
+                    </div>
+                   
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label for="genero" class="form-label">Estado del curso:</label>
+                            <select name="estado_curso" id="estado_curso" class="form-select">
+                                    <option disabled selected>seleccione....</option>
+                                    <option value="1">Activo</option>
+                                    <option value="0">Inactivo</option>
+                            </select>
+                        </div>            
+                    </div>
+                
+                    <input type="hidden" id="id_curso" name="id_curso">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> Cerrar</button>
+                    <button   class="botonRegistrar" onclick=EditarCurso()
+                     type="button"  >
+                        <i class="fas fa-save"></i>&nbsp; Guardar cambios &nbsp;
+                     </button>
+                </div>
+            </form>
+           
+        </div>
+    </div>
+</div>
 
 <!--Datatables-->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-
+<script src="../public/js/editCurso.js"></script>
 
 <script>
     $(document).ready(function() {
