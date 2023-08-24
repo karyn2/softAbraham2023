@@ -4,9 +4,15 @@ namespace App\Controllers;
 use App\Models\CursoModel;
 use App\Models\usuarios;
 use App\Models\EstudiantesModel;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
 
 class EstudiantesController extends BaseController
 {
+
     public function index()
     {
         $estudiante = new EstudiantesModel();
@@ -17,8 +23,12 @@ class EstudiantesController extends BaseController
         ->join('estudiantes', 'estudiantes.usuario_id = usuarios.id_usuario') 
         ->join('cursos', 'cursos.id_curso = estudiantes.curso_id')
         ->findAll();
+        $cursoModel = new CursoModel();
+        $cursos = $cursoModel->findAll();
+        $data = ['cursos' => $cursos];
     
-        return view('estudiantes/studentsList', ['estudiantes' => $estudiantes]);
+        return view('estudiantes/studentsList', ['estudiantes' => $estudiantes] + $data);
+
     }
 
     public function newStudent()
@@ -191,13 +201,187 @@ class EstudiantesController extends BaseController
                 return redirect()->to(base_url('/Estudiantes'))->with('mensaje', 'Estudiante actualizado con éxito');
             } 
             else{
-                return redirect()->to(base_url('/Estudiantes'))->with('mensaje', 'Ha ocurrido un error en la actualización');
+                return redirect()->to(base_url('/Estudiantes'))->with('mensajeError', 'Ha ocurrido un error en la actualización');
             }
-        }      
-
-
-       
+        }             
        
     }
+
+    public function generateFilteredPDF($cursoId) {
+        $estudiantes = $this->getFilteredDataForPDF($cursoId);
+        if (empty($estudiantes)) {
+            return redirect()->to(base_url('/Estudiantes'))->with('mensajeError', 'No hay estudiantes Registrados en el Curso.');
+        }  
+        
+        $data['estudiantes'] = $estudiantes;
+        $html = view('estudiantes/pdf_template', $data);
+    
+        $options = new Options();
+        $options->setIsRemoteEnabled(true);        
+        
+        $dompdf = new Dompdf($options);
+    
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('landscape');
+
+        $dompdf->render();   
+
+        $dompdf->stream('reporte_estudiantes.pdf', ['Attachment' => false]);
+    }
+    
+    private function getFilteredDataForPDF($cursoId) {
+
+        $estudiante = new EstudiantesModel();
+        $usuario = new usuarios();
+
+        $estudiantes = $usuario->where('rol', 'estudiante')
+            ->where('estado', 1)
+            ->join('estudiantes', 'estudiantes.usuario_id = usuarios.id_usuario') 
+            ->join('cursos', 'cursos.id_curso = estudiantes.curso_id')
+            ->where('estudiantes.curso_id', $cursoId)
+            ->findAll();
+
+        return $estudiantes;
+    }
+
+    public function generateExcel($cursoId) {
+        $estudiantes = $this->getFilteredDataForPDF($cursoId);
+    
+        if (empty($estudiantes)) {
+            return redirect()->to(base_url('/Estudiantes'))->with('mensajeError', 'No hay estudiantes Registrados en el Curso.');
+        }
+    
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+    
+        // Establecer estilos para el encabezado
+        $headerStyle = [
+            'font' => [
+                'bold' => true,
+                'size' => 13,
+            ],
+            'alignment' => [
+                'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+                'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
+            ],
+        ];
+    
+        // Obtener el nombre del curso (puedes obtenerlo de tu base de datos)
+        $nombreCurso = esc($estudiantes[0]['nombre_curso']);
+    
+        // Agregar el encabezado
+        $sheet->mergeCells('A1:AK1'); // Fusionar celdas para el encabezado
+        $sheet->setCellValue('A1', 'Planilla de Asistencia - ' . $nombreCurso);
+        $sheet->getStyle('A1')->applyFromArray($headerStyle);
+    
+        $sheet->mergeCells('A2:AK2'); // Fusionar celdas para los detalles
+        $sheet->setCellValue('A2', "Institución Educativa Siglo XXI | Código DANE: 305001800368");
+        $sheet->getStyle('A2')->getFont()->setBold(true);
+    
+        $sheet->mergeCells('A3:AK3'); // Fusionar celdas para los detalles
+        $sheet->setCellValue('A3', "Telf: - 3164549278 | Email: c.p.siglo21@gmail.com");
+        $sheet->getStyle('A3')->getFont()->setBold(true);
+    
+        // URL del escudo del colegio
+        $escudoUrl = 'https://scontent-bog1-1.xx.fbcdn.net/v/t39.30808-6/370483178_286424474011785_1632106532468805365_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=730e14&_nc_ohc=w6bdidAiJA4AX9kETKF&_nc_ht=scontent-bog1-1.xx&oh=00_AfCYD6qTfTCeqmcTbnmK5bAH36JQuK8XR7rBlo7iIeWLSg&oe=64EB11FB';
+    
+        // Agregar el escudo del colegio desde la URL
+        $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+        $drawing->setName('Escudo');
+        $drawing->setDescription('Escudo del colegio');
+        $drawing->setPath($escudoUrl); // Utilizar la URL directamente
+        $drawing->setHeight(60);
+        $drawing->setCoordinates('AK1');
+        $drawing->setOffsetX(10);
+        $drawing->setOffsetY(10);
+        $drawing->setWorksheet($sheet);
+    
+        // Encabezados de la tabla
+        $row = 5;
+        $sheet->setCellValue('A' . $row, 'Nombre Completo');
+    
+        // Agregar los días del 1 al 31
+        for ($day = 1; $day <= 31; $day++) {
+            $sheet->setCellValueByColumnAndRow($day + 1, $row, $day);
+        }
+        $sheet->setCellValueByColumnAndRow(33, $row, 'Observaciones');
+        $sheet->setCellValueByColumnAndRow(34, $row, 'Justificado');
+        $sheet->setCellValueByColumnAndRow(35, $row, 'Injustificado');
+        $sheet->setCellValueByColumnAndRow(36, $row, 'Atrasado');
+        $sheet->setCellValueByColumnAndRow(37, $row, 'Días Inasistidos');
+        
+        $row++;
+    
+        // Agregar los nombres de los estudiantes
+        foreach ($estudiantes as $estudiante) {
+            $sheet->setCellValue('A' . $row, $estudiante['nombre']);
+    
+            // Agregar espacios en blanco para los días
+            for ($day = 1; $day <= 31; $day++) {
+                $sheet->setCellValueByColumnAndRow($day + 1, $row, '');
+            }
+    
+            // Agregar espacios en blanco para las columnas adicionales
+            $sheet->setCellValueByColumnAndRow(34, $row, '');
+            $sheet->setCellValueByColumnAndRow(35, $row, '');
+            $sheet->setCellValueByColumnAndRow(36, $row, '');
+            $sheet->setCellValueByColumnAndRow(37, $row, '');
+    
+            $row++;
+        }
+    
+        // Ajustar el ancho de columna automáticamente
+        foreach (range('A', 'AK') as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+    
+        // Cambiar orientación de página y tamaño de papel
+        $sheet->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
+        $sheet->getPageSetup()->setPaperSize(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::PAPERSIZE_LEGAL);
+    
+        // Aplicar formato de bordes a toda la tabla
+        $borders = [
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                ],
+            ],
+        ];
+        $sheet->getStyle('A5:AK' . ($row - 1))->applyFromArray($borders);
+    
+        $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xls($spreadsheet);
+    
+        // Obtener el nombre del archivo con el nombre del curso
+        $nombreArchivo = 'planilla_asistencia_' . str_replace(' ', '_', $nombreCurso) . '.xls';
+    
+        // Establecer los encabezados del archivo
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="'.$nombreArchivo.'"');
+        header('Cache-Control: max-age=0');
+    
+        // Deshabilitar el almacenamiento en caché en el navegador
+        header('Cache-Control: no-cache, no-store, must-revalidate'); 
+        header('Pragma: no-cache'); 
+        header('Expires: 0');
+    
+        // Salida del archivo Excel en formato XLS
+        $writer->save('php://output');
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
 
 }

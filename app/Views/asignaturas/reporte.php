@@ -1,112 +1,131 @@
+<!--///////////////////////////////////////////////////////////////-->
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Asignaturas</title>
+    <style>
+        @page {
+            size: 356mm 216mm;
+            margin: 2cm;
+        }
 
-    <title>SoftAbraham | 2023 </title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
 
-    <!-- Favicons -->
-    <link href=" " rel="icon">
-    <link href=" " rel="apple-touch-icon">
+        .header {
+            display: flex;
+            align-items: center;
+            height: 120px;
+            margin-bottom: 20px;
+        }
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+        .logo img {
+            height: 130px;
+            max-width: 130px;
+        }
 
-    <!-- Vendor CSS Files -->
-    <!-- Bootstrap CSS v5.2.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <!-- Template Main CSS File -->
-    <link href="..\public\css\layout.css" rel="stylesheet">
-    <link href="..\public\css\tables.css" rel="stylesheet">
-    <link href="..\public\css\botones.css" rel="stylesheet">
-    <link href="..\public\css\principal.css" rel="stylesheet">
+        .header-content {
+            text-align: center;
+            margin-left: 20px;
+        }
 
-    <!--iconos--> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.min.css">
+        h1,
+        p {
+            margin: 0;
+            padding: 0;
+        }
 
+        h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 
 <body>
 
-        <div class="content container-fluid mt-4">
-        <div class="row">
-            <div class="col-md-12" >
-                <div class="card card-default"> 
-                    <div class="card-header text-center">
-                    <img src="..\public\img\asignaturas.jpg" alt="usuarios"
-                        class="icono-sidebar" /><b>REPORTE ASIGNATURAS</b>
-                    </div>
-                    <div class="card-body">
-                        <div class="text-right">
-                            <a href="<?php echo base_url('demo-pdf')?>" type="button" class="btn btn-warning btn-sm" title="Inactivar" onclick="">
-                            <i class="fas fa-save"></i>&nbsp; Generar PDF &nbsp;
-                            </a>
-                        </div>
-                        <div class="mt-4 table-container table-responsive tablaasignatura" >
-                        <div class="table-responsive">
-                                <table class="table mt-4 table-striped table-bordered table-container" id="miTabla" name="miTabla">
-                                    <thead class="headerTable bordered-table text-center">
-                                        <tr class="text-center">
-                                            <th scope="col">Código</th>
-                                            <th scope="col">Área</th>
-                                            <th scope="col">Descripción</th>
-                                            <th scope="col">Estado</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <tbody class="bordered-table bodyTable normal" style="font-weight:normal">
-                                        <?php foreach($data as $i): ?>
-                                        <tr>
-                                            <td class="normal"><?php echo $i['id_asignatura'] ?></td>
-                                            <td class="normal"><?php echo $i['area_asignatura'] ?></td>
-                                            <td class="normal td-description"><?php echo $i['descripcion_asignatura'] ?></td>
-                                            <td class="normal"><?php echo $i['estado_asignatura'] ? 'Activa' : 'Inactiva'; ?></td>
-                                            
-                                        </tr>
-                                        <?php endforeach ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                         </div>
-                    </div>
+    <table>
+        <tr>
+            <td rowspan="3">
+                <div class="logo">
+                    <img src="https://scontent-bog1-1.xx.fbcdn.net/v/t39.30808-6/370483178_286424474011785_1632106532468805365_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=730e14&_nc_ohc=i8cMloBCbhUAX8EoXrW&_nc_ht=scontent-bog1-1.xx&oh=00_AfDfx_vc4vXVXN-bkDDb7ASuhvXSF_6RnvFMIDQ4zCIBZQ&oe=64EB11FB"
+                        alt="Logo" class="imagen-pequena">
                 </div>
-            </div>
-        </div>
-</div>
+            </td>
+            <td>
+                <h1>Institución Educativa Siglo XXI</h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Código DANE: 305001800368 :</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Telf: - 3164549278 | Email: c.p.siglo21@gmail.com</p>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Área</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($data as $i): ?>
+            <tr>
+                <td class="normal">
+                    <?php echo $i['id_asignatura'] ?>
+                </td>
+                <td class="normal">
+                    <?php echo $i['area_asignatura'] ?>
+                </td>
+                <td class="normal td-description">
+                    <?php echo $i['descripcion_asignatura'] ?>
+                </td>
+                <td class="normal">
+                    <?php echo $i['estado_asignatura'] ? 'Activa' : 'Inactiva'; ?>
+                </td>
 
-
-
-    
-
-    <!-- Bootstrap JS Files -->
-    <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-        </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-        </script>
-    <!-- Template Main JS File -->
-    <script src="..\public\js\layout.js"></script>
-
-
-    <!--sweetAlert-->
-    <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
-    
-
-</body>
+            </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
 
 </html>
-
-

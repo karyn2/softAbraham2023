@@ -61,12 +61,29 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
 - [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
 
-instalaciones adicionales 
-composer require codeigniter4/framework 
+👀instalaciones adicionales👀
 
-en la carpeta writable crear la carpeta cache
+🤷‍♀️ tener instalado Compouser nodejs xaamp o wamp
 
-composer require codeigniter4/framework
-composer update
-npm install @fortawesome/fontawesome-free
-npm install sweetalert2
+🐱‍👤 Descomentar en php.ini
+
+👻 extension=gd 
+👻 extension=zip
+👻 extension=mbstring
+👻 extension=intl
+👻 extension=json
+👻 extension=openssl
+
+
+🙌 en la carpeta writable crear la carpeta cache y darle permisos de escritura enlinux win no
+
+❎ composer require codeigniter4/framework
+❎ composer require codeigniter4/framework
+❎ composer update
+❎ composer require dompdf/dompdf
+🎂😜😃😎
+❎ composer update dompdf/dompdf
+❎ composer require phpoffice/phpspreadsheet
+
+👏 npm install @fortawesome/fontawesome-free
+👏 npm install sweetalert2

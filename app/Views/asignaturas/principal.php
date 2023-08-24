@@ -28,7 +28,7 @@
                         <div class="text-right">
                             <a href="<?php echo base_url('/CrearAsignatura')?>" type="button" class="btn btn-primary">
                             <i class="fas fa-plus" id="pencil-icon" aria-hidden="true"></i>&nbsp;&nbsp;Nueva Asignatura</a>             
-                            <a href="<?php echo base_url('reporte')?>" type="button" class="btn btn-warning btn-sm" title="Inactivar" onclick="">
+                            <a href="<?php echo base_url('demo-pdf')?>" type="button" class="btn btn-warning btn-sm" title="Inactivar" onclick="">
                             <i class="fas fa-save"></i>&nbsp; Reporte &nbsp;
                             </a>
                         </div>

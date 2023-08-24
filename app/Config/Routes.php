@@ -85,6 +85,8 @@ $routes->post('/asignarPorcentaje', 'AsignaturaLogroController::asignarPorcentaj
 $routes->post('/editarAsignaturaLogro', 'AsignaturaLogroController::editarAsignaturaLogro');
 $routes->get('/Cursos', 'CursoViewController::index');
 $routes->get('/Acercade', 'AcercadeController::index');
+$routes->get('GenerarPDF/(:num)', 'EstudiantesController::generateFilteredPDF/$1');
+$routes->get('curso/generateExcel/(:num)', 'EstudiantesController::generateExcel/$1');
 
 
 
@@ -129,6 +131,9 @@ $routes->Post('/getAsignaturasporCurso', 'CalificacionesController::getAsignatur
 $routes->Post('/obtenerEstudiantes', 'CalificacionesController::obtenerEstudiantes');
 $routes->Post('/guardarCalificaciones', 'CalificacionesController::guardarCalificaciones');
 $routes->Post('/actualizarCalificaciones', 'CalificacionesController::actualizarCalificaciones');
+//Boletines Controller
+$routes->get('/Boletines', 'BoletinController::index');
+$routes->get('/verBoletin/(:any)', 'BoletinController::verBoletin/$1');
 
 
 

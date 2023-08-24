@@ -98,7 +98,7 @@
                                 class="ms-1 d-none d-sm-inline ">Boletines</span>
                         </a>
                         <div class=" dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" id="muenudrop">                   
-                        <a class="dropdown-item" href="#">Consultar Boletín</a>                             
+                        <a class="dropdown-item" href="<?php echo base_url('/Boletines')?>">Consultar Boletín</a>                             
                     </li>
 
                     <li class="nav-item dropdown ">

@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\AsignaturaVerCrear;
 use Dompdf\Dompdf;
-use Illuminate\Support\Facades\View;
+use Dompdf\Options;
 
 class AsignaturasVerCrear extends BaseController
 {
@@ -97,11 +97,16 @@ class AsignaturasVerCrear extends BaseController
         $data =['data'=> $data];
         $html = view('asignaturas/reporte', $data);
 
-        $dompdf = new Dompdf();
+        $options = new Options();
+        $options->setIsRemoteEnabled(true);        
+        
+        $dompdf = new Dompdf($options);
+
+        //$dompdf = new Dompdf();
         $dompdf->loadHtml($html);  
         $dompdf->setPaper('A4','portrait');
         $dompdf->render();
-        $dompdf->stream('ReporteAsignaturas');
+        $dompdf->stream('ReporteAsignaturas', ['Attachment' => false]);
         
     }
    
