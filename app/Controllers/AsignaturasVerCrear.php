@@ -28,6 +28,7 @@ class AsignaturasVerCrear extends BaseController
         $asignaturas->insert($data);
         return redirect()->to(base_url().'Asignaturas');
     }
+
     public function form_editar($id)
     {
         $asignaturas = new AsignaturaVerCrear();
@@ -36,15 +37,13 @@ class AsignaturasVerCrear extends BaseController
         return view('asignaturas/editar', $data);
 
     }
-    public function editar()
+
+    public function editarAsignatura()
     {
-        $asignaturas = new AsignaturaVerCrear();
-        $data = [
-            'area_asignatura'=> $this->request->getPost('area'),
-            'descripcion_asignatura'=> $this->request->getPost('descripcion')
-        ];
-        $asignaturas->update($this->request->getPost('id_asig'), $data);
-        return redirect()->to(base_url().'Asignaturas');
+      echo("hola");  
     }
+   
+    
+    
 
 }
