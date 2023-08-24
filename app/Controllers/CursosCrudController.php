@@ -16,4 +16,16 @@ class CursosCrudController extends BaseController
     public function nuevoCurso(){
         return view('CursosCrud\newcurso' );
     }
+
+    public function registrarCurso()
+    {
+        $cursoModel = new CursoModel();
+        $data = [
+            'nombre_curso' => $this->request->getPost('nombre_curso'),
+            'tipo_curso' => $this->request->getPost('tipo_curso'),
+            'estado_curso'=> $this->request->getPost('estado_curso')
+        ];
+        $cursoModel->insert($data);
+        return redirect()->to(base_url().'cursos');
+    }
 }

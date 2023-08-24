@@ -34,7 +34,7 @@ $routes->get('/', 'loginController::index');
 //lucho
 $routes->get('cursos', 'CursosCrudController::index');
 $routes->get('Nuevocurso', 'CursosCrudController::nuevoCurso');
-$routes->post('guardarCurso', 'CursosCrudController::guardarCursos');
+$routes->post('guardarCurso', 'CursosCrudController::registrarCurso');
 
 
 
