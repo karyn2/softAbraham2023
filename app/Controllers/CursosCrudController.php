@@ -13,4 +13,7 @@ class CursosCrudController extends BaseController
         return view('CursosCrud\listarcursos', $data);
        
     }
+    public function nuevoCurso(){
+        return view('CursosCrud\newcurso' );
+    }
 }

@@ -29,7 +29,7 @@
                         <?php endif; ?>
 
                         <div class="text-right">
-                            <a href="<?php echo base_url()?>NuevoEstudiante" type="button" class="btn btn-primary">
+                            <a href="<?php echo base_url()?>Nuevocurso" type="button" class="btn btn-primary">
                             <i class="fas fa-plus" id="pencil-icon" aria-hidden="true"></i>&nbsp;&nbsp;Nuevo curso</a>             
                             <br>
                         </div>
