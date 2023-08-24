@@ -32,6 +32,12 @@ $routes->set404Override();
 $routes->get('/', 'loginController::index');
 
 //lucho
+$routes->get('cursos', 'CursosCrudController::index');
+$routes->get('Nuevocurso', 'CursosCrudController::nuevoCurso');
+$routes->post('guardarCurso', 'CursosCrudController::registrarCurso');
+$routes->post('/editarCurso', 'CursosCrudController::editarCurso');
+//$routes->get('/CursoEdit/(:any)', 'CursosCrudController::editCurso/$1');
+$routes->post('edicionCurso', 'CursosCrudController::edicionCurso');
 
 
 
