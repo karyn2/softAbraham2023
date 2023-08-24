@@ -1,4 +1,4 @@
-<?= $this->extend('layout/layout') ?>
+|<?= $this->extend('layout/layout') ?>
 <?= $this->section('content') ?>
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap.min.css">

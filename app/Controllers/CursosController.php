@@ -15,5 +15,6 @@ class CursosController extends Controller{
 
         return view($listaCursos);
     }
+   
 
 }
