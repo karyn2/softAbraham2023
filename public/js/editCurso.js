@@ -16,12 +16,8 @@ $(document).ready(function () {
             },
             success: function (response) {
             
-               var userData = JSON.parse(response);
-               console.log(userData)
+            var userData = JSON.parse(response);
             var cursos = userData.data;
-            
-
-           
 
             var nombre = document.getElementById('nombre_curso');
              var tipo = document.getElementById('tipo_curso');
@@ -32,11 +28,7 @@ $(document).ready(function () {
              nombre.value = cursos.nombre_curso;
              tipo.value = cursos.tipo_curso;
              estado.value = cursos.estado_curso;
-             id.value = cursos.id_curso;
-
-             alert(id.value)
-           
-                       
+             id.value = cursos.id_curso;                       
                // Mostrar el modal
                 $('#editModal').modal('show');
             },
