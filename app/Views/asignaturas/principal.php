@@ -57,13 +57,7 @@
                                                 <div class="btn-group" role="group">
                                                 <a href="#" type="button" class="btn btn-info btn-sm edit-asig" title="Editar" data-id_asignatura="<?php echo $i['id_asignatura']; ?>">
                                                     <i id="pencil-icon" class="fas fa-pencil-alt" aria-hidden="true"></i>
-                                                </a>
-                                                <a href="<?php echo base_url()?>/eliminar<?php echo $i['id_asignatura'] ?>" type="button" class="btn btn-danger btn-sm" title="Eliminar" onclick="">
-                                                        <i class="fas fa-trash" aria-hidden="true"></i>
-                                                        
-                                                </a>
-                                                    
-                                                    
+                                                </a>  
                                                 </div>
                                             </td>
                                         </tr>
