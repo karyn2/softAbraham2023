@@ -98,7 +98,7 @@
         </tr>
         <tr>
             <td>
-                <p>Telf: - 3164549278 | Email: c.p.siglo21@gmail.com</p>
+                <p>Telf:  3164549278 | Email: c.p.siglo21@gmail.com</p>
             </td>
         </tr>
     </table>
