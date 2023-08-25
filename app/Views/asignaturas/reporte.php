@@ -8,7 +8,8 @@
     <title>Reporte de Asignaturas</title>
     <style>
         @page {
-            size: 356mm 216mm;
+            
+            size:  216mm 356mm;
             margin: 2cm;
         }
 
@@ -70,6 +71,9 @@
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+        #inicio{
+            background-color: red;
+        }
     </style>
 </head>
 
@@ -100,7 +104,7 @@
     </table>
     <table>
         <thead>
-            <tr>
+            <tr id="inicio">
                 <th scope="col">Código</th>
                 <th scope="col">Área</th>
                 <th scope="col">Descripción</th>

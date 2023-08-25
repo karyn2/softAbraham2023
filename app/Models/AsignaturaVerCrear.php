@@ -19,6 +19,11 @@ class AsignaturaVerCrear extends Model
       $asignatura->where($this->primaryKey, $id_asignatura); // Utilizamos $this->primaryKey para referenciar la clave primaria
       return $asignatura->update();
   }
+
+  /*public function eliminar_usuario($id_asignatura) {
+    $this->db->where('id_asignatura', $id_asignatura);
+    $this->db->delete('asignaturas');
+}*/
     
     
 }

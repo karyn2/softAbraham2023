@@ -75,13 +75,6 @@ class AsignaturasVerCrear extends BaseController
 
      }
     
-    
-
-
-
-
-
-
     public function reporte()
     {   
         $asignaturas =new AsignaturaVerCrear();
@@ -96,12 +89,9 @@ class AsignaturasVerCrear extends BaseController
         $data = $asignaturas->findAll();
         $data =['data'=> $data];
         $html = view('asignaturas/reporte', $data);
-
         $options = new Options();
-        $options->setIsRemoteEnabled(true);        
-        
+        $options->setIsRemoteEnabled(true);                
         $dompdf = new Dompdf($options);
-
         //$dompdf = new Dompdf();
         $dompdf->loadHtml($html);  
         $dompdf->setPaper('A4','portrait');
@@ -109,6 +99,18 @@ class AsignaturasVerCrear extends BaseController
         $dompdf->stream('ReporteAsignaturas', ['Attachment' => false]);
         
     }
+    
+    public function eliminar($id){
+        $asignaturas = new AsignaturaVerCrear();
+        $asignaturas->delete($id);
+        return redirect()->to(base_url().'asignaturas/principal');  
+    }
+
+    /*public function eliminar($id){
+        $this->usuarios_model->eliminar_usuario($id_asignatura);
+        redirect('Asignaturas'); // Redirige a la lista de usuarios u otra página
+    
+    }*/
    
     
     
