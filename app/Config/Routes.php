@@ -61,6 +61,8 @@ $routes->post('editarAsignatura', 'AsignaturasVerCrear::edicionAsignatura');
 $routes->get('reporte','AsignaturasVerCrear::reporte');
 $routes->get('demo-pdf','AsignaturasVerCrear::demopdf');
 
+$routes->post('eliminar/(:any)', 'Categoria::eliminar/$1');
+
 
 //menuCursos
 
