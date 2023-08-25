@@ -6,3 +6,7 @@
         text-overflow: ellipsis;
     }
 }
+
+.align-right {
+    margin-right: auto;
+  }

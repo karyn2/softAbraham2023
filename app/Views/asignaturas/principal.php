@@ -28,9 +28,10 @@
                         <div class="text-right">
                             <a href="<?php echo base_url('/CrearAsignatura')?>" type="button" class="btn btn-primary">
                             <i class="fas fa-plus" id="pencil-icon" aria-hidden="true"></i>&nbsp;&nbsp;Nueva Asignatura</a>             
-                            <a href="<?php echo base_url('demo-pdf')?>" type="button" class="btn btn-warning btn-sm" title="Inactivar" onclick="">
-                            <i class="fas fa-save"></i>&nbsp; Reporte &nbsp;
+                            <a href="<?php echo base_url('demo-pdf')?>" class="btn btn-danger btn-sm align-right" title="Inactivar" onclick="">
+                                <i class="far fa-file-pdf me-2"></i>&nbsp; Reporte PDF &nbsp;
                             </a>
+
                         </div>
 
                         <div class="mt-4 table-container table-responsive tablaasignatura" >
@@ -57,9 +58,12 @@
                                                 <a href="#" type="button" class="btn btn-info btn-sm edit-asig" title="Editar" data-id_asignatura="<?php echo $i['id_asignatura']; ?>">
                                                     <i id="pencil-icon" class="fas fa-pencil-alt" aria-hidden="true"></i>
                                                 </a>
-                                                    <a href="#" type="button" class="btn btn-danger btn-sm" title="Inactivar" onclick="">
-                                                        <i class="fas fa-ban" aria-hidden="true"></i>
-                                                    </a>
+                                                <a href="<?php echo base_url()?>/eliminar<?php echo $i['id_asignatura'] ?>" type="button" class="btn btn-danger btn-sm" title="Eliminar" onclick="">
+                                                        <i class="fas fa-trash" aria-hidden="true"></i>
+                                                        
+                                                </a>
+                                                    
+                                                    
                                                 </div>
                                             </td>
                                         </tr>
