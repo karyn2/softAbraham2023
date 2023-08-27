@@ -44,7 +44,7 @@
         </a>
       </div>
       <div class="col-md-4 mt-2">
-        <a href="#" class="menu-option bordeRedondo text-decoration-none " style="background-color: #EB4FAD;">
+        <a href="<?php echo base_url('/Boletines')?>" class="menu-option bordeRedondo text-decoration-none " style="background-color: #EB4FAD;">
         <img src="..\public\img\boletin.png" alt="boletin" class="icono-sidebar imgInicio mt-4">
         <p class="letraBotonIn">
             Boletines <br>
