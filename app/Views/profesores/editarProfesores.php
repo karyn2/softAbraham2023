@@ -84,7 +84,6 @@ function ActualizarDocente(){
     if(!validateFields()){
         return;
     }else{
-        alert('entro');
         $("#formActualizarProfesor").submit();
         
     }

@@ -13,6 +13,7 @@
                     <img src="..\public\img\form_docente.png" alt="Formulario Docentes"
                         class="icono-sidebar" /><b>DOCENTES REGISTRADOS</b>
                 </div>
+
                 <div class="card-body">
                     <div class="text-right">
                         <a href="<?php echo base_url('crearProfesor')?>" type="button" class="btn btn-primary">
