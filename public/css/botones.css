@@ -2,10 +2,10 @@
     background-color: #39CB58;
     transition: background-color 0.3s;
     color: white;
-    padding-top:3px;
+    padding-top:8px;
     padding-left: 10px;
     padding-right: 10px;
-    padding-bottom: 3px;
+    padding-bottom: 8px;
     border: none;
     border-radius: 5px;
 }

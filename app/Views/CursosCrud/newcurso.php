@@ -21,11 +21,11 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="nombre_curso" class="form-label">Ingrese Nombre del curso</label>
-                            <input type="text" class="form-control" id="nombre_curso" name="nombre_curso">
+                            <input type="text" class="form-control" id="nombre_curso" name="nombre_curso" required>
                         </div>
                         <div class="col-md-6">
                             <label for="tipo_curso" class="form-label">Ingrese el tipo de curso</label>
-                            <input type="text" class="form-control" id="tipo_curso" name="tipo_curso">
+                            <input type="text" class="form-control" id="tipo_curso" name="tipo_curso" required>
                         </div>
                         
                     </div>
@@ -35,7 +35,7 @@
                        
                         <div class="col-md-6">
                         <label for="tipo_curso" class="form-label">Seleccione estado de curso</label>
-                             <select name="estado_curso" id="estado_curso" class="form-select">
+                             <select name="estado_curso" id="estado_curso" class="form-select" required>
                                 <option value="" selected disabled>Seleccione Estado</option>
                                 <option value="0">Inctivo</option>
                                 <option value="1">Activo</option>
@@ -48,26 +48,19 @@
                             class="botonRegresar text-decoration-none">
                             <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>&nbsp;&nbsp;Regresar</a>
                         <button class="botonRegistrar btn text-white" type="submit">
-                        <i class="fas fa-save"></i>&nbsp; Registrar
-                                &nbsp;
-
+                            <i class="fas fa-save"></i>&nbsp; Registrar
                         </button>
                         <button class="botonLimpiar" type="reset">
-                            <i class="fas fa-broom"></i>&nbsp; Limpiar &nbsp;
+                            <i class="fas fa-broom"></i>&nbsp; Limpiar
                         </button>
                     </div>
-
+                </div>
+            </div>
         </form>
-
-
     </div>
-
-
-
-</div>
 </div>
 
+<br><br><br>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
 
 <?php echo $this->endSection() ?>
